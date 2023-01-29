@@ -8,7 +8,7 @@ const dataServers = {
     containers: {
       pod: {
         'mp:Offer': ['/offers'],
-        'mp:Request': ['/requests'],
+//      'mp:Request': ['/requests'],
         'pair:Project': ['/projects'],
         'vcard:Location': ['/locations'],
         'vcard:Individual': ['/profiles'],

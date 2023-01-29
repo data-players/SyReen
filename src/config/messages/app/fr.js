@@ -6,19 +6,19 @@ module.exports = {
       contact_organizer: "Contacter l'organisateur",
       copy: 'Copier dans votre presse-papier',
       continue: 'Continuer',
-      create_ad: 'Poster une annonce',
+      create_ad: 'Créer un projet',
       send: 'Envoyer',
       send_invitation: "Envoyer l'invitation |||| Envoyer %{smart_count} invitations",
       share: 'Partager',
     },
     page: {
-      post: 'Poster une annonce',
+      post: 'Créer un projet',
       addresses: 'Mes adresses',
       network: 'Mon réseau',
       profile: 'Mon profil',
     },
     modal: {
-      share_ad: "Partager l'annonce"
+      share_ad: "Partager le projet"
     },
     block: {
       contact_poster: "Contacter l'annonceur",

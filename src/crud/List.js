@@ -95,8 +95,8 @@ const List = () => {
         </MuiCard>
       </Box>
       <ListBase
-        resource="OfferAndRequest"
-        basePath="/OfferAndRequest"
+        resource="projects"
+        basePath="/projects"
         perPage={1000}
         sort={{ field: 'dc:created', order: 'DESC' }}
         filter={{ sparqlWhere }}

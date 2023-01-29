@@ -47,7 +47,7 @@ const HomePage = ({ title }) => {
   if (loading) return null;
 
   return identity?.id ? (
-    <Redirect to="/offers" />
+    <Redirect to="/projects" />
   ) : (
     <ThemeProvider theme={theme}>
       <Box className={classes.root}>

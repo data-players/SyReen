@@ -61,13 +61,13 @@ const AppBar = ({ title }) => {
       <Grid container>
         <Grid item xs={12} sm={6}>
           <Box mb={1} className={classes.box}>
-            <Link to="/offers">
+            <Link to="/projects">
               <IconButton edge="start" className={classes.menuButton} color="inherit">
                 <AppIcon fontSize="large" />
               </IconButton>
             </Link>
             <Typography variant="h4" className={classes.title}>
-              <Link to="/offers">
+              <Link to="/projects">
                 {title}
               </Link>
             </Typography>

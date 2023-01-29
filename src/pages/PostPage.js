@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/*
 const DirtyCondition = ({ what, children }) => (
   <Field name={what} subscription={{ dirty: true }}>
     {({ meta: { dirty } }) => (dirty ? children : null)}
@@ -40,6 +41,7 @@ const getAvailableChoices = ({ type, resourceType }) => {
   }
   return choices;
 };
+*/
 
 const PostPage = () => {
   const classes = useStyles();
@@ -48,11 +50,16 @@ const PostPage = () => {
 
   const onSubmit = useCallback(
     ({ type, resourceType, exchangeType }) => {
+      /*
       const basePath = type === 'Offer' ? '/offers' : '/requests';
+      const basePath = '/projects';
       let source = {};
       source['@type'] = 'mp:' + exchangeType + type;
       source[`mp:${type.toLowerCase()}OfResourceType`] = 'pair:' + resourceType;
       history.push(basePath + '/create?source=' + JSON.stringify(source));
+      */
+      let source = {'@type':'pair:Project'}
+      history.push('projects/create?source=' + JSON.stringify(source));
     },
     [history]
   );
@@ -66,6 +73,7 @@ const PostPage = () => {
             onSubmit={onSubmit}
             render={({ handleSubmit, dirtyFields }) => (
               <form onSubmit={handleSubmit}>
+                {/*
                 <Box display="flex" flexDirection="column">
                   <RadioButtonGroupInput
                     source="type"
@@ -95,13 +103,14 @@ const PostPage = () => {
                     </FormSpy>
                   </DirtyCondition>
                 </Box>
+                */}
                 <Toolbar className={classes.toolbar}>
                   <Button
                     type="submit"
                     endIcon={<ArrowForwardIcon />}
                     variant="contained"
                     color="primary"
-                    disabled={!dirtyFields.exchangeType}
+                    //disabled={!dirtyFields.exchangeType}
                   >
                     {translate('app.action.continue')}
                   </Button>
