@@ -54,10 +54,24 @@ const TypeCondition = ({ type, children, className, ...rest }) => (
 
 const Form = (props) => {
   const translate = useTranslate();
+  const isEditMode = !!props.record.id;
+  console.log(props);
   return (
     <TabbedForm {...props} redirect="show">
       <FormTab label="Général">
         <TextInput source="pair:label" fullWidth validate={[required()]} />
+        <SelectInput source="syreen:type" fullWidth validate={[required()]} isRequired choices={[
+            { id: 'type1', name: 'Chantier' },
+            { id: 'type2', name: 'Déstockage' },
+            { id: 'type3', name: 'Vide maison' },
+        ]} />
+        <SelectInput source="syreen:status" fullWidth validate={[required()]} isRequired choices={[
+            { id: 'status1', name: 'Diagnostic' },
+            { id: 'status2', name: 'Démontage' },
+            { id: 'status3', name: 'Collecte' },
+            { id: 'status3', name: 'Stockage' },
+            { id: 'status3', name: 'Distribution' },
+        ]} defaultValue='status1' />
         <MarkdownInput source="pair:description" fullWidth validate={[required()]} isRequired />
         <ImageInput source="pair:depictedBy" accept="image/*">
           <ImageField source="src" />
@@ -65,6 +79,7 @@ const Form = (props) => {
         <ReferenceInput reference="Location" source="mp:hasGeoCondition.pair:hasLocation" fullWidth>
           <SelectInput optionText="vcard:given-name" />
         </ReferenceInput>
+        {/*
         <TypeCondition type="mp:SaleOffer">
           <BodyLabel>{translate('app.conditions.sale')}</BodyLabel>
           <TextInput source="mp:hasReciprocityCondition.mp:amount" fullWidth />
@@ -94,17 +109,20 @@ const Form = (props) => {
           <TextInput source="mp:hasTimeCondition.mp:minDuration" fullWidth />
         </TypeCondition>
         <BodyLabel>{translate('app.conditions.other')}</BodyLabel>
+        */}
         <DateTimeInput source="mp:hasTimeCondition.mp:expirationDate" validate={[futureDate]} {...dateTimeInputProps} />
       </FormTab>
       <FormTab label="Offres">
-        <ReferenceManyField
-          addLabel={false}
-          reference="offers"
-          target="pair:partOf"
-        >
-          <CardsList CardComponent={OfferCard} link="edit" />
-        </ReferenceManyField>
         <AddOfferButton />
+        {isEditMode &&
+          <ReferenceManyField
+            addLabel={false}
+            reference="offers"
+            target="pair:partOf"
+          >
+            <CardsList CardComponent={OfferCard} link="edit" />
+          </ReferenceManyField>
+        }
       </FormTab>
     </TabbedForm>
   );

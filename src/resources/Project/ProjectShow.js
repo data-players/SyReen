@@ -20,8 +20,6 @@ import Title from '../Title';
 
 const Show = (props) => {
   const { identity } = useCheckAuthenticated();
-  console.log(777, useRecordContext());
-  console.log(7771, props);
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
   //if (!identity?.id) return null;
   return (
@@ -37,8 +35,6 @@ const Show = (props) => {
         details={<Details />}
       >
         <MainList Label={BodyLabel}>
-          {console.log(7772, useRecordContext(props.id))}
-
           <MarkdownField source="pair:description" addLabel={false} />
           <BulletPointsListField label="app.block.conditions">
             <PriceField

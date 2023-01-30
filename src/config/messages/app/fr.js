@@ -22,7 +22,7 @@ module.exports = {
       share_ad: "Partager le projet"
     },
     block: {
-      contact_poster: "Contacter l'annonceur",
+      contact_poster: "Contacter le responsable du projet",
       contact_poster_short: 'Contacter',
       conditions: 'Conditions',
       welcome: 'Bienvenue sur %{app_name} !',

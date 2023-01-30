@@ -2,6 +2,7 @@ import React from 'react';
 import {
   SimpleForm,
   ImageInput,
+  NumberInput,
   TextInput,
   required,
   SelectInput,
@@ -52,6 +53,16 @@ const Form = (props) => {
     <SimpleForm {...props} redirect="show">
       <TextInput source="pair:label" fullWidth validate={[required()]} />
       <MarkdownInput source="pair:description" fullWidth validate={[required()]} isRequired />
+      <ImageInput source="pair:depictedBy" accept="image/*">
+        <ImageField source="src" />
+      </ImageInput>
+      <NumberInput source="syreen:quantity" fullWidth />
+      <SelectInput source="syreen:unit" fullWidth validate={[required()]} isRequired choices={[
+            { id: 'unit1', name: 'Unités' },
+            { id: 'unit2', name: 'Kg' },
+            { id: 'unit3', name: 'm3' },
+        ]} />
+
     </SimpleForm>
   );
 };

@@ -37,6 +37,7 @@ const ProjectCard = ({ record }) => {
         <TextField variant="h2" color="primary" record={record} source="pair:label" className={classes.title} />
       </Box>
       <Box>
+      {/*
         <Chip icon={<SyncIcon />}>
           <SelectField
             record={record}
@@ -52,6 +53,7 @@ const ProjectCard = ({ record }) => {
             icon={<NaturePeopleOutlinedIcon />}
           />
         </Chip>
+        */}
         <Chip icon={<EventIcon />}>
           <DateField
             record={record}

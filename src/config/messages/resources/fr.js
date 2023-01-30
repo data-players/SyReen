@@ -27,13 +27,17 @@ const projectConfig = {
     'dc:creator': 'Posté par',
     'dc:created': 'Date',
     'mp:hasGeoCondition.pair:hasLocation': 'Localisation',
+    /*
     'mp:hasReciprocityCondition.mp:amount': 'Prix demandé',
     'mp:hasReciprocityCondition.mp:maxAmount': 'Prix maximum',
     'mp:hasReciprocityCondition.mp:currency': 'Devise',
     'mp:hasReciprocityCondition.mp:inExchangeOf': 'En échange de',
     'mp:hasTimeCondition.mp:maxDuration': 'Durée maximale du prêt',
     'mp:hasTimeCondition.mp:minDuration': 'Durée minimale du prêt',
-    'mp:hasTimeCondition.mp:expirationDate': "Date d'expiration de l'annonce",
+    */
+    'mp:hasTimeCondition.mp:expirationDate': "Date d'expiration",
+    'syreen:type': "Type de projet",
+    'syreen:status': "Statut",
   },
 };
 
@@ -52,7 +56,9 @@ const offerConfig = {
     'mp:hasReciprocityCondition.mp:inExchangeOf': 'En échange de',
     'mp:hasTimeCondition.mp:maxDuration': 'Durée maximale du prêt',
     'mp:hasTimeCondition.mp:minDuration': 'Durée minimale du prêt',
-    'mp:hasTimeCondition.mp:expirationDate': "Date d'expiration de l'annonce",
+    'mp:hasTimeCondition.mp:expirationDate': "Date d'expiration de l'offre",
+    'syreen:quantity': "Quantité",
+    'syreen:unit': "Unité",
   },
 };
 

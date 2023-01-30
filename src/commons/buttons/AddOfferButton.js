@@ -6,7 +6,7 @@ import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 const useStyles = makeStyles(theme => ({
   button: {
     marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(2),
   },
 }));
 

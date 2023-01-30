@@ -7,8 +7,6 @@ import SyncIcon from '@material-ui/icons/Sync';
 import { types, resourceTypes } from '../config/constants';
 
 const Details = (props) => {
-  console.log(888, useRecordContext());
-  console.log(8881, useShowContext());
   return (
     <IconsList {...props}>
       {/*
