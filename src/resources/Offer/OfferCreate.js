@@ -1,7 +1,8 @@
 import React from 'react';
 import {CreateBase, useTranslate} from 'react-admin';
-import Form from './Form';
-import CreatePage from '../layout/CreatePage';
+import OfferForm from './OfferForm';
+import CreatePage from '../../layout/CreatePage';
+import ReturnToProjectButton from "../../commons/buttons/ReturnToProjectButton";
 
 const addConditionClasses = (data) => {
   if (data['mp:hasGeoCondition']) {
@@ -20,8 +21,8 @@ const Create = (props) => {
   const translate = useTranslate();
   return (
     <CreateBase {...props} transform={addConditionClasses}>
-      <CreatePage title={translate("app.page.post")}>
-        <Form component="div" />
+      <CreatePage title={translate("app.action.create_offer")} actions={[<ReturnToProjectButton />]}>
+        <OfferForm component="div" />
       </CreatePage>
     </CreateBase>
   );

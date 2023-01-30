@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const OfferCard = ({ record }) => {
+const ProjectCard = ({ record }) => {
   const classes = useStyles();
   return (
     <Box pt={1} pb={1}>
@@ -74,8 +74,8 @@ const OfferCard = ({ record }) => {
   );
 };
 
-OfferCard.defaultProps = {
+ProjectCard.defaultProps = {
   variant: 'full',
 };
 
-export default OfferCard;
+export default ProjectCard;

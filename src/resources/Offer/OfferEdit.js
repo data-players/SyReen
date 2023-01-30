@@ -1,9 +1,10 @@
 import React from 'react';
 import { EditBase } from 'react-admin';
-import Form from './Form';
-import EditPage from '../layout/EditPage';
-import Title from './Title';
-import ShowButton from '../commons/buttons/ShowButton';
+import OfferForm from './OfferForm';
+import EditPage from '../../layout/EditPage';
+import Title from '../Title';
+import ShowButton from '../../commons/buttons/ShowButton';
+import ReturnToProjectButton from "../../commons/buttons/ReturnToProjectButton";
 
 const addConditionClasses = (data) => {
   if (data['mp:hasGeoCondition']) {
@@ -20,8 +21,8 @@ const addConditionClasses = (data) => {
 
 const Edit = (props) => (
   <EditBase {...props} transform={addConditionClasses}>
-    <EditPage title={<Title />} actions={<ShowButton />}>
-      <Form component="div" />
+    <EditPage title={<Title />} actions={[<ReturnToProjectButton />, <ShowButton />]}>
+      <OfferForm component="div" />
     </EditPage>
   </EditBase>
 );

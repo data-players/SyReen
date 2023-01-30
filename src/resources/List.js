@@ -3,7 +3,7 @@ import { Box, Typography, Container, Card as MuiCard } from '@material-ui/core';
 import { ListBase, useTranslate } from 'react-admin';
 import { useCheckAuthenticated } from '@semapps/auth-provider';
 import CardsList from '../commons/lists/CardsList';
-import OfferCard from '../commons/cards/OfferCard';
+import ProjectCard from './Project/ProjectCard';
 
 const List = () => {
   useCheckAuthenticated();
@@ -101,7 +101,7 @@ const List = () => {
         sort={{ field: 'dc:created', order: 'DESC' }}
         filter={{ sparqlWhere }}
       >
-        <CardsList CardComponent={OfferCard} link="show" />
+        <CardsList CardComponent={ProjectCard} link="show" />
       </ListBase>
     </Container>
   );

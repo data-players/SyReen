@@ -19,7 +19,7 @@ const dataModels = {
   },
   */
   offers: {
-    types: ['mp:GiftOffer', 'mp:BarterOffer', 'mp:LoanOffer', 'mp:SaleOffer', 'mp:Offer'],
+    types: ['mp:Offer'],
     list: {
       dereference: ['mp:hasTimeCondition', 'mp:hasGeoCondition', 'mp:hasReciprocityCondition'],
     },

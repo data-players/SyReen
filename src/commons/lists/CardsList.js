@@ -66,8 +66,7 @@ const CardsList = ({ CardComponent, link }) => {
       .filter((id) => data[id])
       .map((id) => {
         const image = data[id]['pair:depictedBy'];
-        // const basePath = data[id].type.endsWith('Offer') ? '/offers' : '/requests';
-        const basePath = '/projects';
+        const basePath = data[id].type.endsWith('Offer') ? '/offers' : '/projects';
         return (
           <Link key={id} to={linkToRecord(basePath, id, link)} className={classes.root}>
             <Card key={id} className={classes.details}>

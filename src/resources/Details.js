@@ -1,5 +1,5 @@
 import React from 'react';
-import { SelectField, DateField } from 'react-admin';
+import { SelectField, DateField, useRecordContext, useShowContext } from 'react-admin';
 import IconsList from '../commons/lists/IconsList';
 import EventIcon from '@material-ui/icons/Event';
 import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
@@ -7,8 +7,11 @@ import SyncIcon from '@material-ui/icons/Sync';
 import { types, resourceTypes } from '../config/constants';
 
 const Details = (props) => {
+  console.log(888, useRecordContext());
+  console.log(8881, useShowContext());
   return (
     <IconsList {...props}>
+      {/*
       <SelectField
         source="type"
         label="app.input.exchange_type"
@@ -21,6 +24,7 @@ const Details = (props) => {
         choices={Object.entries(resourceTypes).map(([k, v]) => ({ id: k, name: v }))}
         icon={<NaturePeopleOutlinedIcon />}
       />
+      */}
       <DateField
         source="dc:created"
         locales={process.env.REACT_APP_LANG}

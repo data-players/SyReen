@@ -11,10 +11,14 @@ import Layout from './layout/Layout';
 import theme from './config/theme';
 import customRoutes from './customRoutes';
 
-import Create from './crud/Create';
-import Edit from './crud/Edit';
-import Show from './crud/Show';
-import List from './crud/List';
+import ProjectCreate from './resources/Project/ProjectCreate';
+import ProjectEdit from './resources/Project/ProjectEdit';
+import ProjectShow from './resources/Project/ProjectShow';
+import List from './resources/List';
+
+import OfferCreate from './resources/Offer/OfferCreate';
+import OfferEdit from './resources/Offer/OfferEdit';
+import OfferShow from './resources/Offer/OfferShow';
 
 const history = createBrowserHistory();
 
@@ -36,8 +40,8 @@ const App = () => (
     theme={theme}
     customRoutes={customRoutes}
   >
-    <Resource name="projects" create={Create} edit={Edit} show={Show} list={List} />
-    <Resource name="offers" create={Create} edit={Edit} show={Show} list={List} />
+    <Resource name="projects" create={ProjectCreate} edit={ProjectEdit} show={ProjectShow} list={List} />
+    <Resource name="offers" create={OfferCreate} edit={OfferEdit} show={OfferShow} list={List} />
     {/*
     <Resource name="requests" create={Create} edit={Edit} show={Show} list={List} />
     <Resource name="OfferAndRequest" list={List} />

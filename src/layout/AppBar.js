@@ -77,7 +77,7 @@ const AppBar = ({ title }) => {
           <Box className={classes.buttons} mt={{ xs: 0, sm: 4 }}>
             <Link to="/post">
               <Button variant="contained" className={classes.button}>
-                {translate('app.action.create_ad')}
+                {translate('app.action.create_project')}
               </Button>
             </Link>
           </Box>

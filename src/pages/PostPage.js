@@ -68,7 +68,7 @@ const PostPage = () => {
     <Container maxWidth="md">
       <Card>
         <Box p={3}>
-          <Typography variant="h2">{translate('app.action.create_ad')}</Typography>
+          <Typography variant="h2">{translate('app.action.create_project')}</Typography>
           <Form
             onSubmit={onSubmit}
             render={({ handleSubmit, dirtyFields }) => (
