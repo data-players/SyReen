@@ -15,7 +15,7 @@ import LocationField from '../../commons/fields/LocationField';
 import MainList from '../../commons/lists/MainList';
 import PriceField from '../../commons/fields/PriceField';
 import { currencies } from '../../config/constants';
-import Details from '../Details';
+import OfferDetails from './OfferDetails';
 import Title from '../Title';
 import ReturnToProjectButton from "../../commons/buttons/ReturnToProjectButton";
 
@@ -34,7 +34,7 @@ const Show = (props) => {
             <EditButton />
           </>
         }
-        details={<Details />}
+        details={<OfferDetails />}
       >
         <MainList Label={BodyLabel}>
           <MarkdownField source="pair:description" addLabel={false} />

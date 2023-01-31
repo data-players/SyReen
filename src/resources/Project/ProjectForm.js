@@ -21,6 +21,7 @@ import { currencies } from '../../config/constants';
 import AddOfferButton from "../../commons/buttons/AddOfferButton";
 import CardsList from "../../commons/lists/CardsList";
 import OfferCard from "../Offer/OfferCard";
+import { concepts } from "./concepts";
 
 const futureDate = (value) => {
   if (value && value <= new Date()) {
@@ -60,18 +61,8 @@ const Form = (props) => {
     <TabbedForm {...props} redirect="show">
       <FormTab label="Général">
         <TextInput source="pair:label" fullWidth validate={[required()]} />
-        <SelectInput source="syreen:type" fullWidth validate={[required()]} isRequired choices={[
-            { id: 'type1', name: 'Chantier' },
-            { id: 'type2', name: 'Déstockage' },
-            { id: 'type3', name: 'Vide maison' },
-        ]} />
-        <SelectInput source="syreen:status" fullWidth validate={[required()]} isRequired choices={[
-            { id: 'status1', name: 'Diagnostic' },
-            { id: 'status2', name: 'Démontage' },
-            { id: 'status3', name: 'Collecte' },
-            { id: 'status3', name: 'Stockage' },
-            { id: 'status3', name: 'Distribution' },
-        ]} defaultValue='status1' />
+        <SelectInput source="syreen:type" choices={concepts.projectTypes} fullWidth validate={[required()]} isRequired />
+        <SelectInput source="syreen:status" choices={concepts.projectStatus} fullWidth validate={[required()]} isRequired />
         <MarkdownInput source="pair:description" fullWidth validate={[required()]} isRequired />
         <ImageInput source="pair:depictedBy" accept="image/*">
           <ImageField source="src" />

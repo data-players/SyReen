@@ -16,6 +16,7 @@ import { DateTimeInput } from '@semapps/date-components';
 import frLocale from 'date-fns/locale/fr';
 import BodyLabel from '../../commons/lists/BodyLabel';
 import { currencies } from '../../config/constants';
+import { concepts } from "./concepts";
 
 const futureDate = (value) => {
   if (value && value <= new Date()) {
@@ -57,12 +58,7 @@ const Form = (props) => {
         <ImageField source="src" />
       </ImageInput>
       <NumberInput source="syreen:quantity" fullWidth />
-      <SelectInput source="syreen:unit" fullWidth validate={[required()]} isRequired choices={[
-            { id: 'unit1', name: 'Unités' },
-            { id: 'unit2', name: 'Kg' },
-            { id: 'unit3', name: 'm3' },
-        ]} />
-
+      <SelectInput source="syreen:unit" fullWidth validate={[required()]} isRequired  choices={concepts.offerUnits} />
     </SimpleForm>
   );
 };

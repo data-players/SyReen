@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShowBase, DateField, TextField, useRecordContext } from 'react-admin';
+import { ShowBase, DateField, SelectField, TextField, useRecordContext } from 'react-admin';
 import { useMediaQuery } from '@material-ui/core';
 import { ReferenceField } from '@semapps/field-components';
 import { useCheckAuthenticated } from '@semapps/auth-provider';
@@ -15,7 +15,7 @@ import LocationField from '../../commons/fields/LocationField';
 import MainList from '../../commons/lists/MainList';
 import PriceField from '../../commons/fields/PriceField';
 import { currencies } from '../../config/constants';
-import Details from '../Details';
+import ProjectDetails from './ProjectDetails';
 import Title from '../Title';
 
 const Show = (props) => {
@@ -32,10 +32,10 @@ const Show = (props) => {
             <EditButton />
           </>
         }
-        details={<Details />}
+        details={<ProjectDetails />}
       >
         <MainList Label={BodyLabel}>
-          <MarkdownField source="pair:description" addLabel={false} />
+          <MarkdownField source="pair:description" addLabel={true} />
           <BulletPointsListField label="app.block.conditions">
             <PriceField
               source="mp:hasReciprocityCondition.mp:amount"

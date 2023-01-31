@@ -1,10 +1,11 @@
 import React from 'react';
 import { SelectField, DateField, useRecordContext, useShowContext } from 'react-admin';
-import IconsList from '../commons/lists/IconsList';
+import IconsList from '../../commons/lists/IconsList';
 import EventIcon from '@material-ui/icons/Event';
 import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
 import SyncIcon from '@material-ui/icons/Sync';
-import { types, resourceTypes } from '../config/constants';
+import { types, resourceTypes } from '../../config/constants';
+import { concepts } from "./concepts";
 
 const Details = (props) => {
   return (
@@ -29,6 +30,9 @@ const Details = (props) => {
         options={{ year: 'numeric', month: 'long', day: 'numeric' }}
         icon={<EventIcon />}
       />
+      <SelectField source="syreen:type" choices={concepts.projectTypes} />
+      <SelectField source="syreen:status" choices={concepts.projectStatus} />
+
     </IconsList>
   );
 };
