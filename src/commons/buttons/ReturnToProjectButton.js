@@ -16,7 +16,7 @@ const ReturnToProjectButton = ({ linkType }) => {
 }
 
 ReturnToProjectButton.defaultProps = {
-  linkType: 'edit'
+  linkType: 'show'
 };
 
 export default ReturnToProjectButton;
