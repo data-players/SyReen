@@ -1,13 +1,12 @@
 import React from 'react';
 import {
   SimpleForm,
-  ImageInput,
   NumberInput,
   TextInput,
   required,
   SelectInput,
   FormDataConsumer,
-  RadioButtonGroupInput, useTranslate,
+  useTranslate,
 } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageField } from '@semapps/field-components';
@@ -15,6 +14,7 @@ import { ReferenceInput } from '@semapps/input-components';
 import { DateTimeInput } from '@semapps/date-components';
 import frLocale from 'date-fns/locale/fr';
 import BodyLabel from '../../commons/lists/BodyLabel';
+import CameraInput from '../../commons/inputs/CameraInput';
 import { currencies } from '../../config/constants';
 import { concepts } from "./concepts";
 
@@ -54,9 +54,7 @@ const Form = (props) => {
     <SimpleForm {...props} redirect="show">
       <TextInput source="pair:label" fullWidth validate={[required()]} />
       <MarkdownInput source="pair:description" fullWidth validate={[required()]} isRequired />
-      <ImageInput source="pair:depictedBy" accept="image/*">
-        <ImageField source="src" />
-      </ImageInput>
+      <CameraInput source="pair:depictedBy" />
       <NumberInput source="syreen:quantity" fullWidth />
       <SelectInput source="syreen:unit" fullWidth validate={[required()]} isRequired  choices={concepts.offerUnits} />
     </SimpleForm>
