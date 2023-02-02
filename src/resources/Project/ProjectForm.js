@@ -56,7 +56,6 @@ const TypeCondition = ({ type, children, className, ...rest }) => (
 const Form = (props) => {
   const translate = useTranslate();
   const isEditMode = !!props.record.id;
-  console.log(props);
   return (
     <TabbedForm {...props} redirect="show">
       <FormTab label="Général">
