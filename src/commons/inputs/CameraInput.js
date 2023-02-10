@@ -7,6 +7,7 @@ import 'react-html5-camera-photo/build/css/index.css';
 import EnableCaptureButton from "../buttons/EnableCaptureButton";
 import { useFormState } from 'react-final-form';
 import CloseIcon from '@material-ui/icons/Close';
+import { mobileAndTabletCheck } from '../../utils';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,24 +70,26 @@ const CameraInput = props => {
           <ImageField record={recordContext} source="src" />
         </ImageInput>
       </Box>
-      <Box className={classes.cameraContainer}>
-        <EnableCaptureButton handleClickOnEnableCaptureButton = {handleClickEnableCapture} />
-        { captureEnabled &&
-          // https://github.com/mabelanger/react-html5-camera-photo
-          <>
-            <Camera  
-              onTakePhotoAnimationDone = {handleTakePhotoAnimationDone} 
-              idealFacingMode = {FACING_MODES.ENVIRONMENT}
-              idealResolution = {{width: 640, height: 480}}
-              imageType = {IMAGE_TYPES.JPG}
-              imageCompression = {0.97}
-              isMaxResolution = {true}
-              sizeFactor = {1}
-            />
-            <CloseIcon className={classes.closeIcon} onClick={handleClickEnableCapture} />
-          </>
-        }
-      </Box>
+      { mobileAndTabletCheck() &&
+        <Box className={classes.cameraContainer}>
+          <EnableCaptureButton handleClickOnEnableCaptureButton = {handleClickEnableCapture} />
+          { captureEnabled &&
+            // https://github.com/mabelanger/react-html5-camera-photo
+            <>
+              <Camera  
+                onTakePhotoAnimationDone = {handleTakePhotoAnimationDone} 
+                idealFacingMode = {FACING_MODES.ENVIRONMENT}
+                idealResolution = {{width: 640, height: 480}}
+                imageType = {IMAGE_TYPES.JPG}
+                imageCompression = {0.97}
+                isMaxResolution = {true}
+                sizeFactor = {1}
+              />
+              <CloseIcon className={classes.closeIcon} onClick={handleClickEnableCapture} />
+            </>
+          }
+        </Box>
+      }
     </Box>
   )
 }
