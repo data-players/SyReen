@@ -33,6 +33,7 @@
     "react": "^18.1.0",
     "react-admin": "^3.17.0",
     "react-copy-to-clipboard": "^5.0.4",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.1.0",
     "react-html5-camera-photo": "^1.5.11",
     "url-join": "^4.0.1"

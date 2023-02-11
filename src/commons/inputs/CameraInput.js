@@ -7,7 +7,7 @@ import 'react-html5-camera-photo/build/css/index.css';
 import EnableCaptureButton from "../buttons/EnableCaptureButton";
 import { useFormState } from 'react-final-form';
 import CloseIcon from '@material-ui/icons/Close';
-import { mobileAndTabletCheck } from '../../utils';
+import { isDesktop } from 'react-device-detect';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,7 +70,7 @@ const CameraInput = props => {
           <ImageField record={recordContext} source="src" />
         </ImageInput>
       </Box>
-      { mobileAndTabletCheck() &&
+      { ! isDesktop &&
         <Box className={classes.cameraContainer}>
           <EnableCaptureButton handleClickOnEnableCaptureButton = {handleClickEnableCapture} />
           { captureEnabled &&
