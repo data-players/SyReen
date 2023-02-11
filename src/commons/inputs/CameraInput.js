@@ -10,25 +10,40 @@ import CloseIcon from '@material-ui/icons/Close';
 import { isDesktop } from 'react-device-detect';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .react-html5-camera-photo': {
-      zIndex: 99,
-      position: 'fixed',
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-    }
-  },
   cameraContainer: {
     textAlign: 'center',
     marginBottom: 20,
+  },
+  cameraInnerContainer: {
+    zIndex: 99,
+    position: 'fixed',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '100vh',
+    width: '100vw',
+    '& .react-html5-camera-photo ': {
+      width: '100%',
+      height: '100%',
+      '& .display-error': {
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        '& h1': {
+          margin: 0
+        }
+      }
+    }
   },
   closeIcon: {
     zIndex: 999,
     position: 'fixed',
     top: 8,
-    right: 8
+    right: 8,
+    cursor: 'pointer'
   }
 }));
 
@@ -64,18 +79,18 @@ const CameraInput = props => {
   }
 
   return (
-    <Box className={classes.root}>
+    <Box>
       <Box onClick={handleClick}>
         <ImageInput {...props} accept="image/*">
           <ImageField record={recordContext} source="src" />
         </ImageInput>
       </Box>
-      { ! isDesktop &&
+      { !isDesktop &&
         <Box className={classes.cameraContainer}>
           <EnableCaptureButton handleClickOnEnableCaptureButton = {handleClickEnableCapture} />
           { captureEnabled &&
             // https://github.com/mabelanger/react-html5-camera-photo
-            <>
+            <Box className={classes.cameraInnerContainer}>
               <Camera  
                 onTakePhotoAnimationDone = {handleTakePhotoAnimationDone} 
                 idealFacingMode = {FACING_MODES.ENVIRONMENT}
@@ -86,7 +101,7 @@ const CameraInput = props => {
                 sizeFactor = {1}
               />
               <CloseIcon className={classes.closeIcon} onClick={handleClickEnableCapture} />
-            </>
+            </Box>
           }
         </Box>
       }
