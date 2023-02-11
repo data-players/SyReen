@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGetIdentity, useNotify, useRecordContext, useTranslate } from 'react-admin';
+import { useGetIdentity, useNotify, useRecordContext } from 'react-admin';
 import { Box, TextField, Button } from '@material-ui/core';
 import { Form, Field } from 'react-final-form';
 import SendIcon from '@material-ui/icons/Send';
@@ -23,7 +23,6 @@ const ContactField = ({ source, context, ...rest }) => {
   const record = useRecordContext(rest);
   const notify = useNotify();
   const outbox = useOutbox();
-  const translate = useTranslate();
   const { identity } = useGetIdentity();
   const { items: contacts, loaded: contactsLoaded } = useCollection('apods:contacts');
 
@@ -36,9 +35,9 @@ const ContactField = ({ source, context, ...rest }) => {
         content: values.content,
         context: context ? record[context] : undefined,
       });
-      notify('app.notification.message_sent', 'success');
+      notify('Message envoyé', 'success');
     } catch (e) {
-      notify('app.notification.message_send_error', 'error', { error: e.message });
+      notify('Erreur lors de l\'envoi du message', 'error', { error: e.message });
     }
   };
 
@@ -50,7 +49,7 @@ const ContactField = ({ source, context, ...rest }) => {
           {identity?.id !== record['dc:creator'] && contactsLoaded && !contacts.includes(record[source]) && (
             <Box mb={1}>
               <Alert severity="warning">
-                {translate('app.helper.message_profile_show_right', { username: record?.['vcard:given-name'] })}
+                Sending a message to { record?.['vcard:given-name'] } will give him/her the right to see your profile, in order to be able to respond.
               </Alert>
             </Box>
           )}
