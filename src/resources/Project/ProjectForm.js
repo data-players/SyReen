@@ -4,24 +4,31 @@ import {
   TextInput,
   required,
   SelectInput,
-  FormDataConsumer,
-  RadioButtonGroupInput,
   ReferenceManyField,
   TabbedForm,
-  FormTab,
-  useTranslate,
+  FormTab
 } from 'react-admin';
+import { makeStyles } from '@material-ui/core';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageField } from '@semapps/field-components';
 import { ReferenceInput } from '@semapps/input-components';
 import { DateTimeInput } from '@semapps/date-components';
 import frLocale from 'date-fns/locale/fr';
-import BodyLabel from '../../commons/lists/BodyLabel';
-import { currencies } from '../../config/constants';
 import AddOfferButton from "../../commons/buttons/AddOfferButton";
 import CardsList from "../../commons/lists/CardsList";
 import OfferCard from "../Offer/OfferCard";
 import { concepts } from "./concepts";
+
+const useStyles = makeStyles((theme) => ({
+  root: isEditMode => ({
+    '& .MuiTabs-root': {
+      display: isEditMode ? 'revert' : 'none'
+    },
+    '& > .MuiDivider-root': {
+      display: 'none'
+    }
+  }),
+}));
 
 const futureDate = (value) => {
   if (value && value <= new Date()) {
@@ -42,22 +49,11 @@ const dateTimeInputProps = {
   allowClear: true,
 };
 
-const TypeCondition = ({ type, children, className, ...rest }) => (
-  <FormDataConsumer subscription={{ values: true }}>
-    {({ formData, ...rest2 }) =>
-      (Array.isArray(type)
-        ? type.includes(formData.type) || type.includes(formData['@type'])
-        : formData.type === type || formData['@type'] === type) &&
-      React.Children.map(children, (child) => React.cloneElement(child, rest))
-    }
-  </FormDataConsumer>
-);
-
-const Form = (props) => {
-  const translate = useTranslate();
+const ProjectForm = (props) => {
   const isEditMode = !!props.record.id;
+  const classes = useStyles(isEditMode);
   return (
-    <TabbedForm {...props} redirect="show">
+    <TabbedForm {...props} redirect="show" className={classes.root}>
       <FormTab label="Général">
         <TextInput source="pair:label" fullWidth validate={[required()]} />
         <SelectInput source="syreen:type" choices={concepts.projectTypes} fullWidth validate={[required()]} isRequired />
@@ -66,45 +62,16 @@ const Form = (props) => {
         <ImageInput source="pair:depictedBy" accept="image/*">
           <ImageField source="src" />
         </ImageInput>
-        <ReferenceInput reference="Location" source="mp:hasGeoCondition.pair:hasLocation" fullWidth>
+        <ReferenceInput reference="Location" source="pair:hasLocation" fullWidth>
           <SelectInput optionText="vcard:given-name" />
         </ReferenceInput>
-        {/*
-        <TypeCondition type="mp:SaleOffer">
-          <BodyLabel>{translate('app.conditions.sale')}</BodyLabel>
-          <TextInput source="mp:hasReciprocityCondition.mp:amount" fullWidth />
-          <RadioButtonGroupInput
-            source="mp:hasReciprocityCondition.mp:currency"
-            choices={Object.entries(currencies).map(([k, v]) => ({ id: k, name: v }))}
-          />
-        </TypeCondition>
-        <TypeCondition type="mp:PurchaseRequest">
-          <BodyLabel>{translate('app.conditions.purchase')}</BodyLabel>
-          <TextInput source="mp:hasReciprocityCondition.mp:maxAmount" fullWidth />
-          <RadioButtonGroupInput
-            source="mp:hasReciprocityCondition.mp:currency"
-            choices={Object.entries(currencies).map(([k, v]) => ({ id: k, name: v }))}
-          />
-        </TypeCondition>
-        <TypeCondition type="mp:BarterOffer">
-          <BodyLabel>{translate('app.conditions.barter')}</BodyLabel>
-          <TextInput source="mp:hasReciprocityCondition.mp:inExchangeOf" fullWidth />
-        </TypeCondition>
-        <TypeCondition type="mp:LoanOffer">
-          <BodyLabel>{translate('app.conditions.loan')}</BodyLabel>
-          <TextInput source="mp:hasTimeCondition.mp:maxDuration" fullWidth />
-        </TypeCondition>
-        <TypeCondition type="mp:LoanRequest">
-          <BodyLabel>{translate('app.conditions.borrowing')}</BodyLabel>
-          <TextInput source="mp:hasTimeCondition.mp:minDuration" fullWidth />
-        </TypeCondition>
-        <BodyLabel>{translate('app.conditions.other')}</BodyLabel>
-        */}
-        <DateTimeInput source="mp:hasTimeCondition.mp:expirationDate" validate={[futureDate]} {...dateTimeInputProps} />
+        <MarkdownInput source="syreen:locationInformation" fullWidth />
+        <DateTimeInput source="pair:startDate" validate={[futureDate]} {...dateTimeInputProps} />
+        <DateTimeInput source="pair:endDate" validate={[futureDate]} {...dateTimeInputProps} />
       </FormTab>
-      <FormTab label="Offres">
-        <AddOfferButton />
-        {isEditMode &&
+      {isEditMode &&
+        <FormTab label="Offres">
+          <AddOfferButton />
           <ReferenceManyField
             addLabel={false}
             reference="offers"
@@ -112,10 +79,10 @@ const Form = (props) => {
           >
             <CardsList CardComponent={OfferCard} link="edit" />
           </ReferenceManyField>
-        }
-      </FormTab>
+        </FormTab>
+      }
     </TabbedForm>
   );
 };
 
-export default Form;
+export default ProjectForm;

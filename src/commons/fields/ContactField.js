@@ -57,7 +57,7 @@ const ContactField = ({ source, context, ...rest }) => {
           <Field
             name="content"
             component={FinalFormTextField}
-            label={translate('app.input.message')}
+            label="Message"
             variant="filled"
             margin="dense"
             fullWidth
@@ -66,7 +66,7 @@ const ContactField = ({ source, context, ...rest }) => {
           />
           <Box mt={1}>
             <Button type="submit" variant="contained" color="primary" endIcon={<SendIcon />} disabled={submitting}>
-              {translate('app.action.send')}
+              Envoyer
             </Button>
           </Box>
         </form>

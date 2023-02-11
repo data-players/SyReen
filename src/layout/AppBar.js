@@ -75,9 +75,9 @@ const AppBar = ({ title }) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Box className={classes.buttons} mt={{ xs: 0, sm: 4 }}>
-            <Link to="/post">
+            <Link to="/projects/create">
               <Button variant="contained" className={classes.button}>
-                {translate('app.action.create_project')}
+                Créer un projet
               </Button>
             </Link>
           </Box>

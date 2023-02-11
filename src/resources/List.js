@@ -89,8 +89,8 @@ const List = () => {
       <Box mb={2}>
         <MuiCard>
           <Box p={2}>
-            <Typography variant="h5">{translate('app.block.welcome', { app_name: process.env.REACT_APP_NAME })}</Typography>
-            <Typography variant="body1">{translate('app.block.welcome_text', { app_name: process.env.REACT_APP_NAME })}</Typography>
+            <Typography variant="h5">Bienvenue sur SyRéen !</Typography>
+            <Typography variant="body1">SyRéen est une application de réutilisation de rebus de chantier</Typography>
           </Box>
         </MuiCard>
       </Box>
