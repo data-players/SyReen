@@ -29,7 +29,6 @@ const projectConfig = {
     'pair:hasLocation': 'Localisation',
     'syreen:locationInformation': 'Complément d\'adresse',
     'syreen:type': "Type de projet",
-    'syreen:status': "Statut",
     'pair:startDate': "Date de début prévisionnelle",    
     'pair:endDate': "Date de fin prévisionnelle"
   },
@@ -43,6 +42,7 @@ const offerConfig = {
     'pair:description': 'Présentation',
     'dc:creator': 'Posté par',
     'dc:created': 'Date',
+    'syreen:phase': 'Phase',
     'mp:hasGeoCondition.pair:hasLocation': 'Localisation',
     'mp:hasReciprocityCondition.mp:amount': 'Prix demandé',
     'mp:hasReciprocityCondition.mp:maxAmount': 'Prix maximum',

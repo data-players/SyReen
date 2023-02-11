@@ -57,7 +57,6 @@ const ProjectForm = (props) => {
       <FormTab label="Général">
         <TextInput source="pair:label" fullWidth validate={[required()]} />
         <SelectInput source="syreen:type" choices={concepts.projectTypes} fullWidth validate={[required()]} isRequired />
-        <SelectInput source="syreen:status" choices={concepts.projectStatus} fullWidth validate={[required()]} isRequired />
         <MarkdownInput source="pair:description" fullWidth validate={[required()]} isRequired />
         <ImageInput source="pair:depictedBy" accept="image/*">
           <ImageField source="src" />

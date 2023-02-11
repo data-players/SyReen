@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Link } from "react-admin";
+import { Button, Link, useRecordContext } from "react-admin";
 import { makeStyles } from '@material-ui/core';
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 
@@ -11,23 +11,27 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const AddOfferButton = ({ record }) => {
+const AddOfferButton = () => {
   const classes = useStyles();
-
+  const recordContext = useRecordContext();
   return (
-    <Button
-      component={Link}
-      to={{
-        pathname: "/offers/create",
-        state: { record: { 'pair:partOf': record.id } },
-      }}
-      label="Ajouter une offre"
-      variant="contained"
-      color="primary"
-      className={classes.button}
-    >
-      <ChatBubbleIcon />
-    </Button>
+    <>
+      {recordContext?.id &&
+        <Button
+          component={Link}
+          to={{
+            pathname: "/offers/create",
+            state: { record: { 'pair:partOf': recordContext.id } },
+          }}
+          label="Ajouter une offre"
+          variant="contained"
+          color="primary"
+          className={classes.button}
+        >
+          <ChatBubbleIcon />
+        </Button>
+      }
+    </>
   );
 }
 

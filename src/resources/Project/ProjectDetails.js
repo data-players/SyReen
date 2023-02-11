@@ -14,7 +14,6 @@ const Details = (props) => {
         icon={<EventIcon />}
       />
       <SelectField source="syreen:type" choices={concepts.projectTypes} />
-      <SelectField source="syreen:status" choices={concepts.projectStatus} />
     </IconsList>
   );
 };

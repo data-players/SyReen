@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslate } from 'react-admin';
 import {
   makeStyles,
   Typography,
@@ -9,7 +8,7 @@ import {
   Grid,
   Button,
 } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import AppIcon from '../config/AppIcon';
 
 const useStyles = makeStyles((theme) => ({
@@ -55,7 +54,10 @@ const useStyles = makeStyles((theme) => ({
 
 const AppBar = ({ title }) => {
   const classes = useStyles();
-  const translate = useTranslate();
+  const location = useLocation();
+  // const isProjectListView = location?.pathname?.match('^/projects/?$');
+  // const isProjectEditOrShowView = location?.pathname?.match('^/projects/.*.+$');
+  const isProjectView = location?.pathname?.match('^/projects.*$');
   return (
     <Container maxWidth="md">
       <Grid container>
@@ -75,11 +77,13 @@ const AppBar = ({ title }) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Box className={classes.buttons} mt={{ xs: 0, sm: 4 }}>
-            <Link to="/projects/create">
-              <Button variant="contained" className={classes.button}>
-                Créer un projet
-              </Button>
-            </Link>
+            {isProjectView &&
+              <Link to="/projects/create">
+                <Button variant="contained" className={classes.button}>
+                  Créer un projet
+                </Button>
+              </Link>
+            }
           </Box>
         </Grid>
       </Grid>

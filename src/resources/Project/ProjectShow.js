@@ -18,6 +18,23 @@ import AddOfferButton from "../../commons/buttons/AddOfferButton";
 import CardsList from "../../commons/lists/CardsList";
 import OfferCard from "../Offer/OfferCard";
 
+const OffersList = () => {
+  const recordContext = useRecordContext();
+  return (
+    <>
+      { recordContext &&
+        <ReferenceManyField
+          addLabel={false}
+          reference="offers"
+          target="pair:partOf"
+        >
+          <CardsList CardComponent={OfferCard} link="show" />
+        </ReferenceManyField>
+      }
+    </>
+  );
+}
+
 const ProjectShow = (props) => {
   const { identity } = useCheckAuthenticated();
   if (!identity?.id) return null;
@@ -50,13 +67,7 @@ const ProjectShow = (props) => {
           </Tab>
           <Tab label="Offres">
             <AddOfferButton />
-            <ReferenceManyField
-              addLabel={false}
-              reference="offers"
-              target="pair:partOf"
-            >
-              <CardsList CardComponent={OfferCard} link="show" />
-            </ReferenceManyField>
+            <OffersList />
           </Tab>
         </TabbedShowLayout>
       </ShowPage>

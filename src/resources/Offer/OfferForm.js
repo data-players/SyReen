@@ -14,10 +14,11 @@ const Form = (props) => {
   return (
     <SimpleForm {...props} redirect="show">
       <TextInput source="pair:label" fullWidth validate={[required()]} />
+      <SelectInput source="syreen:phase" choices={concepts.offerPhases} fullWidth validate={[required()]} isRequired />
       <MarkdownInput source="pair:description" fullWidth validate={[required()]} isRequired />
       <CameraInput source="pair:depictedBy" />
-      <NumberInput source="syreen:quantity" fullWidth />
-      <SelectInput source="syreen:unit" fullWidth validate={[required()]} isRequired  choices={concepts.offerUnits} />
+      <NumberInput source="syreen:quantity" fullWidth validate={[required()]} isRequired />
+      <SelectInput source="syreen:unit" fullWidth validate={[required()]} isRequired choices={concepts.offerUnits} />
     </SimpleForm>
   );
 };

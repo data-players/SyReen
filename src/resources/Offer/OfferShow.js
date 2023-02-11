@@ -1,6 +1,6 @@
 import React from 'react';
 import { ShowBase, DateField, TextField } from 'react-admin';
-import { useMediaQuery } from '@material-ui/core';
+import { Box, makeStyles, useMediaQuery } from '@material-ui/core';
 import { ReferenceField } from '@semapps/field-components';
 import { useCheckAuthenticated } from '@semapps/auth-provider';
 import MarkdownField from '../../commons/fields/MarkdownField';
@@ -19,7 +19,14 @@ import OfferDetails from './OfferDetails';
 import Title from '../Title';
 import ReturnToProjectButton from "../../commons/buttons/ReturnToProjectButton";
 
+const useStyles = makeStyles(theme => ({
+  buttonContainer: {
+    display: 'flex'
+  },
+}));
+
 const Show = (props) => {
+  const classes = useStyles();
   const { identity } = useCheckAuthenticated();
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
   if (!identity?.id) return null;
@@ -28,11 +35,11 @@ const Show = (props) => {
       <ShowPage
         title={<Title />}
         actions={
-          <>
+          <Box className={classes.buttonContainer}>
             <ReturnToProjectButton />
             <ShareButton />
             <EditButton />
-          </>
+          </Box>
         }
         details={<OfferDetails />}
       >
