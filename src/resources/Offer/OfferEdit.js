@@ -6,7 +6,7 @@ import Title from '../Title';
 import ShowButton from '../../commons/buttons/ShowButton';
 import ReturnToProjectButton from "../../commons/buttons/ReturnToProjectButton";
 
-const Edit = (props) => (
+const OfferEdit = (props) => (
   <EditBase {...props}>
     <EditPage title={<Title />} actions={[<ReturnToProjectButton />, <ShowButton />]}>
       <OfferForm component="div" />
@@ -14,4 +14,4 @@ const Edit = (props) => (
   </EditBase>
 );
 
-export default Edit;
+export default OfferEdit;

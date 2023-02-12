@@ -3,7 +3,7 @@ import {CreateBase} from 'react-admin';
 import ProjectForm from './ProjectForm';
 import CreatePage from '../../layout/CreatePage';
 
-const Create = (props) => {
+const ProjectCreate = (props) => {
   return (
     <CreateBase {...props}>
       <CreatePage title="Créer un projet">
@@ -13,4 +13,4 @@ const Create = (props) => {
   );
 }
 
-export default Create;
+export default ProjectCreate;

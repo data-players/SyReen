@@ -4,7 +4,7 @@ import OfferForm from './OfferForm';
 import CreatePage from '../../layout/CreatePage';
 import ReturnToProjectButton from "../../commons/buttons/ReturnToProjectButton";
 
-const Create = (props) => {
+const OfferCreate = (props) => {
   return (
     <CreateBase {...props}>
       <CreatePage title="Créer une offre" actions={[<ReturnToProjectButton />]}>
@@ -14,4 +14,4 @@ const Create = (props) => {
   );
 }
 
-export default Create;
+export default OfferCreate;

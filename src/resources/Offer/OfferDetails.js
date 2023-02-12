@@ -4,7 +4,7 @@ import IconsList from '../../commons/lists/IconsList';
 import EventIcon from '@material-ui/icons/Event';
 import { concepts } from "./concepts";
 
-const Details = (props) => {
+const OfferDetails = (props) => {
   return (
     <IconsList {...props}>
       <DateField
@@ -20,4 +20,4 @@ const Details = (props) => {
   );
 };
 
-export default Details;
+export default OfferDetails;

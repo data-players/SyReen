@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   ImageInput,
   TextInput,
@@ -11,10 +11,10 @@ import {
 import { makeStyles } from '@material-ui/core';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageField } from '@semapps/field-components';
-import { ReferenceInput } from '@semapps/input-components';
 import { DateTimeInput } from '@semapps/date-components';
 import frLocale from 'date-fns/locale/fr';
 import AddOfferButton from "../../commons/buttons/AddOfferButton";
+import LocationInput from "../../commons/inputs/LocationInput";
 import CardsList from "../../commons/lists/CardsList";
 import OfferCard from "../Offer/OfferCard";
 import { concepts } from "./concepts";
@@ -52,6 +52,14 @@ const dateTimeInputProps = {
 const ProjectForm = (props) => {
   const isEditMode = !!props.record.id;
   const classes = useStyles(isEditMode);
+  
+  // Needed to trigger orm change and enable save button :
+  // https://codesandbox.io/s/react-admin-v3-advanced-recipes-quick-createpreview-voyci
+  const [locationVersion, setLocationVersion] = useState(0);
+  const handleLocationChange = useCallback(() => { 
+    setLocationVersion(locationVersion + 1);
+  }, [locationVersion]);
+  
   return (
     <TabbedForm {...props} redirect="show" className={classes.root}>
       <FormTab label="Général">
@@ -61,9 +69,7 @@ const ProjectForm = (props) => {
         <ImageInput source="pair:depictedBy" accept="image/*">
           <ImageField source="src" />
         </ImageInput>
-        <ReferenceInput reference="Location" source="pair:hasLocation" fullWidth>
-          <SelectInput optionText="vcard:given-name" />
-        </ReferenceInput>
+        <LocationInput reference="Location" source="pair:hasLocation" fullWidth onChange={handleLocationChange} key={locationVersion} />
         <MarkdownInput source="syreen:locationInformation" fullWidth />
         <DateTimeInput source="pair:startDate" validate={[futureDate]} {...dateTimeInputProps} />
         <DateTimeInput source="pair:endDate" validate={[futureDate]} {...dateTimeInputProps} />

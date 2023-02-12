@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Show = (props) => {
+const OfferShow = (props) => {
   const classes = useStyles();
   const { identity } = useCheckAuthenticated();
   if (!identity?.id) return null;
@@ -47,4 +47,4 @@ const Show = (props) => {
   );
 };
 
-export default Show;
+export default OfferShow;
