@@ -128,8 +128,12 @@ const ShareDialog = ({ close, resourceUri }) => {
         to: actorsWithNewShareRight,
       });
     }
+    
+    const invitationMessage = (Object.keys(newInvitations).length === 1)
+      ? '1 invitation envoyée'
+      : `${Object.keys(newInvitations).length} invitations envoyées`;
+    notify(invitationMessage);
 
-    notify('app.notification.invitation_sent', 'success', { smart_count: Object.keys(newInvitations).length });
     close();
   }, [outbox, notify, newInvitations, isOrganizer, close, record, resourceUri, setSendingInvitation]);
 

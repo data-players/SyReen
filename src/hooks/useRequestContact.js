@@ -11,7 +11,7 @@ const useRequestContact = () => {
   return useCallback(
     async ({ id, content }) => {
       if (!identity?.profileData?.id) {
-        notify('app.notification.profile_data_not_found', 'error');
+        notify("Votre profil n'a pas été trouvé, veuillez vous déconnecter et vous reconnecter", 'error');
       } else {
         const actorUri = id.startsWith('http') ? id : await webfinger.fetch(id);
         if (actorUri) {
@@ -27,9 +27,9 @@ const useRequestContact = () => {
             target: actorUri,
             to: actorUri,
           });
-          notify('app.notification.contact_request_sent', 'success');
+          notify('Demande de contact envoyée', 'success');
         } else {
-          notify('app.notification.user_not_found', 'error', { username: id });
+          notify(`L'utilisateur ${id} n'existe pas`, 'error');
         }
       }
     },

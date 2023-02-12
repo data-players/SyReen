@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { makeStyles, Avatar, Switch, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
 import { formatUsername } from '../../utils';
-import { useTranslate } from 'react-admin';
 
 const useStyles = makeStyles((theme) => ({
   listItem: {
@@ -31,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
 
 const ContactItem = ({ record, addInvitation, removeInvitation, canView, canShare, isOrganizer }) => {
   const classes = useStyles();
-  const translate = useTranslate();
 
   const [viewChecked, setViewChecked] = useState(canView);
   const [shareChecked, setShareChecked] = useState(canShare);
@@ -81,13 +79,13 @@ const ContactItem = ({ record, addInvitation, removeInvitation, canView, canShar
       />
       <ListItemText
         className={classes.secondaryText}
-        primary={translate('app.permission.view')}
+        primary="Droit de s'inscrire"
         secondary={<Switch size="small" checked={viewChecked} disabled={canView} onChange={switchView} />}
       />
       {isOrganizer && (
         <ListItemText
           className={classes.secondaryText}
-          primary={translate('app.permission.share')}
+          primary="Inviter ses contacts"
           secondary={<Switch size="small" checked={shareChecked} disabled={canShare} onChange={switchShare} />}
         />
       )}
