@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { UserMenu as RaUserMenu, useGetIdentity, useTranslate } from 'react-admin';
+import { UserMenu as RaUserMenu, useGetIdentity } from 'react-admin';
 import { MenuItem, ListItemIcon, makeStyles } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';
 import GroupIcon from '@material-ui/icons/Group';
@@ -47,30 +47,29 @@ const LoginMenu = forwardRef(({ onClick, label }, ref) => (
 const UserMenu = ({ logout, ...otherProps }) => {
   const { identity } = useGetIdentity();
   const openExternalApp = useOpenExternalApp();
-  const translate = useTranslate();
   return (
     <RaUserMenu {...otherProps}>
       {identity && identity.id !== '' ? (
         [
           <MyProfileMenu
             key="my-profile"
-            label={translate('app.page.profile')}
+            label='Mon profil'
             to={openExternalApp('as:Profile', identity?.profileData?.id)}
           />,
           <MyAddressMenu
             key="my-address"
-            label={translate('app.page.addresses')}
+            label='Mes adresses'
             to={openExternalApp('vcard:Location')}
           />,
           <MyNetworkMenu
             key="my-network"
-            label={translate('app.page.network')}
+            label='Mon réseau'
             to={openExternalApp('as:Profile')}
           />,
           React.cloneElement(logout, { key: 'logout' }),
         ]
       ) : (
-        <LoginMenu label={translate('ra.auth.sign_in')} />
+        <LoginMenu label="Se connecter" />
       )}
     </RaUserMenu>
   );

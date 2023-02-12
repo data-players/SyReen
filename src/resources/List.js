@@ -1,13 +1,12 @@
 import React, { useMemo } from 'react';
 import { Box, Typography, Container, Card as MuiCard } from '@material-ui/core';
-import { ListBase, useTranslate } from 'react-admin';
+import { ListBase } from 'react-admin';
 import { useCheckAuthenticated } from '@semapps/auth-provider';
 import CardsList from '../commons/lists/CardsList';
 import ProjectCard from './Project/ProjectCard';
 
 const List = () => {
   useCheckAuthenticated();
-  const translate = useTranslate();
 
   const sparqlWhere = useMemo(() => {
     const now = new Date();

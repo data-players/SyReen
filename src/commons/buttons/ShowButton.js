@@ -1,13 +1,12 @@
 import React from 'react';
-import { useEditContext, Link, linkToRecord, Button, useTranslate } from 'react-admin';
+import { useEditContext, Link, linkToRecord, Button } from 'react-admin';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
 const ShowButton = () => {
   const { basePath, record } = useEditContext();
-  const translate = useTranslate();
   return (
     <Link to={linkToRecord(basePath, record?.id, 'show')}>
-      <Button label={translate('ra.action.show')}>
+      <Button label="Afficher">
         <VisibilityIcon />
       </Button>
     </Link>

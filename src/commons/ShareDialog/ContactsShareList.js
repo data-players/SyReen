@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, makeStyles, Box, CircularProgress } from '@material-ui/core';
 import ContactItem from './ContactItem';
-import { useListContext, useTranslate } from 'react-admin';
+import { useListContext } from 'react-admin';
 import Alert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles((theme) => ({
@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
 
 const ContactsShareList = ({ addInvitation, removeInvitation, announces, announcers, isOrganizer }) => {
   const classes = useStyles();
-  const translate = useTranslate();
   const { ids, data, loading, ...rest } = useListContext();
   return (
     <List dense className={classes.list}>
@@ -36,7 +35,7 @@ const ContactsShareList = ({ addInvitation, removeInvitation, announces, announc
           <CircularProgress size={60} thickness={6} />
         </Box>
       )}
-      {!loading && ids.length === 0 && <Alert severity="warning">{translate('app.helper.no_contact')}</Alert>}
+      {!loading && ids.length === 0 && <Alert severity="warning">Vous devez ajouter des contacts à votre réseau pour pouvoir les inviter</Alert>}
     </List>
   );
 };

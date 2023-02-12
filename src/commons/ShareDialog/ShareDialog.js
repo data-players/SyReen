@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { useShowContext, useNotify, ListBase, useTranslate } from 'react-admin';
+import { useShowContext, useNotify, ListBase } from 'react-admin';
 import {
   Button,
   Dialog,
@@ -51,7 +51,6 @@ const ShareDialog = ({ close, resourceUri }) => {
   const classes = useStyles();
   const { identity } = useCheckAuthenticated();
   const { record } = useShowContext();
-  const translate = useTranslate();
   const isOrganizer = record?.['dc:creator'] === identity?.id;
   const { items: announces } = useCollection(record?.['apods:announces']);
   const { items: announcers } = useCollection(record?.['apods:announcers']);
@@ -138,7 +137,7 @@ const ShareDialog = ({ close, resourceUri }) => {
 
   return (
     <Dialog fullWidth={!xs} open={true} onClose={close} classes={{ paper: classes.dialogPaper }}>
-      <DialogTitle className={classes.title}>{translate('app.modal.share_ad')}</DialogTitle>
+      <DialogTitle className={classes.title}>Partager l'annonce</DialogTitle>
       <DialogContent className={classes.listForm}>
         <ListBase
           resource="Profile"
@@ -156,9 +155,7 @@ const ShareDialog = ({ close, resourceUri }) => {
         </ListBase>
       </DialogContent>
       <DialogActions className={classes.actions}>
-        <Button variant="text" size="medium" onClick={close}>
-          {translate('ra.action.close')}
-        </Button>
+        <Button variant="text" size="medium" onClick={close}>Fermer</Button>
         {Object.keys(newInvitations).length > 0 && (
           <Button
             variant="contained"
@@ -167,7 +164,7 @@ const ShareDialog = ({ close, resourceUri }) => {
             onClick={sendInvitations}
             disabled={sendingInvitation}
           >
-            {translate('app.action.send_invitation', { smart_count: Object.keys(newInvitations).length })}
+            {(Object.keys(newInvitations).length <= 1) ? "Envoyer l'invitation" : `Envoyer ${Object.keys(newInvitations).length} invitations`}
           </Button>
         )}
       </DialogActions>
