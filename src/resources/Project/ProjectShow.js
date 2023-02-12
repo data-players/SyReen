@@ -6,7 +6,6 @@ import MarkdownField from '../../commons/fields/MarkdownField';
 import ContactField from '../../commons/fields/ContactField';
 import ShowPage from '../../layout/ShowPage';
 import BodyLabel from '../../commons/lists/BodyLabel';
-import ShareButton from '../../commons/buttons/ShareButton';
 import EditButton from '../../commons/buttons/EditButton';
 import DateField from '../../commons/fields/DateField';
 import ProfileField from '../../commons/fields/ProfileField';
@@ -44,7 +43,6 @@ const ProjectShow = (props) => {
         title={<Title />}
         actions={
           <>
-            <ShareButton />
             <EditButton />
           </>
         }
