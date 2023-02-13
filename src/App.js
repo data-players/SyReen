@@ -14,11 +14,12 @@ import customRoutes from './customRoutes';
 import ProjectCreate from './resources/Project/ProjectCreate';
 import ProjectEdit from './resources/Project/ProjectEdit';
 import ProjectShow from './resources/Project/ProjectShow';
-import List from './resources/List';
+import ProjectList from './resources/Project/ProjectList';
 
 import OfferCreate from './resources/Offer/OfferCreate';
 import OfferEdit from './resources/Offer/OfferEdit';
 import OfferShow from './resources/Offer/OfferShow';
+import OfferList from './resources/Offer/OfferList';
 
 const history = createBrowserHistory();
 
@@ -40,8 +41,8 @@ const App = () => (
     theme={theme}
     customRoutes={customRoutes}
   >
-    <Resource name="projects" create={ProjectCreate} edit={ProjectEdit} show={ProjectShow} list={List} />
-    <Resource name="offers" create={OfferCreate} edit={OfferEdit} show={OfferShow} list={List} />
+    <Resource name="projects" create={ProjectCreate} edit={ProjectEdit} show={ProjectShow} list={ProjectList} />
+    <Resource name="offers" create={OfferCreate} edit={OfferEdit} show={OfferShow} list={OfferList} />
     {/*
     <Resource name="requests" create={Create} edit={Edit} show={Show} list={List} />
     <Resource name="OfferAndRequest" list={List} />

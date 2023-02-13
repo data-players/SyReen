@@ -1,5 +1,4 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
 import { RouteWithoutLayout } from 'react-admin';
 import HomePage from './pages/HomePage';
 import RedirectPage from "./pages/RedirectPage";

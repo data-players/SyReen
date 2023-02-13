@@ -1,13 +1,60 @@
 import React, { useMemo } from 'react';
-import { Box, Typography, Container, Card as MuiCard } from '@material-ui/core';
-import { ListBase } from 'react-admin';
+import { Box, Typography, Container, Card as MuiCard, makeStyles } from '@material-ui/core';
+import { List, ReferenceInput, SelectInput, TextInput } from 'react-admin';
 import { useCheckAuthenticated } from '@semapps/auth-provider';
-import CardsList from '../commons/lists/CardsList';
-import ProjectCard from './Project/ProjectCard';
+import CardsList from '../../commons/lists/CardsList';
+import OfferCard from './OfferCard';
 
-const List = () => {
+const useStyles = makeStyles((theme) => ({
+  root2: {
+    '& .list-page': {
+      '& > .MuiToolbar-root': {
+          marginTop: 32,
+          marginBottom: 16,
+          padding: 0,
+          background: 'transparent',
+        '& form': {
+          width: '100%',
+          '& label': {
+            top: 6,
+            '&.Mui-focused': {
+              top: 2
+            }
+          },
+          '& input': {
+            backgroundColor: theme.palette.primary.contrastText,
+            fontSize: 18,
+            borderRadius: 10,
+            paddingTop: 29,
+            paddingBottom: 12,
+          },
+          '& .MuiFilledInput-underline:before': {
+            display: 'none'
+          },
+          '& div': {
+            width: '100%'
+          },
+          '& ~ span': {
+            display: 'none'
+          },
+          '& .filter-field > div:not(:first-child)': {
+            display: 'none'
+          },
+        }
+      }
+    },
+  },
+  list: {
+    '& > div > .MuiPaper-root': {
+      backgroundColor: 'transparent'
+    }
+  }
+}));
+
+const OfferList = () => {
+  const classes = useStyles();
   useCheckAuthenticated();
-
+  /*
   const sparqlWhere = useMemo(() => {
     const now = new Date();
     return [
@@ -82,9 +129,16 @@ const List = () => {
       },
     ];
   }, []);
+  */
+  const offerFilters = [
+    <TextInput source="q" label="Rechercher des annonces" alwaysOn />,
+    <ReferenceInput source="userId" label="User" reference="users" allowEmpty>
+      <SelectInput optionText="name" />
+    </ReferenceInput>
+  ];
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" className={classes.root2}>
       <Box mb={2}>
         <MuiCard>
           <Box p={2}>
@@ -93,17 +147,19 @@ const List = () => {
           </Box>
         </MuiCard>
       </Box>
-      <ListBase
-        resource="projects"
-        basePath="/projects"
+      <List
+        resource="offers"
+        basePath="/offers"
         perPage={1000}
         sort={{ field: 'dc:created', order: 'DESC' }}
-        filter={{ sparqlWhere }}
+        filters={offerFilters}
+        actions={false}
+        className={classes.list}
       >
-        <CardsList CardComponent={ProjectCard} link="show" />
-      </ListBase>
+        <CardsList CardComponent={OfferCard} link="show" />
+      </List>
     </Container>
   );
 };
 
-export default List;
+export default OfferList;
