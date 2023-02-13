@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     left: 0,
     right: 0,
-    height: '100vh',
+    height: '100%',
     width: '100vw',
     '& .react-html5-camera-photo ': {
       width: '100%',
@@ -98,6 +98,9 @@ const CameraInput = props => {
                 imageType = {IMAGE_TYPES.JPG}
                 imageCompression = {0.97}
                 isMaxResolution = {true}
+                isImageMirror = {false}
+                isDisplayStartCameraError = {true}
+                isFullscreen = {true}
                 sizeFactor = {1}
               />
               <CloseIcon className={classes.closeIcon} onClick={handleClickEnableCapture} />
