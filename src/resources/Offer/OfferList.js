@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Box, Typography, Container, Card as MuiCard, makeStyles } from '@material-ui/core';
-import { List, ReferenceInput, SelectInput, TextInput } from 'react-admin';
+import { List, ReferenceInput, SelectInput, TextInput, useGetIdentity } from 'react-admin';
 import { useCheckAuthenticated } from '@semapps/auth-provider';
 import CardsList from '../../commons/lists/CardsList';
 import OfferCard from './OfferCard';
@@ -54,82 +54,52 @@ const useStyles = makeStyles((theme) => ({
 const OfferList = () => {
   const classes = useStyles();
   useCheckAuthenticated();
-  /*
+  const { identity } = useGetIdentity();
+
   const sparqlWhere = useMemo(() => {
-    const now = new Date();
-    return [
-      {
-        type: 'optional',
-        patterns: [
-          {
-            type: 'bgp',
-            triples: [
-              {
-                subject: { termType: 'Variable', value: 's1' },
-                predicate: {
-                  termType: 'NameNode',
-                  value: 'http://virtual-assembly.org/ontologies/pair-mp#hasTimeCondition',
-                },
-                object: { termType: 'Variable', value: 'hasTimeCondition' },
-              },
-              {
-                subject: { termType: 'Variable', value: 'hasTimeCondition' },
-                predicate: {
-                  termType: 'NameNode',
-                  value: 'http://virtual-assembly.org/ontologies/pair-mp#expirationDate',
-                },
-                object: { termType: 'Variable', value: 'expirationDate' },
-              },
-            ],
-          },
-        ],
-      },
-      {
-        type: 'filter',
-        expression: {
-          type: 'operation',
-          operator: '||',
-          args: [
+    if (! identity?.id) {
+       return null;
+    } else {
+      return [
+        {
+          type: 'optional',
+          patterns: [
             {
-              type: 'operation',
-              operator: '!',
-              args: [
+              type: 'bgp',
+              triples: [
                 {
-                  type: 'operation',
-                  operator: 'bound',
-                  args: [
-                    {
-                      termType: 'Variable',
-                      value: 'expirationDate',
-                    },
-                  ],
-                },
-              ],
-            },
-            {
-              type: 'operation',
-              operator: '>',
-              args: [
-                {
-                  termType: 'Variable',
-                  value: 'expirationDate',
-                },
-                {
-                  termType: 'Literal',
-                  datatype: {
-                    termType: 'NamedNode',
-                    value: 'http://www.w3.org/2001/XMLSchema#dateTime',
+                  subject: { termType: 'Variable', value: 's1' },
+                  predicate: {
+                    termType: 'NameNode',
+                    value: 'http://purl.org/dc/terms/creator',
                   },
-                  value: now.toISOString(),
+                  object: { termType: 'Variable', value: 'creator' },
                 },
               ],
             },
           ],
         },
-      },
-    ];
-  }, []);
-  */
+        {
+          type: 'filter',
+          expression: {
+            type: 'operation',
+            operator: '!=',
+            args: [
+              {
+                termType: 'Variable',
+                value: 'creator',
+              },
+              {
+                termType: 'NamedNode',
+                value: identity.id,
+              },
+            ],
+          },
+        },
+      ];
+    }
+  }, [identity]);
+
   const offerFilters = [
     <TextInput source="q" label="Rechercher des annonces" alwaysOn />,
     <ReferenceInput source="userId" label="User" reference="users" allowEmpty>
@@ -147,17 +117,20 @@ const OfferList = () => {
           </Box>
         </MuiCard>
       </Box>
-      <List
-        resource="offers"
-        basePath="/offers"
-        perPage={1000}
-        sort={{ field: 'dc:created', order: 'DESC' }}
-        filters={offerFilters}
-        actions={false}
-        className={classes.list}
-      >
-        <CardsList CardComponent={OfferCard} link="show" />
-      </List>
+      {identity?.id &&
+        <List
+          resource="offers"
+          basePath="/offers"
+          perPage={1000}
+          sort={{ field: 'dc:created', order: 'DESC' }}
+          filters={offerFilters}
+          filter={{ sparqlWhere }}
+          actions={false}
+          className={classes.list}
+        >
+          <CardsList CardComponent={OfferCard} link="show" />
+        </List>
+      }
     </Container>
   );
 };
