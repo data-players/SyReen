@@ -21,7 +21,12 @@ const AddOfferButton = () => {
           component={Link}
           to={{
             pathname: "/offers/create",
-            state: { record: { 'pair:partOf': recordContext.id } },
+            state: { 
+              record: {
+                'pair:partOf': recordContext.id,
+                'pair:hasLocation': recordContext['pair:hasLocation']
+              }
+            },
           }}
           label="Ajouter une offre"
           variant="contained"
