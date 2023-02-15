@@ -9,6 +9,7 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import HomeIcon from '@material-ui/icons/Home';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import WorkIcon from '@material-ui/icons/Work';
+import GroupIcon from '@material-ui/icons/Group';
 
 const useStyles = makeStyles((theme) => ({
   bottomNavigation: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     borderTop: '1px solid lightgrey'
   },
   container: {
-    marginBottom: 57
+    marginBottom: 100
   }
 }));
 
@@ -46,6 +47,7 @@ const Layout = ({ logout, theme, children, title }) => {
       >
         <BottomNavigationAction label="Accueil" icon={<HomeIcon />} component={Link} to="/" />
         <BottomNavigationAction label="Mes projets" icon={<WorkIcon />} component={Link} to="/projects" />
+        <BottomNavigationAction label="Mon réseau" icon={<GroupIcon />} component={Link} to="/profiles" />
         <BottomNavigationAction label="Mes alertes" icon={<NotificationsIcon />} component={Link} to="/alerts" />
       </BottomNavigation>
     </ThemeProvider>

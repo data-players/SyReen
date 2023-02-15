@@ -36,6 +36,7 @@
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.1.0",
     "react-html5-camera-photo": "^1.5.11",
+    "react-sticky-box": "^2.0.0",
     "url-join": "^4.0.1"
   },
   "devDependencies": {

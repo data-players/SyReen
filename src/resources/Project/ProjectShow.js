@@ -41,11 +41,7 @@ const ProjectShow = (props) => {
     <ShowBase {...props}>
       <ShowPage
         title={<Title />}
-        actions={
-          <>
-            <EditButton />
-          </>
-        }
+        actions={<EditButton />}
         details={<ProjectDetails />}
       >
         <TabbedShowLayout>

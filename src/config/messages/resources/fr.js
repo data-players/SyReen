@@ -50,11 +50,25 @@ const offerConfig = {
   },
 };
 
+const profileConfig = {
+  name: 'Profil |||| Profils',
+  fields: {
+    'describes': 'Identifiant',
+    'vcard:given-name': 'Prénom',
+    'vcard:family-name': 'Nom de famille',
+    'vcard:note': 'En deux mots',
+    'vcard:photo': 'Photo',
+    'foaf:tipjar': 'Compte Ğ1',
+    'dc:created': "Date d'inscription"
+  },
+};
+
 module.exports = {
   resources: {
     // OfferAndRequest: offerAndRequestConfig,
     projects: projectConfig,
     offers: offerConfig,
     // requests: offerAndRequestConfig,
+    Profile: profileConfig,
   },
 };

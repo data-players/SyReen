@@ -1,4 +1,5 @@
 import React from 'react';
+import { useGetIdentity } from "react-admin";
 import {
   makeStyles,
   Typography,
@@ -10,6 +11,7 @@ import {
 } from '@material-ui/core';
 import { Link, useLocation } from 'react-router-dom';
 import AppIcon from '../config/AppIcon';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const useStyles = makeStyles((theme) => ({
   box: {
@@ -51,11 +53,16 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: 16,
     },
   },
+  accountIcon: {
+    fontSize: 64,
+    color: '#FFF'
+  }
 }));
 
 const AppBar = ({ title }) => {
   const classes = useStyles();
   const location = useLocation();
+  const { identity } = useGetIdentity();
   // const isProjectListView = location?.pathname?.match('^/projects/?$');
   // const isProjectEditOrShowView = location?.pathname?.match('^/projects/.*.+$');
   const isProjectView = location?.pathname?.match('^/projects.*$');
@@ -78,16 +85,21 @@ const AppBar = ({ title }) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Box className={classes.buttons} mt={{ xs: 0, sm: 4 }}>
-            {isProjectView &&
-              <Link to="/projects/create">
-                <Button variant="contained" className={classes.button}>
-                  Créer un projet
-                </Button>
-              </Link>
-            }
+            <Link to={"/Profile/" + encodeURIComponent(identity?.profileData?.id)} aria-label="Mon profil" title="Mon profil">
+              <AccountCircleIcon className={classes.accountIcon} />
+            </Link>
           </Box>
         </Grid>
       </Grid>
+      <Box mb={2} sx={{ textAlign: "right" }}>
+      {isProjectView &&
+        <Link to="/projects/create">
+          <Button variant="contained" className={classes.button}>
+            Créer un projet
+          </Button>
+        </Link>
+      }
+      </Box>
     </Container>
   );
 };
