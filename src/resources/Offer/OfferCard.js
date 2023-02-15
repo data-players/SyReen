@@ -12,7 +12,7 @@ import FaceIcon from '@material-ui/icons/Face';
 const useStyles = makeStyles((theme) => ({
   title: {
     fontSize: 20,
-    fontWeight: 500,
+    fontWeight: 600,
     lineHeight: 1.3,
   },
   description: {

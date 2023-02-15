@@ -15,13 +15,13 @@ const useStyles = makeStyles((theme) => ({
   h5: {
     marginTop: 20,
     marginBottom: 5,
-    fontWeight: 500,
+    fontWeight: 600,
   },
   h6: {
     marginTop: 20,
     marginBottom: 5,
     fontSize: '1.3rem',
-    fontWeight: 500,
+    fontWeight: 600,
   },
 }));
 

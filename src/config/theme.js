@@ -2,8 +2,18 @@ import { createTheme } from '@material-ui/core/styles';
 
 const defaultTheme = createTheme();
 
-const font1 = '"Kaushan Script", "serif"';
-const font2 = '"Roboto", "Open Sans", "sans-serif"';
+const font1 = '"Inter", "serif"';
+// const font2 = '"Roboto", "Open Sans", "sans-serif"';
+
+/*
+Bleu turquoise : #0099A1
+Bleu : #21B3CA
+Bleu clair : #E2F3F8
+Vert : #70E000
+Noir : #002B2E
+Police
+Inter : https://fonts.google.com/specimen/Inter
+*/
 
 const theme = createTheme({
   palette: {
@@ -19,10 +29,10 @@ const theme = createTheme({
   },
   typography: {
     h1: {
-      fontFamily: font2,
+      fontFamily: font1,
       fontSize: 48,
       fontStyle: 'normal',
-      fontWeight: 'normal',
+      fontWeight: '600',
       lineHeight: '70px',
       [defaultTheme.breakpoints.down('xs')]: {
         fontSize: 32,
@@ -30,10 +40,10 @@ const theme = createTheme({
       },
     },
     h2: {
-      fontFamily: font2,
+      fontFamily: font1,
       fontSize: 40,
       fontStyle: 'normal',
-      fontWeight: 'normal',
+      fontWeight: '600',
       lineHeight: 1.15,
       [defaultTheme.breakpoints.down('xs')]: {
         fontSize: 28,
@@ -43,7 +53,7 @@ const theme = createTheme({
       fontFamily: font1,
       fontSize: 30,
       fontStyle: 'normal',
-      fontWeight: 'normal',
+      fontWeight: '600',
       lineHeight: '44px',
       [defaultTheme.breakpoints.down('xs')]: {
         fontSize: 18,
@@ -58,12 +68,12 @@ const theme = createTheme({
       lineHeight: 1.15,
     },
     subtitle1: {
-      fontFamily: font2,
+      fontFamily: font1,
       fontSize: 12,
       lineHeight: '14px',
     },
     subtitle2: {
-      fontFamily: font2,
+      fontFamily: font1,
       fontSize: 12,
       fontStyle: 'normal',
       fontWeight: 'normal',
@@ -71,21 +81,21 @@ const theme = createTheme({
       textTransform: 'uppercase',
     },
     body1: {
-      fontFamily: font2,
+      fontFamily: font1,
       fontSize: 16,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '19px',
     },
     body2: {
-      fontFamily: font2,
+      fontFamily: font1,
       fontSize: 14,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '16px',
     },
     button: {
-      fontFamily: font2,
+      fontFamily: font1,
       fontSize: 14,
       fontStyle: 'normal',
       fontWeight: 'normal',
