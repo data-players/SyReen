@@ -11,19 +11,17 @@ Bleu : #21B3CA
 Bleu clair : #E2F3F8
 Vert : #70E000
 Noir : #002B2E
-Police
-Inter : https://fonts.google.com/specimen/Inter
 */
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#417EDA',
-      light: '#74A6F0',
+      main: '#0099A1',
+      light: '#E2F3F8',
       contrastText: '#FFF',
     },
     secondary: {
-      main: '#203142',
+      main: '#70E000',
       contrastText: '#FFF',
     },
   },

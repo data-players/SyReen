@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     color: 'white',
+    marginRight: 16,
     '& svg': {
       fontSize: '4rem',
     },
