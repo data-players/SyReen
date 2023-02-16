@@ -3,6 +3,7 @@ import { Box, Button, makeStyles, Typography, ThemeProvider } from '@material-ui
 import { useGetIdentity, useTranslate, Link } from 'react-admin';
 import { Redirect } from 'react-router-dom';
 import theme from '../config/theme';
+import AppIcon from '../config/AppIcon';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -15,6 +16,9 @@ const useStyles = makeStyles(() => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundImage: `radial-gradient(circle at 50% 14em, ${theme.palette.primary.light} 0%, ${theme.palette.primary.main} 100%)`,
+    '& p': {
+      color: '#000'
+    }
   },
   description: {
     color: 'white',
@@ -25,6 +29,11 @@ const useStyles = makeStyles(() => ({
   button: {
     margin: 5,
   },
+  logo: {
+    '& img': {
+      borderRadius: 4
+    }
+  }
 }));
 
 const HomePage = () => {
@@ -39,6 +48,7 @@ const HomePage = () => {
   ) : (
     <ThemeProvider theme={theme}>
       <Box className={classes.root}>
+        <Box className={classes.logo}><AppIcon /></Box>
         <Typography align="center" className={classes.description}>
           {process.env.REACT_APP_DESCRIPTION}
         </Typography>

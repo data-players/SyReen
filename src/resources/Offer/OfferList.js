@@ -112,8 +112,8 @@ const OfferList = () => {
       <Box mb={2}>
         <MuiCard>
           <Box p={2}>
-            <Typography variant="h5">Bienvenue sur SyRéen !</Typography>
-            <Typography variant="body1">SyRéen est une application de réutilisation de rebus de chantier</Typography>
+            <Typography variant="h5">Bienvenue sur {process.env.REACT_APP_NAME} !</Typography>
+            <Typography variant="body1">{process.env.REACT_APP_DESCRIPTION}</Typography>
           </Box>
         </MuiCard>
       </Box>
