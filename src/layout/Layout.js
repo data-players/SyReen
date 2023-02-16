@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Notification } from 'react-admin';
+import { useLocation } from 'react-router-dom';
 import { Box, ThemeProvider, makeStyles } from '@material-ui/core';
 import AppBar from './AppBar';
 import TopAppBar from './TopAppBar';
@@ -30,7 +31,18 @@ const useStyles = makeStyles((theme) => ({
 
 const Layout = ({ logout, theme, children, title }) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [navigationValue, setNavigationValue] = React.useState(0);
+  const {pathname} = useLocation();
+  const urlParts = pathname.split('/');
+  if (urlParts[1]) {
+    switch (urlParts[1]) {
+      case 'projects' : if(navigationValue!==1) setNavigationValue(1); break;
+      case 'offers'   : if(navigationValue!==0) setNavigationValue(0); break;
+      case 'Profile'  : if(navigationValue!==2) setNavigationValue(2); break;
+      case 'Location' : if(navigationValue!==2) setNavigationValue(2); break;
+      default:          if(navigationValue!==0) setNavigationValue(0);
+    }
+  }
   return (
     <ThemeProvider theme={theme}>
       <ScrollToTop />
@@ -42,10 +54,7 @@ const Layout = ({ logout, theme, children, title }) => {
       {/* Required for react-admin optimistic update */}
       <Notification />
       <BottomNavigation
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
+        value={navigationValue}
         showLabels
         className={classes.bottomNavigation}
       >
