@@ -1,14 +1,14 @@
 import React from 'react';
 import { CreateButton, SimpleList } from 'react-admin';
-import { Avatar, useMediaQuery } from "@material-ui/core";
+import { Avatar, Box, useMediaQuery } from "@material-ui/core";
 import { useCheckAuthenticated } from '@semapps/auth-provider';
 import { AvatarWithLabelField } from '@semapps/field-components';
 import { GridList } from '@semapps/list-components';
-import List from "../../layout/List";
-import ProfileCard from "../../commons/cards/ProfileCard";
-import ShareContactCard from "../../commons/cards/ShareContactCard";
+import List from "../../layout/profile/List";
+import ProfileCard from "../../commons/cards/profile/ProfileCard";
+import ShareContactCard from "../../commons/cards/profile/ShareContactCard";
 import { formatUsername } from "../../utils";
-import ContactRequestsBlock from "../../commons/blocks/ContactRequestsBlock";
+import ContactRequestsBlock from "../../commons/blocks/profile/ContactRequestsBlock";
 
 const ProfileList = (props) => {
   const { identity } = useCheckAuthenticated();
@@ -17,7 +17,7 @@ const ProfileList = (props) => {
   return (
     <List
       title='Mon réseau'
-      actions={[<CreateButton label="app.action.add_contact" />]}
+      actions={[<CreateButton label='Envoyer une demande' />]}
       asides={[<ProfileCard />, <ShareContactCard />]}
       sort={{ field: 'vcard:given-name', order: 'ASC' }}
       perPage={1000}
@@ -42,14 +42,16 @@ const ProfileList = (props) => {
           :
           <>
             <ContactRequestsBlock />
-            <GridList xs={4} sm={2} linkType="show">
-              <AvatarWithLabelField
-                label="vcard:given-name"
-                image="vcard:photo"
-                defaultLabel='Inconnu'
-                labelColor="grey.300"
-              />
-            </GridList>
+            <Box pt={1}>
+              <GridList sm={3} linkType="show">
+                <AvatarWithLabelField
+                  label="vcard:given-name"
+                  image="vcard:photo"
+                  defaultLabel='Inconnu'
+                  labelColor="grey.300"
+                />
+              </GridList>
+            </Box>
           </>
         }
     </List>

@@ -23,7 +23,7 @@ import OfferList from './resources/Offer/OfferList';
 
 import ProfileEdit from './resources/Profile/ProfileEdit';
 import ProfileShow from './resources/Profile/ProfileShow';
-//import ProfileList from './resources/Profile/ProfileList';
+import ProfileList from './resources/Profile/ProfileList';
 
 const history = createBrowserHistory();
 
@@ -52,7 +52,7 @@ const App = () => (
     <Resource name="OfferAndRequest" list={List} />
     */}
     <Resource name="Actor" />
-    <Resource name="Profile" show={ProfileShow} edit={ProfileEdit} /*list={ProfileList}*/ />
+    <Resource name="Profile" show={ProfileShow} edit={ProfileEdit} list={ProfileList} />
     <Resource name="Location" />
   </Admin>
 );

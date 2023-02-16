@@ -1,11 +1,10 @@
 import React from 'react';
-import { ListButton, EditButton, useShowContext, usePermissionsOptimized } from 'react-admin';
+import { CreateButton, useListContext } from 'react-admin';
 import { Box, Card, Container, Typography, Grid } from '@material-ui/core';
 import SplitView from "./SplitView";
 
-const ShowView = (props) => {
-  const { record } = useShowContext(props);
-  const { permissions } = usePermissionsOptimized(record?.id);
+const ListView = (props) => {
+  const { defaultTitle } = useListContext(props);
   return(
     <Container maxWidth="md">
       <Card>
@@ -14,18 +13,12 @@ const ShowView = (props) => {
             <Grid container>
               <Grid item xs={8}>
                 <Typography variant="h2" component="h1">
-                  {React.cloneElement(props.title, { record })}
+                  {props.title || defaultTitle}
                 </Typography>
               </Grid>
               <Grid item xs={4}>
                 <Box display="flex" alignItems="middle" justifyContent="right">
-                  {props.actions
-                    ? props.actions.map((action, i) => React.cloneElement(action, { record, color: 'text', key: i }))
-                    : <>
-                        <ListButton color="primary" record={record} />
-                        {permissions && permissions.some(p => p['acl:mode'] === 'acl:Write') && <EditButton color="primary" record={record} />}
-                      </>
-                  }
+                  {props.actions.map((action, key) => React.cloneElement(action, { key, color: 'text' }))}
                 </Box>
               </Grid>
             </Grid>
@@ -39,4 +32,10 @@ const ShowView = (props) => {
   )
 };
 
-export default ShowView;
+ListView.defaultProps = {
+  actions: [
+    <CreateButton />,
+  ]
+}
+
+export default ListView;

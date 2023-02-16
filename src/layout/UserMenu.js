@@ -4,7 +4,6 @@ import { Box, MenuItem, ListItemIcon, makeStyles } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';
 import GroupIcon from '@material-ui/icons/Group';
 import HomeIcon from '@material-ui/icons/Home';
-import useOpenExternalApp from "../hooks/useOpenExternalApp";
 
 const useStyles = makeStyles((theme) => ({
   a: {
@@ -73,7 +72,6 @@ const LoginMenu = forwardRef(({ onClick, label }, ref) => (
 const UserMenu = ({ logout, ...otherProps }) => {
   const classes = useStyles();
   const { identity } = useGetIdentity();
-  const openExternalApp = useOpenExternalApp();
   return (
     <Box className={classes.userMenuContainer}>
       <RaUserMenu {...otherProps}>
@@ -90,12 +88,12 @@ const UserMenu = ({ logout, ...otherProps }) => {
               label='Mes adresses'
               to={openExternalApp('vcard:Location')}
             />,
+            */
             <MyNetworkMenu
               key="my-network"
               label='Mon réseau'
-              to={openExternalApp('as:Profile')}
+              to={"/Profile"}
             />,
-            */
             React.cloneElement(logout, { key: 'logout' }),
           ]
         ) : (

@@ -51,7 +51,7 @@ const Layout = ({ logout, theme, children, title }) => {
       >
         <BottomNavigationAction label="Accueil" icon={<HomeIcon />} component={Link} to="/" />
         <BottomNavigationAction label="Mes projets" icon={<WorkIcon />} component={Link} to="/projects" />
-        <BottomNavigationAction label="Mon réseau" icon={<GroupIcon />} component={Link} to="/profiles" />
+        <BottomNavigationAction label="Mon réseau" icon={<GroupIcon />} component={Link} to="/Profile" />
         <BottomNavigationAction label="Mes alertes" icon={<NotificationsIcon />} component={Link} to="/alerts" />
       </BottomNavigation>
     </ThemeProvider>
