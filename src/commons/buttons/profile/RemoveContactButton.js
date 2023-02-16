@@ -21,7 +21,7 @@ const RemoveContactButton = ({ refetch, ...rest }) => {
       });
       setTimeout(() => {
         refetch();
-        notify('app.notification.contact_removed');
+        notify('Contact supprimé');
         setDisabled(false);
       }, 3000);
     } catch (e) {

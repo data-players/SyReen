@@ -16,7 +16,7 @@ const AcceptContactRequestButton = ({ activity, refetch, children, ...rest }) =>
           object: activity.id,
           to: activity.actor,
         });
-        notify('app.notification.contact_request_accepted');
+        notify('Demande de contact acceptée');
         setTimeout(refetch, 3000);
       } catch (e) {
         notify(e.message, 'error');

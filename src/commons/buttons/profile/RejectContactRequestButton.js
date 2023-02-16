@@ -16,7 +16,7 @@ const RejectContactRequestButton = ({ activity, refetch, children, ...rest }) =>
           object: activity.id,
           to: activity.actor,
         });
-        notify('app.notification.contact_request_rejected');
+        notify('Demande de contact refusée');
         setTimeout(refetch, 3000);
       } catch (e) {
         notify(e.message, 'error');

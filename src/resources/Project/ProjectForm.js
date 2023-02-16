@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 const futureDate = (value) => {
   if (value && value <= new Date()) {
-    return 'app.validation.futureDate';
+    return 'Doit être dans le futur';
   }
 };
 

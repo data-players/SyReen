@@ -49,7 +49,7 @@ const ContactField = ({ source, context, ...rest }) => {
           {identity?.id !== record['dc:creator'] && contactsLoaded && !contacts.includes(record[source]) && (
             <Box mb={1}>
               <Alert severity="warning">
-                Sending a message to { record?.['vcard:given-name'] } will give him/her the right to see your profile, in order to be able to respond.
+                Envoyer un message à { record?.['vcard:given-name'] } lui donnera le droit de voir votre profil, pour lui permettre de vous répondre.
               </Alert>
             </Box>
           )}

@@ -16,7 +16,7 @@ const IgnoreContactRequestButton = ({ activity, refetch, children, ...rest }) =>
           object: activity.id,
           to: activity.actor,
         });
-        notify('app.notification.contact_request_ignored');
+        notify('Demande de contact ignorée');
         setTimeout(refetch, 3000);
       } catch (e) {
         notify(e.message, 'error');

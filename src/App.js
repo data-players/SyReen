@@ -21,6 +21,7 @@ import OfferEdit from './resources/Offer/OfferEdit';
 import OfferShow from './resources/Offer/OfferShow';
 import OfferList from './resources/Offer/OfferList';
 
+import ProfileCreate from './resources/Profile/ProfileCreate';
 import ProfileEdit from './resources/Profile/ProfileEdit';
 import ProfileShow from './resources/Profile/ProfileShow';
 import ProfileList from './resources/Profile/ProfileList';
@@ -52,7 +53,7 @@ const App = () => (
     <Resource name="OfferAndRequest" list={List} />
     */}
     <Resource name="Actor" />
-    <Resource name="Profile" show={ProfileShow} edit={ProfileEdit} list={ProfileList} />
+    <Resource name="Profile" create={ProfileCreate} show={ProfileShow} edit={ProfileEdit} list={ProfileList} />
     <Resource name="Location" />
   </Admin>
 );
