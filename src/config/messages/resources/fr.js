@@ -63,6 +63,15 @@ const profileConfig = {
   },
 };
 
+const locationConfig = {
+  name: 'Adresse |||| Adresses',
+  fields: {
+    'vcard:given-name': 'Nom du lieu',
+    'vcard:hasAddress': 'Adresse',
+    'vcard:note': 'Indications',
+  },
+};
+
 module.exports = {
   resources: {
     // OfferAndRequest: offerAndRequestConfig,
@@ -70,5 +79,6 @@ module.exports = {
     offers: offerConfig,
     // requests: offerAndRequestConfig,
     Profile: profileConfig,
+    Location: locationConfig,
   },
 };

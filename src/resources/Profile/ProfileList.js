@@ -17,7 +17,7 @@ const ProfileList = (props) => {
   return (
     <List
       title='Mon réseau'
-      actions={[<CreateButton label='Envoyer une demande' />]}
+      actions={[<CreateButton label='Envoyer une demande' color="primary" />]}
       asides={[<ProfileCard />, <ShareContactCard />]}
       sort={{ field: 'vcard:given-name', order: 'ASC' }}
       perPage={1000}

@@ -20,9 +20,7 @@ const dataModels = {
   */
   offers: {
     types: ['mp:Offer'],
-    list: {
-      dereference: ['mp:hasTimeCondition', 'mp:hasGeoCondition', 'mp:hasReciprocityCondition'],
-    },
+    list: {},
   },
   /*
   requests: {
@@ -34,9 +32,7 @@ const dataModels = {
   */
   projects: {
     types: ['pair:Project'],
-    list: {
-      dereference: ['mp:hasTimeCondition', 'mp:hasGeoCondition', 'mp:hasReciprocityCondition'],
-    },
+    list: {},
   },
   Actor: {
     types: ['as:Actor'],
@@ -50,7 +46,7 @@ const dataModels = {
     types: ['vcard:Location'],
     list: {
       servers: 'pod',
-      dereference: ['vcard:hasAddress/vcard:hasGeo'],
+      blankNodes: ['vcard:hasAddress/vcard:hasGeo'],
     },
   },
 };

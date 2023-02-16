@@ -82,13 +82,11 @@ const UserMenu = ({ logout, ...otherProps }) => {
               label='Mon profil'
               to={"/Profile/" + encodeURIComponent(identity?.profileData?.id)}
             />,
-            /*
             <MyAddressMenu
               key="my-address"
               label='Mes adresses'
-              to={openExternalApp('vcard:Location')}
+              to={"/Location"}
             />,
-            */
             <MyNetworkMenu
               key="my-network"
               label='Mon réseau'
