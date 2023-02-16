@@ -7,6 +7,11 @@ import MarkdownField from '../../commons/fields/MarkdownField';
 import { useRecordContext } from 'react-admin';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .leaflet-container': {
+      zIndex: 0
+    }
+  },
   markdownFieldContainer: {
     '& strong': {
       float: 'left'
@@ -22,7 +27,7 @@ const LocationField = ({ label, source, ...rest }) => {
   const classes = useStyles();
   const recordContext = useRecordContext(rest);
   return (
-    <>
+    <Box className={classes.root}>
       <ReferenceField reference="Location" record={recordContext} source={source} link={false}>
         <MapField
           address={(locationRecord) => (
@@ -53,7 +58,7 @@ const LocationField = ({ label, source, ...rest }) => {
           height={250}
         />
       </ReferenceField>
-    </>
+    </Box>
   );
 };
 
