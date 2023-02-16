@@ -1,14 +1,11 @@
 import React, { forwardRef } from 'react';
-import { UserMenu as RaUserMenu, useGetIdentity } from 'react-admin';
-import { Box, MenuItem, ListItemIcon, makeStyles } from '@material-ui/core';
+import { Link, UserMenu as RaUserMenu, useGetIdentity } from 'react-admin';
+import { Box, MenuItem as MuiMenuItem, ListItemIcon, makeStyles } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';
 import GroupIcon from '@material-ui/icons/Group';
 import HomeIcon from '@material-ui/icons/Home';
 
 const useStyles = makeStyles((theme) => ({
-  a: {
-    textDecoration: 'none'
-  },
   menuItem: {
     color: theme.palette.text.secondary
   },
@@ -41,29 +38,23 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const OutsideMenuItemLink = ({ to, primaryText, leftIcon }) => {
+const MenuItem = ({ primaryText, leftIcon }) => {
   const classes = useStyles();
   return (
-    <a href={to} className={classes.a}>
-      <MenuItem className={classes.menuItem} activeClassName={classes.active}>
-        <ListItemIcon className={classes.icon}>{leftIcon}</ListItemIcon>
-        {primaryText}
-      </MenuItem>
-    </a>
+    <MuiMenuItem className={classes.menuItem} activeClassName={classes.active}>
+      <ListItemIcon className={classes.icon}>{leftIcon}</ListItemIcon>
+      {primaryText}
+    </MuiMenuItem>
   );
 };
 
-const MyProfileMenu = forwardRef(({ onClick, label, to }, ref) => (
-  <OutsideMenuItemLink ref={ref} to={to} primaryText={label} leftIcon={<PersonIcon />} onClick={onClick} />
-));
+const OutsideMenuItemLink = ({ ...props }) => (
+  <a href={props.to}><MenuItem {...props} /></a>
+);
 
-const MyAddressMenu = forwardRef(({ onClick, label, to }, ref) => (
-  <OutsideMenuItemLink ref={ref} to={to} primaryText={label} leftIcon={<HomeIcon />} onClick={onClick} />
-));
-
-const MyNetworkMenu = forwardRef(({ onClick, label, to }, ref) => (
-  <OutsideMenuItemLink ref={ref} to={to} primaryText={label} leftIcon={<GroupIcon />} onClick={onClick} />
-));
+const InsideMenuItemLink = ({ ...props }) => (
+  <Link to={props.to}><MenuItem {...props} /></Link>
+);
 
 const LoginMenu = forwardRef(({ onClick, label }, ref) => (
   <OutsideMenuItemLink ref={ref} to="/login" primaryText={label} onClick={onClick} />
@@ -77,20 +68,20 @@ const UserMenu = ({ logout, ...otherProps }) => {
       <RaUserMenu {...otherProps}>
         {identity && identity.id !== '' ? (
           [
-            <MyProfileMenu
-              key="my-profile"
-              label='Mon profil'
+            <InsideMenuItemLink 
               to={"/Profile/" + encodeURIComponent(identity?.profileData?.id)}
+              primaryText="Mon profil"
+              leftIcon={<PersonIcon />}
             />,
-            <MyAddressMenu
-              key="my-address"
-              label='Mes adresses'
+            <InsideMenuItemLink
               to={"/Location"}
+              primaryText="Mes adresses"
+              leftIcon={<HomeIcon />}
             />,
-            <MyNetworkMenu
-              key="my-network"
-              label='Mon réseau'
+            <InsideMenuItemLink
               to={"/Profile"}
+              primaryText="Mon réseau"
+              leftIcon={<GroupIcon />}
             />,
             React.cloneElement(logout, { key: 'logout' }),
           ]
