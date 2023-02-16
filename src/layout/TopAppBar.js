@@ -1,19 +1,20 @@
 import React from 'react';
-import { useGetIdentity } from 'react-admin';
-import { makeStyles, Typography, AppBar as MuiAppBar, Toolbar } from '@material-ui/core';
+import { Link } from 'react-admin';
+import { Box, Container, Grid, IconButton, makeStyles, Typography, AppBar as MuiAppBar, Toolbar } from '@material-ui/core';
 import UserMenu from './UserMenu';
+import AppIcon from '../config/AppIcon';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: '#585858',
     boxShadow: 'unset',
+  },
+  toolbar: {
+    height: 64,
+    padding: 0
   },
   menuButton: {
     color: 'white',
-  },
-  toolbar: {
-    minHeight: '36px',
   },
   title: {
     flexGrow: 1,
@@ -22,21 +23,54 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: 'none',
     },
   },
+  logoContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    flexGrow: 1,
+    margin: 0
+  },
+  logo: {
+    marginLeft: 0,
+    marginRight: 8,
+    height: 56,
+    padding: 4,
+    '& > *': {
+      height: '100%',
+    },
+    '& img': {
+      maxHeight: '100%',
+      borderRadius: 4
+    }
+  },
+  userMenu: {
+    fontSize: 64
+  },
 }));
 
 const TopAppBar = ({ logout }) => {
   const classes = useStyles();
-  const { identity } = useGetIdentity();
-  const domainName = identity?.id && (new URL(identity?.id)).hostname;
   return (
-    <MuiAppBar position="static" className={classes.root}>
-      <Toolbar variant="dense" className={classes.toolbar}>
-        <Typography variant="caption" className={classes.title}>
-          {domainName}
-        </Typography>
-        <UserMenu logout={logout} />
-      </Toolbar>
-    </MuiAppBar>
+    <Container maxWidth="md">
+      <MuiAppBar position="static" className={classes.root}>
+        <Toolbar variant="dense" className={classes.toolbar}>
+          <Grid container>
+            <Grid item xs={12} sm={6}>
+              <Box mb={1} className={classes.logoContainer}>
+                <Link to="/">
+                  <IconButton edge="start" className={classes.logo} color="inherit">
+                    <AppIcon />
+                  </IconButton>
+                </Link>
+                <Typography variant="h4" className={classes.title}>
+                  <Link to="/">Syréen</Link>
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
+          <UserMenu logout={logout} />
+        </Toolbar>
+      </MuiAppBar>
+    </Container>
   );
 };
 

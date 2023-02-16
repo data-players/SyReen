@@ -8,7 +8,7 @@ const Edit = (props) => {
   return(
     <ResourceContextProvider value={props.resource}>
       <EditContextProvider value={controllerProps}>
-        <EditPage {...props} {...controllerProps} actions={<ShowButton />} hasDelete={false} ></EditPage> />
+        <EditPage {...props} {...controllerProps} actions={<ShowButton />} hasDelete={false} ></EditPage>
       </EditContextProvider>
     </ResourceContextProvider>
   )

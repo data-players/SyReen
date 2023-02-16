@@ -17,7 +17,11 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     right: 0,
     bottom: 0,
-    borderTop: '1px solid lightgrey'
+    borderTop: '1px solid lightgrey',
+    '& .MuiBottomNavigationAction-root': {
+      paddingLeft: 0,
+      paddingRight: 0
+    }
   },
   container: {
     marginBottom: 100

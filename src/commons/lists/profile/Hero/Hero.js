@@ -4,13 +4,35 @@ import { Grid, Avatar, makeStyles } from '@material-ui/core';
 import DetailsList from './DetailsList';
 
 const useStyles = makeStyles(theme => ({
-  avatar: {
-    width: 200,
-    height: 200,
-    [theme.breakpoints.down('xs')]: {
-      width: 120,
-      height: 120,
+  root: {
+    '& .MuiGrid-container': {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'flex-end',
+      [theme.breakpoints.down('xs')]: {
+        flexDirection: 'column',
+      }
     },
+    '& .MuiGrid-root': {
+      [theme.breakpoints.down('xs')]: {
+        padding: 0,
+        paddingTop: 8,
+        paddingBottom: 4,
+        margin: 0,
+        maxWidth: '100%',
+        '& p.MuiTypography-root div': {
+          margin: 0
+        },
+        '& p.MuiTypography-root button': {
+          padding: 0
+        }
+      },
+    }
+  },
+  avatar: {
+    width: 120,
+    height: 120,
+    margin: 'auto'
   }
 }));
 
@@ -20,11 +42,11 @@ const Hero = ({ children, image, defaultImage }) => {
   if (!loaded) return null;
 
   return (
-    <Grid container spacing={3}>
-      <Grid item xs={12} sm={3}>
+    <Grid container spacing={3} className={classes.root}>
+      <Grid item xs={12} sm={2}>
         <Avatar src={record[image]} className={classes.avatar} />
       </Grid>
-      <Grid item xs={12} sm={9}>
+      <Grid item xs={12} sm={10}>
         <DetailsList record={record} resource={resource} basePath={basePath}>
           {children}
         </DetailsList>

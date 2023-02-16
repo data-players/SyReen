@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Button, makeStyles, Typography, ThemeProvider } from '@material-ui/core';
 import { useGetIdentity, useTranslate, Link } from 'react-admin';
 import { Redirect } from 'react-router-dom';
-import AppIcon from '../config/AppIcon';
 import theme from '../config/theme';
 
 const useStyles = makeStyles(() => ({
@@ -17,29 +16,18 @@ const useStyles = makeStyles(() => ({
     backgroundSize: 'cover',
     backgroundImage: `radial-gradient(circle at 50% 14em, ${theme.palette.primary.light} 0%, ${theme.palette.primary.main} 100%)`,
   },
-  title: {
-    lineHeight: 1,
-    color: 'white',
-    [theme.breakpoints.down('xs')]: {
-      fontSize: '1.8em'
-    },
-  },
   description: {
     color: 'white',
     fontStyle: 'italic',
     marginTop: 16,
     whiteSpace: 'pre-line',
   },
-  logo: {
-    fontSize: 100,
-    color: 'white',
-  },
   button: {
     margin: 5,
   },
 }));
 
-const HomePage = ({ title }) => {
+const HomePage = () => {
   const classes = useStyles();
   const { loading, identity } = useGetIdentity();
   const translate = useTranslate();
@@ -51,10 +39,6 @@ const HomePage = ({ title }) => {
   ) : (
     <ThemeProvider theme={theme}>
       <Box className={classes.root}>
-        <AppIcon className={classes.logo} />
-        <Typography variant="h4" className={classes.title}>
-          {title}
-        </Typography>
         <Typography align="center" className={classes.description}>
           {process.env.REACT_APP_DESCRIPTION}
         </Typography>
