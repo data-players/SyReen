@@ -69,16 +69,19 @@ const UserMenu = ({ logout, ...otherProps }) => {
         {identity && identity.id !== '' ? (
           [
             <InsideMenuItemLink 
+              key={1}
               to={"/Profile/" + encodeURIComponent(identity?.profileData?.id)}
               primaryText="Mon profil"
               leftIcon={<PersonIcon />}
             />,
             <InsideMenuItemLink
+              key={2}
               to={"/Location"}
               primaryText="Mes adresses"
               leftIcon={<HomeIcon />}
             />,
             <InsideMenuItemLink
+              key={3}
               to={"/Profile"}
               primaryText="Mon réseau"
               leftIcon={<GroupIcon />}
