@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShowBase, ReferenceManyField, Tab, TabbedShowLayout, useRecordContext } from 'react-admin';
+import { ShowBase, ReferenceManyField, Tab, TabbedShowLayout, TextField, useRecordContext } from 'react-admin';
 import { ReferenceField } from '@semapps/field-components';
 import { useCheckAuthenticated } from '@semapps/auth-provider';
 import MarkdownField from '../../commons/fields/MarkdownField';
@@ -47,6 +47,7 @@ const ProjectShow = (props) => {
         <TabbedShowLayout>
           <Tab label="Général">
             <MainList Label={BodyLabel}>
+              <TextField source="pair:alternativeLabel" />
               <MarkdownField source="pair:description" addLabel={true} />
               <LocationField source="pair:hasLocation" />
               <DateField source="pair:startDate" />

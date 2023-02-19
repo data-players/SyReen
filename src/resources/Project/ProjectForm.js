@@ -64,6 +64,7 @@ const ProjectForm = (props) => {
     <TabbedForm {...props} redirect="show" className={classes.root}>
       <FormTab label="Général">
         <TextInput source="pair:label" fullWidth validate={[required()]} />
+        <TextInput source="pair:alternativeLabel" fullWidth />
         <SelectInput source="syreen:type" choices={concepts.projectTypes} fullWidth validate={[required()]} isRequired />
         <MarkdownInput source="pair:description" fullWidth validate={[required()]} isRequired />
         <ImageInput source="pair:depictedBy" accept="image/*">

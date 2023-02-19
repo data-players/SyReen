@@ -22,6 +22,7 @@ const projectConfig = {
   name: 'Projet |||| Projets',
   fields: {
     'pair:label': 'Titre',
+    'pair:alternativeLabel': 'Sous-titre',
     'pair:depictedBy': 'Image',
     'pair:description': 'Présentation',
     'dc:creator': 'Posté par',
