@@ -128,6 +128,22 @@ const theme = createTheme({
         paddingRight: 0,
       },
     },
+    RaTabbedShowLayout: {
+      content: {
+        [defaultTheme.breakpoints.down('xs')]: {
+          paddingLeft: 0,
+          paddingRight: 0
+        }
+      }
+    },
+    RaTabbedForm: {
+      content: {
+        [defaultTheme.breakpoints.down('xs')]: {
+          paddingLeft: 0,
+          paddingRight: 0
+        }
+      }
+    }
   },
 });
 

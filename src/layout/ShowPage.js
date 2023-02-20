@@ -22,12 +22,12 @@ const ShowPage = ({ title, defaultTitle, details, actions, children, ...rest }) 
               </Typography>
             </Grid>
             <Grid item xs={2} sm={4}>
-              <Box display="flex" justifyContent="flex-end" alignItems="flex-end" flexDirection={xs ? 'column' : 'row'}>
+              <Box display="flex" justifyContent="flex-end" alignItems="flex-end" flexDirection={xs ? 'column' : 'row'} flexWrap="wrap">
                 {actions}
               </Box>
             </Grid>
           </Grid>
-          { isOnFirstTab &&
+          { isOnFirstTab && showContext?.record?.["pair:depictedBy"] &&
             <IntegratedImageField source="pair:depictedBy" title="pair:label" />
           }
           <Box display={xs ? 'block' : 'flex'} pt={2} pb={2}>

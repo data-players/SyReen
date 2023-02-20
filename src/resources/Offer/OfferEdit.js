@@ -8,7 +8,7 @@ import ReturnToProjectButton from "../../commons/buttons/ReturnToProjectButton";
 
 const OfferEdit = (props) => (
   <EditBase {...props}>
-    <EditPage title={<Title />} actions={[<ReturnToProjectButton />, <ShowButton />]}>
+    <EditPage title={<Title />} actions={[<ReturnToProjectButton key="returnToProject" />, <ShowButton key="show" />]}>
       <OfferForm component="div" />
     </EditPage>
   </EditBase>

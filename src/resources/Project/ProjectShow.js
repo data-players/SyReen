@@ -13,9 +13,9 @@ import LocationField from '../../commons/fields/LocationField';
 import MainList from '../../commons/lists/MainList';
 import ProjectDetails from './ProjectDetails';
 import Title from '../Title';
-import AddOfferButton from "../../commons/buttons/AddOfferButton";
 import CardsList from "../../commons/lists/CardsList";
 import OfferCard from "../Offer/OfferCard";
+import AddOfferButton from "../../commons/buttons/AddOfferButton";
 
 const OffersList = () => {
   const recordContext = useRecordContext();
@@ -41,7 +41,7 @@ const ProjectShow = (props) => {
     <ShowBase {...props}>
       <ShowPage
         title={<Title />}
-        actions={<EditButton />}
+        actions={[<AddOfferButton key="addOffer" title="Ajouter une offre" />, <EditButton key="edit" />]}
         details={<ProjectDetails />}
       >
         <TabbedShowLayout>
@@ -61,7 +61,6 @@ const ProjectShow = (props) => {
             </MainList>
           </Tab>
           <Tab label="Offres">
-            <AddOfferButton />
             <OffersList />
           </Tab>
         </TabbedShowLayout>

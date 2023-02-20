@@ -13,7 +13,6 @@ import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageField } from '@semapps/field-components';
 import { DateTimeInput } from '@semapps/date-components';
 import frLocale from 'date-fns/locale/fr';
-import AddOfferButton from "../../commons/buttons/AddOfferButton";
 import LocationInput from "../../commons/inputs/LocationInput";
 import CardsList from "../../commons/lists/CardsList";
 import OfferCard from "../Offer/OfferCard";
@@ -77,7 +76,6 @@ const ProjectForm = (props) => {
       </FormTab>
       {isEditMode &&
         <FormTab label="Offres">
-          <AddOfferButton />
           <ReferenceManyField
             addLabel={false}
             reference="offers"

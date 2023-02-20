@@ -1,6 +1,5 @@
 import React from 'react';
 import { ShowBase } from 'react-admin';
-import { Box, makeStyles } from '@material-ui/core';
 import { useCheckAuthenticated } from '@semapps/auth-provider';
 import MarkdownField from '../../commons/fields/MarkdownField';
 import ContactField from '../../commons/fields/ContactField';
@@ -14,27 +13,18 @@ import OfferDetails from './OfferDetails';
 import Title from '../Title';
 import ReturnToProjectButton from "../../commons/buttons/ReturnToProjectButton";
 
-const useStyles = makeStyles(theme => ({
-  buttonContainer: {
-    display: 'flex'
-  },
-}));
-
 const OfferShow = (props) => {
-  const classes = useStyles();
   const { identity } = useCheckAuthenticated();
   if (!identity?.id) return null;
   return (
     <ShowBase {...props}>
       <ShowPage
         title={<Title />}
-        actions={
-          <Box className={classes.buttonContainer}>
-            <ReturnToProjectButton />
-            <ShareButton />
-            <EditButton />
-          </Box>
-        }
+        actions={[
+          <ReturnToProjectButton />,
+          <ShareButton />,
+          <EditButton />,
+        ]}
         details={<OfferDetails />}
       >
         <MainList Label={BodyLabel}>
