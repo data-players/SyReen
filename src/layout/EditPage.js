@@ -8,7 +8,7 @@ const NoDeleteToolbar = (props) => (
   </Toolbar>
 );
 
-const EditPage = ({ undoable, mutationMode, title, actions, className, hasDelete = true, children, ...rest }) => {
+const EditPage = ({ undoable, mutationMode, title, actions, className, hasDelete = true, customToolbar=undefined, children, ...rest }) => {
   const {
     basePath,
     defaultTitle,
@@ -52,7 +52,7 @@ const EditPage = ({ undoable, mutationMode, title, actions, className, hasDelete
             version,
             redirect,
             component: 'div',
-            toolbar: hasDelete ? undefined : <NoDeleteToolbar />,
+            toolbar: hasDelete ? customToolbar : <NoDeleteToolbar />,
           })}
         </Box>
       </Card>
