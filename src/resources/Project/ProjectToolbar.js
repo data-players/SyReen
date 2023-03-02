@@ -1,5 +1,5 @@
 import React from 'react';
-import { DeleteButton, SaveButton, Toolbar as RaToolbar, useNotify, useRecordContext, useRedirect } from 'react-admin';
+import { DeleteWithConfirmButton, SaveButton, Toolbar as RaToolbar, useNotify, useDataProvider, useRecordContext, useRedirect } from 'react-admin';
 import { Box, makeStyles, useMediaQuery } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
@@ -45,15 +45,28 @@ const useStyles = makeStyles(theme => ({
 const ProjectToolbar = (props) => {
   const classes = useStyles();
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
+  const dataProvider = useDataProvider();
   const recordContext = useRecordContext();
   const notify = useNotify();
   const redirect = useRedirect();
-  const onSuccess = ({data}) => {
+  const onSaveSuccess = ({data}) => {
     notify('Elément enregistré', 'success', null, true);
     redirect('create', '/offers', null, {}, { record: {
       'pair:partOf': recordContext.id || data.id,
       'pair:hasLocation': recordContext['pair:hasLocation'] || data['pair:hasLocation']
     }});
+  };
+  const onDeleteSuccess = ({data}) => {
+    dataProvider
+      .getList('offers', { filter: {'pair:partOf':recordContext.id} })
+      .then(({ data:offers }) => {
+        dataProvider.deleteMany('offers', {ids: offers.map(offer => offer.id)})
+        notify('Projet supprimé', 'success', null, true);
+      })
+      .catch(e => {
+        notify('Erreur lors de la suppression', 'error', null, true);
+      })
+      redirect('list', '/projects');
   };
   return (
     <Box className={classes.root}>
@@ -62,9 +75,14 @@ const ProjectToolbar = (props) => {
         <SaveButton
           className={classes.saveAndAddButton }
           label={xs ? "+offre" : "Enregistrer et créer une offre"}
-          onSuccess={onSuccess}
+          onSuccess={onSaveSuccess}
           disabled={props.pristine} />
-        <DeleteButton className={classes.deleteButton } />
+        <DeleteWithConfirmButton
+          className={classes.deleteButton}
+          onSuccess={onDeleteSuccess}
+          confirmTitle={`Suppression du projet "${recordContext['pair:label']}"`}
+          confirmContent="Etes vous sûr de vouloir supprimer le projet et toutes ces offres ?"
+        />
       </RaToolbar>
     </Box>
   );
