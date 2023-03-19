@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 const CardsList = ({ CardComponent, link, setLoaded }) => {
   const classes = useStyles();
   const { ids, data, loading, loaded } = useListContext();
-  if (loaded) {
+  if (loaded && setLoaded) {
     setLoaded();
   }
   return loading ? (
