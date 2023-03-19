@@ -54,9 +54,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CardsList = ({ CardComponent, link }) => {
+const CardsList = ({ CardComponent, link, setLoaded }) => {
   const classes = useStyles();
-  const { ids, data, loading } = useListContext();
+  const { ids, data, loading, loaded } = useListContext();
+  if (loaded) {
+    setLoaded();
+  }
   return loading ? (
     <Box display="flex" justifyContent="center" alignItems="center">
       <CircularProgress color="secondary" />
