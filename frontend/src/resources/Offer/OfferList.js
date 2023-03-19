@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Box, Typography, Container, Card as MuiCard, makeStyles } from '@material-ui/core';
 import { List, ReferenceInput, SelectInput, TextInput, useGetIdentity } from 'react-admin';
 import { useCheckAuthenticated } from '@semapps/auth-provider';
@@ -100,12 +100,27 @@ const OfferList = () => {
     }
   }, [identity]);
 
-  const offerFilters = [
-    <TextInput source="q" label="Rechercher des annonces" alwaysOn />,
-    <ReferenceInput source="userId" label="User" reference="users" allowEmpty>
-      <SelectInput optionText="name" />
-    </ReferenceInput>
-  ];
+  const [loaded, setLoaded] = useState(false);
+  const offerFilters = useMemo(() => {
+    if (loaded) {
+      return [
+        <TextInput source="q" label="Rechercher des annonces" alwaysOn={true} />,
+        <ReferenceInput source="userId" label="User" reference="users" allowEmpty>
+          <SelectInput optionText="name" />
+        </ReferenceInput>
+      ];
+    } else {
+      return [];
+    }
+  }, [loaded]);
+  
+  const Empty = () => (
+    <Box textAlign="center" mt={5}>
+        <Typography paragraph>
+          Aucune offre disponible actuellement.
+        </Typography>
+    </Box>
+);
 
   return (
     <Container maxWidth="md" className={classes.root2}>
@@ -127,8 +142,9 @@ const OfferList = () => {
           filter={{ sparqlWhere }}
           actions={false}
           className={classes.list}
+          empty={<Empty />}
         >
-          <CardsList CardComponent={OfferCard} link="show" />
+          <CardsList CardComponent={OfferCard} setLoaded={() => setLoaded(true)} />
         </List>
       }
     </Container>
