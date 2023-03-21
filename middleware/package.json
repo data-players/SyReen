@@ -1,5 +1,5 @@
 {
-  "name": "archipelago-middleware",
+  "name": "syreen-middleware",
   "version": "1.0.0",
   "keywords": [
     "semapps",
@@ -12,10 +12,10 @@
     "unlink-semapps-packages": "yarn unlink @semapps/activitypub @semapps/auth @semapps/backup @semapps/core @semapps/importer @semapps/inference @semapps/jsonld @semapps/ldp @semapps/middlewares @semapps/mime-types @semapps/pod @semapps/signature @semapps/sparql-endpoint @semapps/sync @semapps/triplestore @semapps/void @semapps/webacl @semapps/webfinger @semapps/webhooks @semapps/webid"
   },
   "dependencies": {
-    "@semapps/auth": "0.4.4",
-    "@semapps/backup": "0.4.4",
-    "@semapps/core": "0.4.4",
-    "@semapps/sync": "0.4.4",
+    "@semapps/auth": "0.5.0-alpha.0",
+    "@semapps/backup": "0.5.0-alpha.0",
+    "@semapps/core": "0.5.0-alpha.0",
+    "@semapps/sync": "0.5.0-alpha.0",
     "dotenv-flow": "^3.2.0",
     "ioredis": "^4.17.3",
     "moleculer": "^0.14.18",
