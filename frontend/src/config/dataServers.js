@@ -16,6 +16,16 @@ const dataServers = {
     },
     uploadsContainer: '/files',
   },
+  aggregator: {
+    baseUrl: 'https://data.syreen.fr',
+    name: 'Aggregator',
+    sparqlEndpoint: 'https://data.syreen.fr/sparql',
+    containers: {
+      aggregator: {
+        'mp:Offer': ['/offers'],
+      }
+    }
+  }
 };
 
 export default dataServers;
