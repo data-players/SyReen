@@ -23,6 +23,7 @@ const dataServers = {
     containers: {
       aggregator: {
         'mp:Offer': ['/offers'],
+        'pair:Project': ['/projects'],
       }
     }
   }
