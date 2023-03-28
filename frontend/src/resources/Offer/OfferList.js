@@ -4,6 +4,7 @@ import { List, ReferenceInput, SelectInput, TextInput, useGetIdentity } from 're
 import { useCheckAuthenticated } from '@semapps/auth-provider';
 import CardsList from '../../commons/lists/CardsList';
 import OfferCard from './OfferCard';
+import OfferListEmpty from './OfferListEmpty';
 
 const useStyles = makeStyles((theme) => ({
   root2: {
@@ -113,14 +114,6 @@ const OfferList = () => {
       return [];
     }
   }, [loaded]);
-  
-  const Empty = () => (
-    <Box textAlign="center" mt={5}>
-        <Typography paragraph>
-          Aucune offre disponible actuellement.
-        </Typography>
-    </Box>
-);
 
   return (
     <Container maxWidth="md" className={classes.root2}>
@@ -142,7 +135,7 @@ const OfferList = () => {
           filter={{ sparqlWhere }}
           actions={false}
           className={classes.list}
-          empty={<Empty />}
+          empty={<OfferListEmpty />}
         >
           <CardsList CardComponent={OfferCard} setLoaded={() => setLoaded(true)} />
         </List>
