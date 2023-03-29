@@ -1,5 +1,5 @@
-import React, { useCallback, useState } from 'react';
-import { useShowContext, useNotify, ListBase } from 'react-admin';
+import React, { useCallback, useMemo, useState } from 'react';
+import { useShowContext, useNotify, ListBase, useAuthProvider } from 'react-admin';
 import {
   Button,
   Dialog,
@@ -9,7 +9,7 @@ import {
   makeStyles,
   useMediaQuery,
 } from '@material-ui/core';
-import { useCheckAuthenticated } from '@semapps/auth-provider';
+import { useCheckAuthenticated, useAgents } from '@semapps/auth-provider';
 import ContactsShareList from './ContactsShareList';
 import { useCollection, useOutbox, ACTIVITY_TYPES } from '@semapps/activitypub-components';
 
@@ -59,6 +59,16 @@ const ShareDialog = ({ close, resourceUri }) => {
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
   const outbox = useOutbox();
   const notify = useNotify();
+  const [pendingPublicSettingEdit, setPendingPublicSettingEdit] = useState(false);
+  const { agents, addPermission, removePermission } = useAgents(resourceUri);
+  
+  const isPublic = useMemo(() => agents["foaf:Agent"]?.permissions.includes('acl:Read'), [agents]);
+  
+  console.log('actors', agents["foaf:Agent"]?.permissions);
+  
+  const nbInvitations = useMemo(() => 
+    Object.keys(newInvitations).length + (pendingPublicSettingEdit ? 1 : 0)
+  , [newInvitations, pendingPublicSettingEdit]);
 
   const addInvitation = useCallback(
     (actorUri, rights) => {
@@ -129,13 +139,33 @@ const ShareDialog = ({ close, resourceUri }) => {
       });
     }
     
-    const invitationMessage = (Object.keys(newInvitations).length === 1)
+    switch (pendingPublicSettingEdit) {
+      case 'add':
+      console.log('pendingPublicSettingEdit', pendingPublicSettingEdit);
+      addPermission('foaf:Agent', 'acl:agentClass', 'acl:Read');
+      break;
+      case 'remove':
+      console.log('pendingPublicSettingEdit', pendingPublicSettingEdit);
+      removePermission('foaf:Agent', 'acl:agentClass', 'acl:Read');
+      break;
+      default:
+    }
+    
+    const invitationMessage = (nbInvitations === 1)
       ? '1 invitation envoyée'
-      : `${Object.keys(newInvitations).length} invitations envoyées`;
+      : `${nbInvitations} invitations envoyées`;
     notify(invitationMessage);
 
     close();
-  }, [outbox, notify, newInvitations, isOrganizer, close, record, resourceUri, setSendingInvitation]);
+
+  }, [outbox, notify, newInvitations, isOrganizer, close, record, resourceUri, setSendingInvitation, nbInvitations, pendingPublicSettingEdit, addPermission, removePermission]);
+  
+  const editPublicSetting = useCallback(
+    ({action}) => {
+      setPendingPublicSettingEdit(action);
+    },
+    []
+  );
 
   if (!identity) return null;
 
@@ -152,15 +182,17 @@ const ShareDialog = ({ close, resourceUri }) => {
           <ContactsShareList
             addInvitation={addInvitation}
             removeInvitation={removeInvitation}
+            editPublicSetting={editPublicSetting}
             announces={announces}
             announcers={announcers}
             isOrganizer={isOrganizer}
+            isPublic={isPublic}
           />
         </ListBase>
       </DialogContent>
       <DialogActions className={classes.actions}>
         <Button variant="text" size="medium" onClick={close}>Fermer</Button>
-        {Object.keys(newInvitations).length > 0 && (
+        {nbInvitations > 0 && (
           <Button
             variant="contained"
             color="primary"
@@ -168,7 +200,7 @@ const ShareDialog = ({ close, resourceUri }) => {
             onClick={sendInvitations}
             disabled={sendingInvitation}
           >
-            {(Object.keys(newInvitations).length <= 1) ? "Envoyer l'invitation" : `Envoyer ${Object.keys(newInvitations).length} invitations`}
+            {(nbInvitations <= 1) ? "Envoyer l'invitation" : `Envoyer ${nbInvitations} invitations`}
           </Button>
         )}
       </DialogActions>
