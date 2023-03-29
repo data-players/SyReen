@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useMemo } from 'react';
 import { useListContext, linkToRecord, Link, DateField } from 'react-admin';
 import { Card, CardMedia, CardContent, makeStyles, Box, CircularProgress } from '@material-ui/core';
 
@@ -56,10 +56,11 @@ const useStyles = makeStyles((theme) => ({
 
 const CardsList = ({ CardComponent, link, setLoaded }) => {
   const classes = useStyles();
-  const { ids, data, loading, loaded } = useListContext();
+  const { data, loading, loaded } = useListContext();
   if (loaded && setLoaded) {
     setLoaded();
   }
+  const ids = useMemo(() => Object.values(data).map(d => d.id), [data]);
   return loading ? (
     <Box display="flex" justifyContent="center" alignItems="center">
       <CircularProgress color="secondary" />
