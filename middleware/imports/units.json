@@ -1,0 +1,26 @@
+[
+  {
+    "key": "ml",
+    "label": "ml"
+  },
+  {
+    "key": "u",
+    "label": "U"
+  },
+  {
+    "key": "m2",
+    "label": "m²"
+  },
+  {
+    "key": "m3",
+    "label": "m³"
+  },
+  {
+    "key": "kg",
+    "label": "kg"
+  },
+  {
+    "key": "l",
+    "label": "L"
+  }
+]
