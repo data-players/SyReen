@@ -11,6 +11,11 @@ module.exports = [
     readOnly: true
   },
   {
+    path: '/projects',
+    acceptedTypes: ['pair:Project'],
+    readOnly: true
+  },
+  {
     path: '/actors',
     acceptedTypes: [ACTOR_TYPES.APPLICATION],
     dereference: ['sec:publicKey', 'as:endpoints'],
