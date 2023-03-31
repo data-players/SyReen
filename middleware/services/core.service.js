@@ -14,6 +14,7 @@ module.exports = {
       password: CONFIG.JENA_PASSWORD,
       mainDataset: CONFIG.MAIN_DATASET,
     },
+    jsonContext: 'https://activitypods.org/context.json',
     containers,
     api: {
       port: CONFIG.PORT,
