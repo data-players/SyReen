@@ -1,6 +1,7 @@
 import React from 'react';
 import { List, makeStyles, Box, CircularProgress } from '@material-ui/core';
 import ContactItem from './ContactItem';
+import ContactPublic from './ContactPublic';
 import { useListContext } from 'react-admin';
 import Alert from '@material-ui/lab/Alert';
 
@@ -13,11 +14,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContactsShareList = ({ addInvitation, removeInvitation, announces, announcers, isOrganizer }) => {
+const ContactsShareList = ({ addInvitation, removeInvitation, editPublicSetting, announces, announcers, isOrganizer, isPublic }) => {
   const classes = useStyles();
   const { ids, data, loading, ...rest } = useListContext();
   return (
     <List dense className={classes.list}>
+      <ContactPublic
+        key="public"
+        editPublicSetting={editPublicSetting}
+        isPublic={isPublic}
+        {...rest}
+      />
       {ids.map((id, i) => (
         <ContactItem
           key={i}

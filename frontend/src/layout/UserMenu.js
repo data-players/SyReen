@@ -1,9 +1,11 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useEffect, useMemo, useCallback, useState } from 'react';
 import { Link, UserMenu as RaUserMenu, useGetIdentity } from 'react-admin';
 import { Box, MenuItem as MuiMenuItem, ListItemIcon, makeStyles } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';
 import GroupIcon from '@material-ui/icons/Group';
 import HomeIcon from '@material-ui/icons/Home';
+import { useCollection, useOutbox, ACTIVITY_TYPES } from '@semapps/activitypub-components';
+import { useDataServers } from '@semapps/semantic-data-provider';
 
 const useStyles = makeStyles((theme) => ({
   menuItem: {
@@ -63,6 +65,29 @@ const LoginMenu = forwardRef(({ onClick, label }, ref) => (
 const UserMenu = ({ logout, ...otherProps }) => {
   const classes = useStyles();
   const { identity } = useGetIdentity();
+
+  const [relayActorIsFollowing, setRelayActorIsFollowing] = useState(false);
+  const dataServers = useDataServers();
+  const collection = useCollection("followers");
+  const outbox = useOutbox();
+  const relayActorUrl = useMemo(() => dataServers?.aggregator?.baseUrl + '/actors/relay', [dataServers]);;
+
+  const follow = useCallback(() => {
+    if (!relayActorIsFollowing && collection.loaded && !collection.items.includes(relayActorUrl) && dataServers && outbox) {
+      outbox.post({
+        "type": "Offer",
+        "actor": outbox.owner,
+        "object": {
+          "type": ACTIVITY_TYPES.FOLLOW,
+          "object": outbox.owner
+        },
+        "to": relayActorUrl
+      });
+      setRelayActorIsFollowing(true);
+    }
+  }, [relayActorIsFollowing, collection.loaded, collection.items, relayActorUrl, dataServers, outbox, ]);
+  useEffect(() => {follow()}, [follow]);
+  
   return (
     <Box className={classes.userMenuContainer}>
       <RaUserMenu {...otherProps}>
