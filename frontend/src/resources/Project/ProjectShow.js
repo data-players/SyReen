@@ -49,7 +49,7 @@ const ProjectShow = (props) => {
             <MainList Label={BodyLabel}>
               <TextField source="syreen:alternativeLabel" />
               <MarkdownField source="syreen:description" addLabel={true} />
-              <LocationField source="pair:hasLocation" />
+              <LocationField source="syreen:hasLocation" />
               <DateField source="syreen:startDate" />
               <DateField source="syreen:endDate" />
               <ReferenceField reference="Actor" source="dc:creator" link={false}>

@@ -59,7 +59,7 @@ function AddLocationButton({ onChange }) {
           setShowDialog(false);
           // Update the inital form to target the newly created location
           // Updating the ReferenceInput value will force it to reload the available locations
-          form.change('pair:hasLocation', data.id);
+          form.change('syreen:hasLocation', data.id);
           onChange();
         },
         onFailure: ({ error }) => {

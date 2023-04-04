@@ -29,7 +29,7 @@ const OfferShow = (props) => {
       >
         <MainList Label={BodyLabel}>
           <MarkdownField source="syreen:description" addLabel={false} />
-          <LocationField source="pair:hasLocation" />
+          <LocationField source="syreen:hasLocation" />
           <ContactField label="Contacter le responsable" source="dc:creator" context="id" />
         </MainList>
       </ShowPage>

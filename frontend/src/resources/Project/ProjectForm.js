@@ -68,7 +68,7 @@ const ProjectForm = (props) => {
         <ImageInput source="syreen:depictedBy" accept="image/*">
           <ImageField source="src" />
         </ImageInput>
-        <LocationInput reference="Location" source="pair:hasLocation" fullWidth onChange={handleLocationChange} key={locationVersion} />
+        <LocationInput reference="Location" source="syreen:hasLocation" fullWidth onChange={handleLocationChange} key={locationVersion} />
         <MarkdownInput source="syreen:locationInformation" fullWidth />
         <DateTimeInput source="syreen:startDate" validate={[futureDate]} {...dateTimeInputProps} />
         <DateTimeInput source="syreen:endDate" validate={[futureDate]} {...dateTimeInputProps} />

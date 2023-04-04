@@ -53,7 +53,7 @@ const ProjectToolbar = (props) => {
     notify('Elément enregistré', 'success', null, true);
     redirect('create', '/offers', null, {}, { record: {
       'pair:partOf': recordContext.id || data.id,
-      'pair:hasLocation': recordContext['pair:hasLocation'] || data['pair:hasLocation']
+      'syreen:hasLocation': recordContext['syreen:hasLocation'] || data['syreen:hasLocation']
     }});
   };
   const onDeleteSuccess = ({data}) => {
