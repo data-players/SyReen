@@ -21,9 +21,9 @@ const OfferShow = (props) => {
       <ShowPage
         title={<Title />}
         actions={[
-          <ReturnToProjectButton />,
-          <ShareButton />,
-          <EditButton />,
+          <ReturnToProjectButton key="returnToProject"/>,
+          <ShareButton key="share" />,
+          <EditButton key="edit" />,
         ]}
         details={<OfferDetails />}
       >
