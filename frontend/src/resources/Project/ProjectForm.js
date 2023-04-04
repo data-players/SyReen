@@ -61,17 +61,17 @@ const ProjectForm = (props) => {
   return (
     <TabbedForm {...props} redirect="show" className={classes.root}>
       <FormTab label="Général">
-        <TextInput source="pair:label" fullWidth validate={[required()]} />
-        <TextInput source="pair:alternativeLabel" fullWidth />
+        <TextInput source="syreen:label" fullWidth validate={[required()]} />
+        <TextInput source="syreen:alternativeLabel" fullWidth />
         <ConceptInput reference="ProjectType" source="syreen:hasProjectType" validate={[required()]} isRequired fullWidth />
-        <MarkdownInput source="pair:description" fullWidth validate={[required()]} isRequired />
-        <ImageInput source="pair:depictedBy" accept="image/*">
+        <MarkdownInput source="syreen:description" fullWidth validate={[required()]} isRequired />
+        <ImageInput source="syreen:depictedBy" accept="image/*">
           <ImageField source="src" />
         </ImageInput>
         <LocationInput reference="Location" source="pair:hasLocation" fullWidth onChange={handleLocationChange} key={locationVersion} />
         <MarkdownInput source="syreen:locationInformation" fullWidth />
-        <DateTimeInput source="pair:startDate" validate={[futureDate]} {...dateTimeInputProps} />
-        <DateTimeInput source="pair:endDate" validate={[futureDate]} {...dateTimeInputProps} />
+        <DateTimeInput source="syreen:startDate" validate={[futureDate]} {...dateTimeInputProps} />
+        <DateTimeInput source="syreen:endDate" validate={[futureDate]} {...dateTimeInputProps} />
       </FormTab>
       {isEditMode &&
         <FormTab label="Offres">

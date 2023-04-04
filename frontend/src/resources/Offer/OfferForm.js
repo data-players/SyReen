@@ -13,10 +13,10 @@ import ConceptInput from "../../commons/inputs/ConceptInput";
 const OfferForm = (props) => {
   return (
     <SimpleForm {...props} redirect="show">
-      <TextInput source="pair:label" fullWidth validate={[required()]} />
+      <TextInput source="syreen:label" fullWidth validate={[required()]} />
       <ConceptInput reference="Stage" source="syreen:hasStage" validate={[required()]} isRequired fullWidth />
-      <MarkdownInput source="pair:description" fullWidth validate={[required()]} isRequired />
-      <CameraInput source="pair:depictedBy" />
+      <MarkdownInput source="syreen:description" fullWidth validate={[required()]} isRequired />
+      <CameraInput source="syreen:depictedBy" />
       <LocationInput reference="Location" source="pair:hasLocation" fullWidth />
       <MarkdownInput source="syreen:locationInformation" fullWidth />
       <NumberInput source="syreen:quantity" fullWidth validate={[required()]} isRequired />

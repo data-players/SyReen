@@ -80,7 +80,7 @@ const ProjectToolbar = (props) => {
         <DeleteWithConfirmButton
           className={classes.deleteButton}
           onSuccess={onDeleteSuccess}
-          confirmTitle={`Suppression du projet "${recordContext['pair:label']}"`}
+          confirmTitle={`Suppression du projet "${recordContext['syreen:label']}"`}
           confirmContent="Etes vous sûr de vouloir supprimer le projet et toutes ces offres ?"
         />
       </RaToolbar>

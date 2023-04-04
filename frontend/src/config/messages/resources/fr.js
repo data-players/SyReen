@@ -2,9 +2,9 @@
 const offerAndRequestConfig = {
   name: 'Annonce |||| Annonces',
   fields: {
-    'pair:label': 'Titre',
-    'pair:depictedBy': 'Image',
-    'pair:description': 'Présentation',
+    'syreen:label': 'Titre',
+    'syreen:depictedBy': 'Image',
+    'syreen:description': 'Présentation',
     'dc:creator': 'Posté par',
     'dc:created': 'Date',
     'mp:hasGeoCondition.pair:hasLocation': 'Localisation',
@@ -21,26 +21,26 @@ const offerAndRequestConfig = {
 const projectConfig = {
   name: 'Projet |||| Projets',
   fields: {
-    'pair:label': 'Titre',
-    'pair:alternativeLabel': 'Sous-titre',
-    'pair:depictedBy': 'Image',
-    'pair:description': 'Présentation',
+    'syreen:label': 'Titre',
+    'syreen:alternativeLabel': 'Sous-titre',
+    'syreen:depictedBy': 'Image',
+    'syreen:description': 'Présentation',
     'dc:creator': 'Posté par',
     'dc:created': 'Date',
     'pair:hasLocation': 'Localisation',
     'syreen:locationInformation': 'Complément d\'adresse',
     'syreen:hasProjectType': "Type de projet",
-    'pair:startDate': "Date de début prévisionnelle",    
-    'pair:endDate': "Date de fin prévisionnelle"
+    'syreen:startDate': "Date de début prévisionnelle",    
+    'syreen:endDate': "Date de fin prévisionnelle"
   },
 };
 
 const offerConfig = {
   name: 'Offre |||| Offres',
   fields: {
-    'pair:label': 'Titre',
-    'pair:depictedBy': 'Image',
-    'pair:description': 'Présentation',
+    'syreen:label': 'Titre',
+    'syreen:depictedBy': 'Image',
+    'syreen:description': 'Présentation',
     'dc:creator': 'Posté par',
     'dc:created': 'Date',
     'pair:hasLocation': 'Localisation',
