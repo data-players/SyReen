@@ -64,6 +64,10 @@ const dataModels = {
     types: ['syreen:Unit'],
     list: {},
   },
+  Category: {
+    types: ['syreen:Category'],
+    list: {},
+  },
 };
 
 export default dataModels;

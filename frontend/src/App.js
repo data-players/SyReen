@@ -63,6 +63,7 @@ const App = () => (
     <Resource name="ProjectType" />
     <Resource name="Stage" />
     <Resource name="Unit" />
+    <Resource name="Category" />
   </Admin>
 );
 

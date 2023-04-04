@@ -19,6 +19,7 @@ const OfferForm = (props) => {
       <CameraInput source="syreen:depictedBy" />
       <LocationInput reference="Location" source="syreen:hasLocation" fullWidth />
       <MarkdownInput source="syreen:locationInformation" fullWidth />
+      <ConceptInput reference="Category" source="syreen:hasCategory" validate={[required()]} isRequired fullWidth />
       <NumberInput source="syreen:quantity" fullWidth validate={[required()]} isRequired />
       <ConceptInput reference="Unit" source="syreen:hasUnit" validate={[required()]} isRequired fullWidth />
     </SimpleForm>

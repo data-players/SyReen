@@ -27,6 +27,7 @@ const dataServers = {
         'syreen:ProjectType': ['/types'],
         'syreen:Stage': ['/stages'],
         'syreen:Unit': ['/units'],
+        'syreen:Category': ['/categories'],
       }
     }
   }

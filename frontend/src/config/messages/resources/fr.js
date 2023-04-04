@@ -48,6 +48,7 @@ const offerConfig = {
     'syreen:hasStage': 'Phase',
     'syreen:quantity': "Quantité",
     'syreen:hasUnit': "Unité",
+    'syreen:hasCategory': "Categorie",
   },
 };
 

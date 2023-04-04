@@ -12,6 +12,7 @@ import MainList from '../../commons/lists/MainList';
 import OfferDetails from './OfferDetails';
 import Title from '../Title';
 import ReturnToProjectButton from "../../commons/buttons/ReturnToProjectButton";
+import ConceptField from '../../commons/fields/ConceptField';
 
 const OfferShow = (props) => {
   const { identity } = useCheckAuthenticated();
@@ -28,7 +29,8 @@ const OfferShow = (props) => {
         details={<OfferDetails />}
       >
         <MainList Label={BodyLabel}>
-          <MarkdownField source="syreen:description" addLabel={false} />
+          <ConceptField reference="Category" source="syreen:hasCategory" addLabel />
+          <MarkdownField source="syreen:description" addLabel />
           <LocationField source="syreen:hasLocation" />
           <ContactField label="Contacter le responsable" source="dc:creator" context="id" />
         </MainList>
