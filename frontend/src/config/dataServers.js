@@ -24,6 +24,9 @@ const dataServers = {
       aggregator: {
         'mp:Offer': ['/offers'],
         'pair:Project': ['/projects'],
+        'syreen:ProjectType': ['/types'],
+        'syreen:Stage': ['/stages'],
+        'syreen:Unit': ['/units'],
       }
     }
   }

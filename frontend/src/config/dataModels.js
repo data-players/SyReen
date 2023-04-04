@@ -49,6 +49,21 @@ const dataModels = {
       blankNodes: ['vcard:hasAddress/vcard:hasGeo'],
     },
   },
+
+  // Concepts :
+
+  ProjectType: {
+    types: ['syreen:ProjectType'],
+    list: {},
+  },
+  Stage: {
+    types: ['syreen:Stage'],
+    list: {},
+  },
+  Unit: {
+    types: ['syreen:Unit'],
+    list: {},
+  },
 };
 
 export default dataModels;

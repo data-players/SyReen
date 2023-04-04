@@ -29,7 +29,7 @@ const projectConfig = {
     'dc:created': 'Date',
     'pair:hasLocation': 'Localisation',
     'syreen:locationInformation': 'Complément d\'adresse',
-    'syreen:type': "Type de projet",
+    'syreen:hasProjectType': "Type de projet",
     'pair:startDate': "Date de début prévisionnelle",    
     'pair:endDate': "Date de fin prévisionnelle"
   },
@@ -45,9 +45,9 @@ const offerConfig = {
     'dc:created': 'Date',
     'pair:hasLocation': 'Localisation',
     'syreen:locationInformation': 'Complément d\'adresse',
-    'syreen:phase': 'Phase',
+    'syreen:hasStage': 'Phase',
     'syreen:quantity': "Quantité",
-    'syreen:unit': "Unité",
+    'syreen:hasUnit': "Unité",
   },
 };
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import { SelectField, DateField } from 'react-admin';
+import { DateField } from 'react-admin';
 import IconsList from '../../commons/lists/IconsList';
 import EventIcon from '@material-ui/icons/Event';
-import { concepts } from "./concepts";
+import ConceptField from '../../commons/fields/ConceptField';
 
 const ProjectDetails = (props) => {
   return (
@@ -13,7 +13,7 @@ const ProjectDetails = (props) => {
         options={{ year: 'numeric', month: 'long', day: 'numeric' }}
         icon={<EventIcon />}
       />
-      <SelectField source="syreen:type" choices={concepts.projectTypes} />
+      <ConceptField reference="ProjectType" source="syreen:hasProjectType" />
     </IconsList>
   );
 };

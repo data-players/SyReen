@@ -59,6 +59,10 @@ const App = () => (
     <Resource name="Actor" />
     <Resource name="Profile" create={ProfileCreate} show={ProfileShow} edit={ProfileEdit} list={ProfileList} />
     <Resource name="Location" create={LocationCreate} edit={LocationEdit} list={LocationList} />
+    {/* Concepts : */}
+    <Resource name="ProjectType" />
+    <Resource name="Stage" />
+    <Resource name="Unit" />
   </Admin>
 );
 
