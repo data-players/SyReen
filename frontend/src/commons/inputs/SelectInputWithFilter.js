@@ -16,7 +16,10 @@ const SelectInputWithFilter = (props) => {
   const listContext = useListContext();
   const form = useForm();
   const formState = useFormState();
-  const choices = Object.values(listContext.data).filter(choice => filterIds.includes(choice.id));
+  let choices = Object.values(listContext.data).filter(choice => filterIds.includes(choice.id));
+  if (choices.length === 0) {
+    choices = props.choices;
+  }
   if (!choices.find(choice => choice.id === formState.values['syreen:hasUnit']) ) {
     form.change('syreen:hasUnit', undefined);
   }
@@ -25,7 +28,7 @@ const SelectInputWithFilter = (props) => {
     <SelectInput
       optionText="syreen:label"
       {...props}
-      choices={choices.length > 0 ? choices : props.choices}
+      choices={choices}
     />
   );
 }
