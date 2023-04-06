@@ -46,11 +46,28 @@ const OfferForm = (props) => {
         <TextInput source="syreen:alternativeLabel" fullWidth />
         <MarkdownInput source="syreen:description" fullWidth />
         <CameraInput source="syreen:depictedBy" />
+        <ConceptInput
+          reference="Category"
+          source="syreen:hasCategory"
+          validate={[required()]} isRequired
+          fullWidth
+          autocomplete={true}
+          sort={{field:"syreen:label", order:"ASC"}}
+        />
         <NumberInput source="syreen:quantity" fullWidth validate={[required()]} isRequired />
-        <ConceptInput reference="Unit" source="syreen:hasUnit" validate={[required()]} isRequired fullWidth />
+        <FormDataConsumer>
+          {({ formData, ...rest }) => 
+            <ConceptInput
+              reference="Unit"
+              source="syreen:hasUnit"
+              validate={[required()]} isRequired
+              fullWidth
+              conditionalfilter={{resource: 'Category', id:formData['syreen:hasCategory']}}
+            />
+          }
+        </FormDataConsumer>
         <ConceptInput reference="Stage" source="syreen:hasStage" validate={[required()]} isRequired fullWidth />
         <DateTimeInput source="syreen:startDate" validate={[futureDate]} {...dateTimeInputProps} />
-        <ConceptInput reference="Category" source="syreen:hasCategory" validate={[required()]} isRequired fullWidth sort={{field:"syreen:label", order:"ASC"}}/>
         <NumberInput source="syreen:sellingPrice" fullWidth />
         <LocationInput reference="Location" source="syreen:hasLocation" fullWidth />
         <MarkdownInput source="syreen:locationInformation" fullWidth />
