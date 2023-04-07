@@ -57,14 +57,14 @@ const offerConfig = {
     'syreen:interestPercentage': "Intérêt (%)",
     'syreen:performancePercentage': "Performance (%)",
     'syreen:marketValue': "Valeur sur le marché",
-    'syreen:marketValuePublication': "Publier cette valeur",
+    'syreen:publishMarketValue': "Publier cette valeur",
     'syreen:hourlyPrice': "Taux horaire (€)",
     'syreen:dismantlingHours': "Nombre d'heures de démontage",
     'syreen:collectionHours': "Nombre d'heures de collecte",
     'syreen:refurbishmentAndSaleHours': "Nombre d'heures de reconditionnement/vente",
     'syreen:additionalCosts': "Frais annexe pour le lot (Transport/Consommable) (€)",
     'syreen:costPrice': "Coût de revient",
-    'syreen:costPricePublication': "Publier cette valeur",
+    'syreen:publishCostPrice': "Publier cette valeur",
   },
 };
 

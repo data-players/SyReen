@@ -96,7 +96,7 @@ const OfferForm = (props) => {
               );
             }}
         </FormDataConsumer>
-        <BooleanInput source="syreen:marketValuePublication" className={classes.publication} fullWidth />
+        <BooleanInput source="syreen:publishMarketValue" className={classes.publication} fullWidth />
       </FormTab>
       <FormTab label="Coût de revient" className={classes.tab}>
         <NumberInput source="syreen:hourlyPrice" fullWidth />
@@ -124,7 +124,7 @@ const OfferForm = (props) => {
               );
             }}
         </FormDataConsumer>
-        <BooleanInput source="syreen:costPricePublication" className={classes.publication} fullWidth />
+        <BooleanInput source="syreen:publishCostPrice" className={classes.publication} fullWidth />
       </FormTab>
     </TabbedForm>
   );
