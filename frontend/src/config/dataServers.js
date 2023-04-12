@@ -7,9 +7,8 @@ const dataServers = {
     sparqlEndpoint: null,
     containers: {
       pod: {
-        'mp:Offer': ['/offers'],
-//      'mp:Request': ['/requests'],
-        'pair:Project': ['/projects'],
+        'syreen:Offer': ['/syreen/offers'],
+        'syreen:Project': ['/syreen/projects'],
         'vcard:Location': ['/locations'],
         'vcard:Individual': ['/profiles'],
       },
@@ -22,8 +21,8 @@ const dataServers = {
     sparqlEndpoint: 'https://data.syreen.fr/sparql',
     containers: {
       aggregator: {
-        'mp:Offer': ['/offers'],
-        'pair:Project': ['/projects'],
+        'syreen:Offer': ['/offers'],
+        'syreen:Project': ['/projects'],
         'syreen:ProjectType': ['/types'],
         'syreen:Stage': ['/stages'],
         'syreen:Unit': ['/units'],

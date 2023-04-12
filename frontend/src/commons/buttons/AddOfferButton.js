@@ -26,7 +26,7 @@ const AddOfferButton = ({ linkType }) => {
             pathname: "/offers/create",
             state: { 
               record: {
-                'pair:partOf': recordContext.id,
+                'syreen:partOf': recordContext.id,
                 'syreen:hasLocation': recordContext['syreen:hasLocation']
               }
             },

@@ -25,7 +25,7 @@ const OffersList = () => {
         <ReferenceManyField
           addLabel={false}
           reference="offers"
-          target="pair:partOf"
+          target="syreen:partOf"
         >
           <CardsList CardComponent={OfferCard} link="show" />
         </ReferenceManyField>

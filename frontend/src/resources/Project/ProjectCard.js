@@ -3,7 +3,6 @@ import { DateField, SelectField, TextField } from 'react-admin';
 import { makeStyles, Box } from '@material-ui/core';
 import { ReferenceField } from '@semapps/field-components';
 import EventIcon from '@material-ui/icons/Event';
-import { resourceTypes, types } from '../../config/constants';
 import Chip from '../../commons/Chip';
 import SyncIcon from '@material-ui/icons/Sync';
 import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
