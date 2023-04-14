@@ -53,8 +53,8 @@ const useStyles = makeStyles((theme) => ({
 
 const OfferList = () => {
   const classes = useStyles();
-  const { identity } = useGetIdentity();
-
+  const { loading, identity } = useGetIdentity();
+  
   const sparqlWhere = useMemo(() => {
     if (! identity?.id) {
        return null;
@@ -123,19 +123,21 @@ const OfferList = () => {
           </Box>
         </MuiCard>
       </Box>
-      <List
-        resource="offers"
-        basePath="/offers"
-        perPage={1000}
-        sort={{ field: 'dc:created', order: 'DESC' }}
-        filters={offerFilters}
-        filter={{ sparqlWhere }}
-        actions={false}
-        className={classes.list}
-        empty={<OfferListEmpty />}
-      >
-        <CardsList CardComponent={OfferCard} setLoaded={() => setLoaded(true)} />
-      </List>
+      { !loading && 
+        <List
+          resource="offers"
+          basePath="/offers"
+          perPage={1000}
+          sort={{ field: 'dc:created', order: 'DESC' }}
+          filters={offerFilters}
+          filter={{ sparqlWhere }}
+          actions={false}
+          className={classes.list}
+          empty={<OfferListEmpty />}
+        >
+          <CardsList CardComponent={OfferCard} setLoaded={() => setLoaded(true)} />
+        </List>
+      }
     </Container>
   );
 };
