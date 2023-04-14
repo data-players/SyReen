@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Box, Typography, Container, Card as MuiCard, makeStyles } from '@material-ui/core';
 import { List, ReferenceInput, SelectInput, TextInput, useGetIdentity } from 'react-admin';
-import { useCheckAuthenticated } from '@semapps/auth-provider';
 import CardsList from '../../commons/lists/CardsList';
 import OfferCard from './OfferCard';
 import OfferListEmpty from './OfferListEmpty';
@@ -54,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
 
 const OfferList = () => {
   const classes = useStyles();
-  useCheckAuthenticated();
   const { identity } = useGetIdentity();
 
   const sparqlWhere = useMemo(() => {
@@ -125,21 +123,19 @@ const OfferList = () => {
           </Box>
         </MuiCard>
       </Box>
-      {identity?.id &&
-        <List
-          resource="offers"
-          basePath="/offers"
-          perPage={1000}
-          sort={{ field: 'dc:created', order: 'DESC' }}
-          filters={offerFilters}
-          filter={{ sparqlWhere }}
-          actions={false}
-          className={classes.list}
-          empty={<OfferListEmpty />}
-        >
-          <CardsList CardComponent={OfferCard} setLoaded={() => setLoaded(true)} />
-        </List>
-      }
+      <List
+        resource="offers"
+        basePath="/offers"
+        perPage={1000}
+        sort={{ field: 'dc:created', order: 'DESC' }}
+        filters={offerFilters}
+        filter={{ sparqlWhere }}
+        actions={false}
+        className={classes.list}
+        empty={<OfferListEmpty />}
+      >
+        <CardsList CardComponent={OfferCard} setLoaded={() => setLoaded(true)} />
+      </List>
     </Container>
   );
 };

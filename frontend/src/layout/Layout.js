@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Notification } from 'react-admin';
+import { Link, Notification, useGetIdentity } from 'react-admin';
 import { useLocation } from 'react-router-dom';
 import { Box, ThemeProvider, makeStyles } from '@material-ui/core';
 import AppBar from './AppBar';
@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Layout = ({ logout, theme, children, title }) => {
+  const { identity } = useGetIdentity();
   const classes = useStyles();
   const [navigationValue, setNavigationValue] = React.useState(0);
   const {pathname} = useLocation();
@@ -58,10 +59,10 @@ const Layout = ({ logout, theme, children, title }) => {
         showLabels
         className={classes.bottomNavigation}
       >
-        <BottomNavigationAction label="Accueil" icon={<HomeIcon />} component={Link} to="/" />
-        <BottomNavigationAction label="Mes projets" icon={<WorkIcon />} component={Link} to="/projects" />
-        <BottomNavigationAction label="Mon réseau" icon={<GroupIcon />} component={Link} to="/Profile" />
-        <BottomNavigationAction label="Mes alertes" icon={<NotificationsIcon />} component={Link} to="/alerts" />
+        <BottomNavigationAction label="Accueil" icon={<HomeIcon />} component={Link} to="/offers" />
+        { identity?.id && <BottomNavigationAction label="Mes projets" icon={<WorkIcon />} component={Link} to="/projects" />}
+        { identity?.id && <BottomNavigationAction label="Mon réseau" icon={<GroupIcon />} component={Link} to="/Profile" />}
+        { identity?.id && <BottomNavigationAction label="Mes alertes" icon={<NotificationsIcon />} component={Link} to="/alerts" />}
       </BottomNavigation>
     </ThemeProvider>
   );

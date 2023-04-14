@@ -1,6 +1,5 @@
 import React from 'react';
 import { ShowBase, ShowController, NumberField, TextField } from 'react-admin';
-import { useCheckAuthenticated } from '@semapps/auth-provider';
 import MarkdownField from '../../commons/fields/MarkdownField';
 import ContactField from '../../commons/fields/ContactField';
 import ShowPage from '../../layout/ShowPage';
@@ -15,8 +14,6 @@ import ReturnToProjectButton from "../../commons/buttons/ReturnToProjectButton";
 import ConceptField from '../../commons/fields/ConceptField';
 
 const OfferShow = (props) => {
-  const { identity } = useCheckAuthenticated();
-  if (!identity?.id) return null;
   return (
     <ShowController {...props}>
       {controllerProps => 

@@ -1,7 +1,6 @@
 import React from 'react';
-import { ShowBase, ReferenceManyField, Tab, TabbedShowLayout, TextField, useRecordContext } from 'react-admin';
+import { ShowBase, ReferenceManyField, Tab, TabbedShowLayout, TextField, useRecordContext, useGetIdentity } from 'react-admin';
 import { ReferenceField } from '@semapps/field-components';
-import { useCheckAuthenticated } from '@semapps/auth-provider';
 import MarkdownField from '../../commons/fields/MarkdownField';
 import ContactField from '../../commons/fields/ContactField';
 import ShowPage from '../../layout/ShowPage';
@@ -35,13 +34,16 @@ const OffersList = () => {
 }
 
 const ProjectShow = (props) => {
-  const { identity } = useCheckAuthenticated();
-  if (!identity?.id) return null;
+  const { identity } = useGetIdentity();
   return (
     <ShowBase {...props}>
       <ShowPage
         title={<Title />}
-        actions={[<AddOfferButton key="addOffer" title="Ajouter une offre" />, <EditButton key="edit" />]}
+        actions={
+          identity?.id
+            ? [<AddOfferButton key="addOffer" title="Ajouter une offre" />, <EditButton key="edit" />]
+            : null
+        }
         details={<ProjectDetails />}
       >
         <TabbedShowLayout>
