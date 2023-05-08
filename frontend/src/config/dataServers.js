@@ -16,19 +16,7 @@ const dataServers = {
     uploadsContainer: '/files',
   },
   aggregator: {
-    baseUrl: 'https://data.syreen.fr',
-    name: 'Aggregator',
-    sparqlEndpoint: 'https://data.syreen.fr/sparql',
-    containers: {
-      aggregator: {
-        'syreen:Offer': ['/offers'],
-        'syreen:Project': ['/projects'],
-        'syreen:ProjectType': ['/types'],
-        'syreen:Stage': ['/stages'],
-        'syreen:Unit': ['/units'],
-        'syreen:Category': ['/categories'],
-      }
-    },
+    baseUrl: process.env.REACT_APP_AGGREGATOR_BASE_URL,
     noProxy: true // Never fetch with HTTP signature as it is not supported, and all data are public
   }
 };
