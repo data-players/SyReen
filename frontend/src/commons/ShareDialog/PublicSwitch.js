@@ -5,11 +5,7 @@ import PublicIcon from '@material-ui/icons/Public';
 const useStyles = makeStyles((theme) => ({
   listItem: {
     paddingLeft: 0,
-    paddingRight: 0,
-    paddingTop: 12,
-    paddingBottom: 12,
-    marginBottom: 4,
-    borderBottom: '1px solid grey'
+    paddingRight: 0
   },
   primaryText: {
     width: '30%',
@@ -32,20 +28,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContactPublic = ({ record, editPublicSetting, isPublic }) => {
+const PublicSwitch = ({ pendingPublicState, setPendingPublicState }) => {
   const classes = useStyles();
 
-  const [viewChecked, setViewChecked] = useState(isPublic);
-
   const switchView = useCallback(() => {
-    if (!viewChecked) {
-      setViewChecked(true);
-      editPublicSetting({action:'add'});
+    if (!pendingPublicState) {
+      setPendingPublicState(true);
     } else {
-      setViewChecked(false);
-      editPublicSetting({action:'remove'});
+      setPendingPublicState(false);
     }
-  }, [viewChecked, setViewChecked, editPublicSetting]);
+  }, [pendingPublicState, setPendingPublicState]);
 
   return (
     <ListItem className={classes.listItem}>
@@ -56,11 +48,12 @@ const ContactPublic = ({ record, editPublicSetting, isPublic }) => {
       </ListItemAvatar>
       <ListItemText
         className={classes.primaryText}
-        primary="Rendre l'offre publique"
+        primary="Tout le monde"
       />
       <ListItemText
         className={classes.secondaryText}
-        secondary={<Switch size="small" checked={viewChecked} onChange={switchView} />}
+        primary="Voir l'annonce"
+        secondary={<Switch size="small" checked={pendingPublicState} onChange={switchView} />}
       />
       <ListItemText
         className={classes.secondaryText}
@@ -69,4 +62,4 @@ const ContactPublic = ({ record, editPublicSetting, isPublic }) => {
   );
 };
 
-export default ContactPublic;
+export default PublicSwitch;

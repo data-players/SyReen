@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, makeStyles, Box, CircularProgress } from '@material-ui/core';
 import ContactItem from './ContactItem';
-import ContactPublic from './ContactPublic';
+import PublicSwitch from './PublicSwitch';
 import { useListContext } from 'react-admin';
 import Alert from '@material-ui/lab/Alert';
 
@@ -14,15 +14,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContactsShareList = ({ addInvitation, removeInvitation, editPublicSetting, announces, announcers, isOrganizer, isPublic }) => {
+const ContactsShareList = ({ addInvitation, removeInvitation, announces, announcers, isOrganizer, pendingPublicState, setPendingPublicState }) => {
   const classes = useStyles();
   const { ids, data, loading, ...rest } = useListContext();
   return (
     <List dense className={classes.list}>
-      <ContactPublic
+      <PublicSwitch
         key="public"
-        editPublicSetting={editPublicSetting}
-        isPublic={isPublic}
+        pendingPublicState={pendingPublicState}
+        setPendingPublicState={setPendingPublicState}
         {...rest}
       />
       {ids.map((id, i) => (

@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo, useState } from 'react';
-import { useShowContext, useNotify, ListBase, useAuthProvider } from 'react-admin';
+import React, { useCallback, useMemo, useState, useEffect } from 'react';
+import { useShowContext, useNotify, ListBase } from 'react-admin';
 import {
   Button,
   Dialog,
@@ -59,16 +59,17 @@ const ShareDialog = ({ close, resourceUri }) => {
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
   const outbox = useOutbox();
   const notify = useNotify();
-  const [pendingPublicSettingEdit, setPendingPublicSettingEdit] = useState(false);
+  const [pendingPublicState, setPendingPublicState] = useState(false);
   const { agents, addPermission, removePermission } = useAgents(resourceUri);
-  
   const isPublic = useMemo(() => agents["foaf:Agent"]?.permissions.includes('acl:Read'), [agents]);
+
+  useEffect(() => {
+    setPendingPublicState(isPublic);
+  }, [isPublic, setPendingPublicState]);
   
-  console.log('actors', agents["foaf:Agent"]?.permissions);
-  
-  const nbInvitations = useMemo(() => 
-    Object.keys(newInvitations).length + (pendingPublicSettingEdit ? 1 : 0)
-  , [newInvitations, pendingPublicSettingEdit]);
+  const nbInvitations = useMemo(() =>
+    Object.keys(newInvitations).length + (pendingPublicState !== isPublic ? 1 : 0)
+  , [newInvitations, pendingPublicState, isPublic]);
 
   const addInvitation = useCallback(
     (actorUri, rights) => {
@@ -139,16 +140,10 @@ const ShareDialog = ({ close, resourceUri }) => {
       });
     }
     
-    switch (pendingPublicSettingEdit) {
-      case 'add':
-      console.log('pendingPublicSettingEdit', pendingPublicSettingEdit);
+    if (pendingPublicState === true && isPublic === false) {
       addPermission('foaf:Agent', 'acl:agentClass', 'acl:Read');
-      break;
-      case 'remove':
-      console.log('pendingPublicSettingEdit', pendingPublicSettingEdit);
+    } else if (pendingPublicState === false && isPublic === true) {
       removePermission('foaf:Agent', 'acl:agentClass', 'acl:Read');
-      break;
-      default:
     }
     
     const invitationMessage = (nbInvitations === 1)
@@ -158,15 +153,8 @@ const ShareDialog = ({ close, resourceUri }) => {
 
     close();
 
-  }, [outbox, notify, newInvitations, isOrganizer, close, record, resourceUri, setSendingInvitation, nbInvitations, pendingPublicSettingEdit, addPermission, removePermission]);
+  }, [outbox, notify, newInvitations, isOrganizer, close, record, resourceUri, setSendingInvitation, nbInvitations, pendingPublicState, isPublic, addPermission, removePermission]);
   
-  const editPublicSetting = useCallback(
-    ({action}) => {
-      setPendingPublicSettingEdit(action);
-    },
-    []
-  );
-
   if (!identity) return null;
 
   return (
@@ -182,11 +170,11 @@ const ShareDialog = ({ close, resourceUri }) => {
           <ContactsShareList
             addInvitation={addInvitation}
             removeInvitation={removeInvitation}
-            editPublicSetting={editPublicSetting}
             announces={announces}
             announcers={announcers}
             isOrganizer={isOrganizer}
-            isPublic={isPublic}
+            pendingPublicState={pendingPublicState}
+            setPendingPublicState={setPendingPublicState}
           />
         </ListBase>
       </DialogContent>

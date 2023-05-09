@@ -17,6 +17,18 @@ const dataServers = {
   },
   aggregator: {
     baseUrl: process.env.REACT_APP_AGGREGATOR_BASE_URL,
+    name: 'Aggregator',
+    sparqlEndpoint: process.env.REACT_APP_AGGREGATOR_BASE_URL + '/sparql',
+    containers: {
+      aggregator: {
+        'syreen:Offer': ['/offers'],
+        'syreen:Project': ['/projects'],
+        'syreen:ProjectType': ['/types'],
+        'syreen:Stage': ['/stages'],
+        'syreen:Unit': ['/units'],
+        'syreen:Category': ['/categories'],
+      }
+    },
     noProxy: true // Never fetch with HTTP signature as it is not supported, and all data are public
   }
 };
