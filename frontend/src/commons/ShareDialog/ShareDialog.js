@@ -47,6 +47,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const SYREEN_GROUP_URI = process.env.REACT_APP_AGGREGATOR_BASE_URL + '/actors/syreen';
+
 const ShareDialog = ({ close, resourceUri }) => {
   const classes = useStyles();
   const { identity } = useCheckAuthenticated();
@@ -66,7 +68,7 @@ const ShareDialog = ({ close, resourceUri }) => {
   const { agents, addPermission, removePermission } = useAgents(resourceUri);
 
   // URI of type https://mypod.store/_groups/username/syreen
-  const syreenGroupUri = useMemo(() => {
+  const syreenAclGroupUri = useMemo(() => {
     if (identity) {
       const url = new URL(identity.id);
       return url.origin + '/_groups' + url.pathname + '/syreen';
@@ -74,13 +76,13 @@ const ShareDialog = ({ close, resourceUri }) => {
   }, [identity]);
 
   useEffect(() => {
-    if (Object.keys(agents).length > 0 && syreenGroupUri) {
+    if (Object.keys(agents).length > 0 && syreenAclGroupUri) {
       setCurrentPublicState(agents["foaf:Agent"]?.permissions.includes('acl:Read') || false);
       setPendingPublicState(agents["foaf:Agent"]?.permissions.includes('acl:Read') || false);
-      setCurrentGroupState(agents[syreenGroupUri]?.permissions.includes('acl:Read') || false);
-      setPendingGroupState(agents[syreenGroupUri]?.permissions.includes('acl:Read') || false);
+      setCurrentGroupState(agents[syreenAclGroupUri]?.permissions.includes('acl:Read') || false);
+      setPendingGroupState(agents[syreenAclGroupUri]?.permissions.includes('acl:Read') || false);
     }
-  }, [agents, syreenGroupUri, setCurrentPublicState, setPendingPublicState, setCurrentGroupState, setPendingGroupState]);
+  }, [agents, syreenAclGroupUri, setCurrentPublicState, setPendingPublicState, setCurrentGroupState, setPendingGroupState]);
 
   const nbInvitations = useMemo(() =>
     Object.keys(newInvitations).length + (pendingPublicState !== currentPublicState ? 1 : 0) + (pendingGroupState !== currentGroupState ? 1 : 0)
@@ -162,9 +164,18 @@ const ShareDialog = ({ close, resourceUri }) => {
     }
 
     if (pendingGroupState === true && currentGroupState === false) {
-      addPermission(syreenGroupUri, 'acl:agentGroup', 'acl:Read');
+      addPermission(syreenAclGroupUri, 'acl:agentGroup', 'acl:Read');
+      addPermission(SYREEN_GROUP_URI, 'acl:agent', 'acl:Read');
+      await outbox.post({
+        type: ACTIVITY_TYPES.ANNOUNCE,
+        actor: outbox.owner,
+        object: resourceUri,
+        target: SYREEN_GROUP_URI,
+        to: SYREEN_GROUP_URI,
+      });
     } else if (pendingGroupState === false && currentGroupState === true) {
-      removePermission(syreenGroupUri, 'acl:agentGroup', 'acl:Read');
+      removePermission(syreenAclGroupUri, 'acl:agentGroup', 'acl:Read');
+      removePermission(SYREEN_GROUP_URI, 'acl:agent', 'acl:Read');
     }
     
     const invitationMessage = (nbInvitations === 1)
@@ -174,7 +185,7 @@ const ShareDialog = ({ close, resourceUri }) => {
 
     close();
 
-  }, [outbox, notify, newInvitations, isOrganizer, close, record, resourceUri, setSendingInvitation, nbInvitations, syreenGroupUri, pendingPublicState, currentPublicState, pendingGroupState, currentGroupState, addPermission, removePermission]);
+  }, [outbox, notify, newInvitations, isOrganizer, close, record, resourceUri, setSendingInvitation, nbInvitations, syreenAclGroupUri, pendingPublicState, currentPublicState, pendingGroupState, currentGroupState, addPermission, removePermission]);
   
   if (!identity) return null;
 
