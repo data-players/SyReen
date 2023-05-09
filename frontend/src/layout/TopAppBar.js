@@ -56,13 +56,13 @@ const TopAppBar = ({ logout }) => {
           <Grid container>
             <Grid item xs={12} sm={6}>
               <Box mb={1} className={classes.logoContainer}>
-                <Link to="/">
+                <Link to="/offers">
                   <IconButton edge="start" className={classes.logo} color="inherit">
                     <AppIcon />
                   </IconButton>
                 </Link>
                 <Typography variant="h4" className={classes.title}>
-                  <Link to="/">Syréen</Link>
+                  <Link to="/offers">Syréen</Link>
                 </Typography>
               </Box>
             </Grid>
