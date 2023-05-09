@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SyreenGroupSwitch = ({ pendingGroupState, setPendingGroupState }) => {
+const SyreenGroupSwitch = ({ currentGroupState, pendingGroupState, setPendingGroupState }) => {
   const classes = useStyles();
 
   const switchView = useCallback(() => {
@@ -53,7 +53,7 @@ const SyreenGroupSwitch = ({ pendingGroupState, setPendingGroupState }) => {
       <ListItemText
         className={classes.secondaryText}
         primary="Voir l'annonce"
-        secondary={<Switch size="small" checked={pendingGroupState} onChange={switchView} />}
+        secondary={<Switch size="small" checked={pendingGroupState} onChange={switchView} disabled={currentGroupState} />}
       />
       <ListItemText
         className={classes.secondaryText}

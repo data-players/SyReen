@@ -164,8 +164,6 @@ const ShareDialog = ({ close, resourceUri }) => {
     }
 
     if (pendingGroupState === true && currentGroupState === false) {
-      addPermission(syreenAclGroupUri, 'acl:agentGroup', 'acl:Read');
-      addPermission(SYREEN_GROUP_URI, 'acl:agent', 'acl:Read');
       await outbox.post({
         type: ACTIVITY_TYPES.ANNOUNCE,
         actor: outbox.owner,
@@ -173,9 +171,6 @@ const ShareDialog = ({ close, resourceUri }) => {
         target: SYREEN_GROUP_URI,
         to: SYREEN_GROUP_URI,
       });
-    } else if (pendingGroupState === false && currentGroupState === true) {
-      removePermission(syreenAclGroupUri, 'acl:agentGroup', 'acl:Read');
-      removePermission(SYREEN_GROUP_URI, 'acl:agent', 'acl:Read');
     }
     
     const invitationMessage = (nbInvitations === 1)
@@ -185,7 +180,7 @@ const ShareDialog = ({ close, resourceUri }) => {
 
     close();
 
-  }, [outbox, notify, newInvitations, isOrganizer, close, record, resourceUri, setSendingInvitation, nbInvitations, syreenAclGroupUri, pendingPublicState, currentPublicState, pendingGroupState, currentGroupState, addPermission, removePermission]);
+  }, [outbox, notify, newInvitations, isOrganizer, close, record, resourceUri, setSendingInvitation, nbInvitations, pendingPublicState, currentPublicState, pendingGroupState, currentGroupState, addPermission, removePermission]);
   
   if (!identity) return null;
 
@@ -207,6 +202,7 @@ const ShareDialog = ({ close, resourceUri }) => {
             isOrganizer={isOrganizer}
             pendingPublicState={pendingPublicState}
             setPendingPublicState={setPendingPublicState}
+            currentGroupState={currentGroupState}
             pendingGroupState={pendingGroupState}
             setPendingGroupState={setPendingGroupState}
           />

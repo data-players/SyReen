@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContactsShareList = ({ addInvitation, removeInvitation, announces, announcers, isOrganizer, pendingPublicState, setPendingPublicState, pendingGroupState, setPendingGroupState }) => {
+const ContactsShareList = ({ addInvitation, removeInvitation, announces, announcers, isOrganizer, pendingPublicState, setPendingPublicState, currentGroupState, pendingGroupState, setPendingGroupState }) => {
   const classes = useStyles();
   const { ids, data, loading, ...rest } = useListContext();
   return (
@@ -28,6 +28,7 @@ const ContactsShareList = ({ addInvitation, removeInvitation, announces, announc
       />
       <SyreenGroupSwitch
         key="group"
+        currentGroupState={currentGroupState}
         pendingGroupState={pendingGroupState}
         setPendingGroupState={setPendingGroupState}
         {...rest}
