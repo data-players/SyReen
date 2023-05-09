@@ -4,6 +4,7 @@ import ContactItem from './ContactItem';
 import PublicSwitch from './PublicSwitch';
 import { useListContext } from 'react-admin';
 import Alert from '@material-ui/lab/Alert';
+import SyreenGroupSwitch from "./SyreenGroupSwitch";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -14,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContactsShareList = ({ addInvitation, removeInvitation, announces, announcers, isOrganizer, pendingPublicState, setPendingPublicState }) => {
+const ContactsShareList = ({ addInvitation, removeInvitation, announces, announcers, isOrganizer, pendingPublicState, setPendingPublicState, pendingGroupState, setPendingGroupState }) => {
   const classes = useStyles();
   const { ids, data, loading, ...rest } = useListContext();
   return (
@@ -23,6 +24,12 @@ const ContactsShareList = ({ addInvitation, removeInvitation, announces, announc
         key="public"
         pendingPublicState={pendingPublicState}
         setPendingPublicState={setPendingPublicState}
+        {...rest}
+      />
+      <SyreenGroupSwitch
+        key="group"
+        pendingGroupState={pendingGroupState}
+        setPendingGroupState={setPendingGroupState}
         {...rest}
       />
       {ids.map((id, i) => (

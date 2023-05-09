@@ -60,16 +60,23 @@ const ShareDialog = ({ close, resourceUri }) => {
   const outbox = useOutbox();
   const notify = useNotify();
   const [pendingPublicState, setPendingPublicState] = useState(false);
+  const [pendingGroupState, setPendingGroupState] = useState(false);
   const { agents, addPermission, removePermission } = useAgents(resourceUri);
+
   const isPublic = useMemo(() => agents["foaf:Agent"]?.permissions.includes('acl:Read'), [agents]);
+  const isSharedWithSyreenGroup = useMemo(() => agents["http://localhost:3000/_groups/test31/syreen"]?.permissions.includes('acl:Read'), [agents]);
 
   useEffect(() => {
     setPendingPublicState(isPublic);
   }, [isPublic, setPendingPublicState]);
+
+  useEffect(() => {
+    setPendingGroupState(isSharedWithSyreenGroup);
+  }, [isSharedWithSyreenGroup, setPendingGroupState]);
   
   const nbInvitations = useMemo(() =>
-    Object.keys(newInvitations).length + (pendingPublicState !== isPublic ? 1 : 0)
-  , [newInvitations, pendingPublicState, isPublic]);
+    Object.keys(newInvitations).length + (pendingPublicState !== isPublic ? 1 : 0) + (pendingGroupState !== isSharedWithSyreenGroup ? 1 : 0)
+  , [newInvitations, pendingPublicState, isPublic, pendingGroupState, isSharedWithSyreenGroup]);
 
   const addInvitation = useCallback(
     (actorUri, rights) => {
@@ -145,6 +152,12 @@ const ShareDialog = ({ close, resourceUri }) => {
     } else if (pendingPublicState === false && isPublic === true) {
       removePermission('foaf:Agent', 'acl:agentClass', 'acl:Read');
     }
+
+    if (pendingGroupState === true && isSharedWithSyreenGroup === false) {
+      addPermission('http://localhost:3000/_groups/test31/syreen', 'acl:agentGroup', 'acl:Read');
+    } else if (pendingGroupState === false && isSharedWithSyreenGroup === true) {
+      removePermission('http://localhost:3000/_groups/test31/syreen', 'acl:agentGroup', 'acl:Read');
+    }
     
     const invitationMessage = (nbInvitations === 1)
       ? '1 invitation envoyée'
@@ -153,7 +166,7 @@ const ShareDialog = ({ close, resourceUri }) => {
 
     close();
 
-  }, [outbox, notify, newInvitations, isOrganizer, close, record, resourceUri, setSendingInvitation, nbInvitations, pendingPublicState, isPublic, addPermission, removePermission]);
+  }, [outbox, notify, newInvitations, isOrganizer, close, record, resourceUri, setSendingInvitation, nbInvitations, pendingPublicState, isPublic, pendingGroupState, isSharedWithSyreenGroup, addPermission, removePermission]);
   
   if (!identity) return null;
 
@@ -175,6 +188,8 @@ const ShareDialog = ({ close, resourceUri }) => {
             isOrganizer={isOrganizer}
             pendingPublicState={pendingPublicState}
             setPendingPublicState={setPendingPublicState}
+            pendingGroupState={pendingGroupState}
+            setPendingGroupState={setPendingGroupState}
           />
         </ListBase>
       </DialogContent>
