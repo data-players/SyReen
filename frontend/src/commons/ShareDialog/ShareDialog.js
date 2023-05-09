@@ -59,24 +59,32 @@ const ShareDialog = ({ close, resourceUri }) => {
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
   const outbox = useOutbox();
   const notify = useNotify();
+  const [currentPublicState, setCurrentPublicState] = useState(false);
+  const [currentGroupState, setCurrentGroupState] = useState(false);
   const [pendingPublicState, setPendingPublicState] = useState(false);
   const [pendingGroupState, setPendingGroupState] = useState(false);
   const { agents, addPermission, removePermission } = useAgents(resourceUri);
 
-  const isPublic = useMemo(() => agents["foaf:Agent"]?.permissions.includes('acl:Read'), [agents]);
-  const isSharedWithSyreenGroup = useMemo(() => agents["http://localhost:3000/_groups/test31/syreen"]?.permissions.includes('acl:Read'), [agents]);
+  // URI of type https://mypod.store/_groups/username/syreen
+  const syreenGroupUri = useMemo(() => {
+    if (identity) {
+      const url = new URL(identity.id);
+      return url.origin + '/_groups' + url.pathname + '/syreen';
+    }
+  }, [identity]);
 
   useEffect(() => {
-    setPendingPublicState(isPublic);
-  }, [isPublic, setPendingPublicState]);
+    if (Object.keys(agents).length > 0 && syreenGroupUri) {
+      setCurrentPublicState(agents["foaf:Agent"]?.permissions.includes('acl:Read') || false);
+      setPendingPublicState(agents["foaf:Agent"]?.permissions.includes('acl:Read') || false);
+      setCurrentGroupState(agents[syreenGroupUri]?.permissions.includes('acl:Read') || false);
+      setPendingGroupState(agents[syreenGroupUri]?.permissions.includes('acl:Read') || false);
+    }
+  }, [agents, syreenGroupUri, setCurrentPublicState, setPendingPublicState, setCurrentGroupState, setPendingGroupState]);
 
-  useEffect(() => {
-    setPendingGroupState(isSharedWithSyreenGroup);
-  }, [isSharedWithSyreenGroup, setPendingGroupState]);
-  
   const nbInvitations = useMemo(() =>
-    Object.keys(newInvitations).length + (pendingPublicState !== isPublic ? 1 : 0) + (pendingGroupState !== isSharedWithSyreenGroup ? 1 : 0)
-  , [newInvitations, pendingPublicState, isPublic, pendingGroupState, isSharedWithSyreenGroup]);
+    Object.keys(newInvitations).length + (pendingPublicState !== currentPublicState ? 1 : 0) + (pendingGroupState !== currentGroupState ? 1 : 0)
+  , [newInvitations, pendingPublicState, currentPublicState, pendingGroupState, currentGroupState]);
 
   const addInvitation = useCallback(
     (actorUri, rights) => {
@@ -147,16 +155,16 @@ const ShareDialog = ({ close, resourceUri }) => {
       });
     }
     
-    if (pendingPublicState === true && isPublic === false) {
+    if (pendingPublicState === true && currentPublicState === false) {
       addPermission('foaf:Agent', 'acl:agentClass', 'acl:Read');
-    } else if (pendingPublicState === false && isPublic === true) {
+    } else if (pendingPublicState === false && currentPublicState === true) {
       removePermission('foaf:Agent', 'acl:agentClass', 'acl:Read');
     }
 
-    if (pendingGroupState === true && isSharedWithSyreenGroup === false) {
-      addPermission('http://localhost:3000/_groups/test31/syreen', 'acl:agentGroup', 'acl:Read');
-    } else if (pendingGroupState === false && isSharedWithSyreenGroup === true) {
-      removePermission('http://localhost:3000/_groups/test31/syreen', 'acl:agentGroup', 'acl:Read');
+    if (pendingGroupState === true && currentGroupState === false) {
+      addPermission(syreenGroupUri, 'acl:agentGroup', 'acl:Read');
+    } else if (pendingGroupState === false && currentGroupState === true) {
+      removePermission(syreenGroupUri, 'acl:agentGroup', 'acl:Read');
     }
     
     const invitationMessage = (nbInvitations === 1)
@@ -166,7 +174,7 @@ const ShareDialog = ({ close, resourceUri }) => {
 
     close();
 
-  }, [outbox, notify, newInvitations, isOrganizer, close, record, resourceUri, setSendingInvitation, nbInvitations, pendingPublicState, isPublic, pendingGroupState, isSharedWithSyreenGroup, addPermission, removePermission]);
+  }, [outbox, notify, newInvitations, isOrganizer, close, record, resourceUri, setSendingInvitation, nbInvitations, syreenGroupUri, pendingPublicState, currentPublicState, pendingGroupState, currentGroupState, addPermission, removePermission]);
   
   if (!identity) return null;
 
