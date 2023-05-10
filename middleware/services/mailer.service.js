@@ -21,18 +21,21 @@ module.exports = {
   },
   actions: {
     async requestJoin(ctx) {
-      const { activity, actor } = ctx.params;
+      const { activity, actor, profile } = ctx.params;
 
       const acceptUrl = urlJoin(CONFIG.HOME_URL, '_system', 'accept', CONFIG.SECRET_KEY) + '?activityUri=' + encodeURIComponent(activity.id);
       const rejectUrl = urlJoin(CONFIG.HOME_URL, '_system', 'reject', CONFIG.SECRET_KEY) + '?activityUri=' + encodeURIComponent(activity.id);
+      const contactUrl = `https://app.mypod.store/Profile/${encodeURIComponent(profile.id)}/show`;
 
       await ctx.call('mailer.send', {
         to: 'srosset81@gmail.com',
         template: 'join-request',
         data: {
           actor,
+          profile,
           acceptUrl,
-          rejectUrl
+          rejectUrl,
+          contactUrl
         }
       });
     }

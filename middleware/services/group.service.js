@@ -127,14 +127,20 @@ const GroupService = {
         object: GROUP_URI
       },
       async onReceive(ctx, activity) {
-        const actor = ctx.call('activitypub.actor.get', {
+        const actor = await ctx.call('activitypub.actor.get', {
           actorUri: activity.actor,
           webId: this.groupActor.id,
         });
 
+        const profile = await ctx.call('ldp.remote.get', {
+          resourceUri: actor.url,
+          webId: this.groupActor.id
+        });
+
         await ctx.call('mailer.requestJoin', {
           activity,
-          actor
+          actor,
+          profile
         });
       }
     },
