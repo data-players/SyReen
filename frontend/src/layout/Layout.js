@@ -48,7 +48,7 @@ const Layout = ({ logout, theme, children, title }) => {
     <ThemeProvider theme={theme}>
       <ScrollToTop />
       <TopAppBar logout={logout} />
-      <Box mt={{ xs: 3, sm: 5 }} mb={{ xs: 2, sm: 5 }} className={classes.container}>
+      <Box mt={{ xs: 3, sm: 3 }} mb={{ xs: 2, sm: 3 }} className={classes.container}>
         <AppBar title={title} />
         {children}
       </Box>
