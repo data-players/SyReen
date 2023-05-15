@@ -7,12 +7,12 @@ module.exports = [
   },
   {
     path: '/offers',
-    acceptedTypes: ['mp:Offer'],
+    acceptedTypes: ['syreen:Offer'],
     readOnly: true
   },
   {
     path: '/projects',
-    acceptedTypes: ['pair:Project'],
+    acceptedTypes: ['syreen:Project'],
     readOnly: true
   },
   {

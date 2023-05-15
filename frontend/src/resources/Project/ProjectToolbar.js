@@ -52,13 +52,13 @@ const ProjectToolbar = (props) => {
   const onSaveSuccess = ({data}) => {
     notify('Elément enregistré', 'success', null, true);
     redirect('create', '/offers', null, {}, { record: {
-      'pair:partOf': recordContext.id || data.id,
+      'syreen:partOf': recordContext.id || data.id,
       'syreen:hasLocation': recordContext['syreen:hasLocation'] || data['syreen:hasLocation']
     }});
   };
   const onDeleteSuccess = ({data}) => {
     dataProvider
-      .getList('offers', { filter: {'pair:partOf':recordContext.id} })
+      .getList('offers', { filter: {'syreen:partOf':recordContext.id} })
       .then(({ data:offers }) => {
         dataProvider.deleteMany('offers', {ids: offers.map(offer => offer.id)})
         notify('Projet supprimé', 'success', null, true);

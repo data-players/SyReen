@@ -7,7 +7,7 @@ const ReturnToProjectButton = ({ linkType }) => {
   return (
     <Button
       component={Link}
-      to={linkToRecord('/projects', record?.['pair:partOf'], linkType) + '/1'}
+      to={linkToRecord('/projects', record?.['syreen:partOf'], linkType) + '/1'}
       label="Voir Le projet"
     >
       <WorkIcon />

@@ -59,7 +59,7 @@ const ProjectForm = (props) => {
           <ReferenceManyField
             addLabel={false}
             reference="offers"
-            target="pair:partOf"
+            target="syreen:partOf"
           >
             <CardsList CardComponent={OfferCard} link="edit" />
           </ReferenceManyField>

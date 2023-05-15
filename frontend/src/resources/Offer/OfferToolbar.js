@@ -17,7 +17,7 @@ const OfferToolbar = (props) => {
   
   const onSuccess = useCallback( (message) => {
     notify(message, 'success', null, true);
-    redirect(resolveRedirectTo('show', '/projects', recordContext['pair:partOf'], {}, {tab:1} ) + '/1');
+    redirect(resolveRedirectTo('show', '/projects', recordContext['syreen:partOf'], {}, {tab:1} ) + '/1');
   }, [recordContext, notify, redirect])
 
   return (
