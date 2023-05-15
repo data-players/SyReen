@@ -2,21 +2,14 @@ const path = require('path');
 const urlJoin = require('url-join');
 const MailerService = require('moleculer-mail');
 const CONFIG = require('../config/config');
+const transport = require('../config/transport');
 
 module.exports = {
   name: 'mailer',
   mixins: [MailerService],
   settings: {
     from: `${CONFIG.FROM_NAME} <${CONFIG.FROM_EMAIL}>`,
-    transport: {
-      host: CONFIG.SMTP_HOST,
-      port: CONFIG.SMTP_PORT,
-      secure: CONFIG.SMTP_SECURE,
-      auth: {
-        user: CONFIG.SMTP_USER,
-        pass: CONFIG.SMTP_PASS,
-      },
-    },
+    transport,
     templateFolder: path.join(__dirname, "../templates"),
   },
   actions: {
