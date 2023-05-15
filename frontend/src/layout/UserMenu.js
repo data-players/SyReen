@@ -4,6 +4,7 @@ import { Box, MenuItem as MuiMenuItem, ListItemIcon, makeStyles } from '@materia
 import PersonIcon from '@material-ui/icons/Person';
 import GroupIcon from '@material-ui/icons/Group';
 import HomeIcon from '@material-ui/icons/Home';
+import ExitIcon from '@material-ui/icons/PowerSettingsNew';
 import { useCollection, useOutbox, ACTIVITY_TYPES } from '@semapps/activitypub-components';
 import { useDataServers } from '@semapps/semantic-data-provider';
 
@@ -59,7 +60,7 @@ const InsideMenuItemLink = ({ ...props }) => (
 );
 
 const LoginMenu = forwardRef(({ onClick, label }, ref) => (
-  <OutsideMenuItemLink ref={ref} to="/login" primaryText={label} onClick={onClick} />
+  <OutsideMenuItemLink ref={ref} to="/login" primaryText={label} onClick={onClick} leftIcon={<ExitIcon />} />
 ));
 
 const UserMenu = ({ logout, ...otherProps }) => {

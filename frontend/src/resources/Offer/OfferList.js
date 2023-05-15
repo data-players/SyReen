@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Box, Typography, Container, Card as MuiCard, makeStyles } from '@material-ui/core';
 import { List, ReferenceInput, SelectInput, TextInput, useGetIdentity } from 'react-admin';
-import { useCheckAuthenticated } from '@semapps/auth-provider';
 import CardsList from '../../commons/lists/CardsList';
 import OfferCard from './OfferCard';
 import OfferListEmpty from './OfferListEmpty';
@@ -54,9 +53,8 @@ const useStyles = makeStyles((theme) => ({
 
 const OfferList = () => {
   const classes = useStyles();
-  useCheckAuthenticated();
-  const { identity } = useGetIdentity();
-
+  const { loading, identity } = useGetIdentity();
+  
   const sparqlWhere = useMemo(() => {
     if (! identity?.id) {
        return null;
@@ -125,7 +123,7 @@ const OfferList = () => {
           </Box>
         </MuiCard>
       </Box>
-      {identity?.id &&
+      { !loading && 
         <List
           resource="offers"
           basePath="/offers"

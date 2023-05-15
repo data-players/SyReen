@@ -8,6 +8,7 @@ import {
   FormTab
 } from 'react-admin';
 import { makeStyles } from '@material-ui/core';
+import { useCheckAuthenticated } from '@semapps/auth-provider';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageField } from '@semapps/field-components';
 import { DateTimeInput } from '@semapps/date-components';
@@ -38,6 +39,9 @@ const ProjectForm = (props) => {
   const handleLocationChange = useCallback(() => { 
     setLocationVersion(locationVersion + 1);
   }, [locationVersion]);
+
+  const { identity } = useCheckAuthenticated();
+  if (!identity?.id) return null;
   
   return (
     <TabbedForm {...props} redirect="show" className={classes.root}>

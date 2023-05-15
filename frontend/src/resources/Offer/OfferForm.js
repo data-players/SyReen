@@ -9,6 +9,7 @@ import {
   required
 } from 'react-admin';
 import { Box, makeStyles } from '@material-ui/core';
+import { useCheckAuthenticated } from '@semapps/auth-provider';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { DateTimeInput } from '@semapps/date-components';
 import CameraInput from '../../commons/inputs/CameraInput';
@@ -39,6 +40,8 @@ const useStyles = makeStyles((theme) => ({
 
 const OfferForm = (props) => {
   const classes = useStyles();
+  const { identity } = useCheckAuthenticated();
+  if (!identity?.id) return null;
   return (
     <TabbedForm {...props} redirect="show">
       <FormTab label="Général" className={classes.tab}>

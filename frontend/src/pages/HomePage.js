@@ -63,6 +63,11 @@ const HomePage = () => {
               {translate('ra.auth.sign_in')}
             </Button>
           </Link>
+          <Link to="/offers">
+            <Button variant="contained" color="secondary" className={classes.button}>
+              Consulter les offres
+            </Button>
+          </Link>
         </Box>
       </Box>
     </ThemeProvider>
