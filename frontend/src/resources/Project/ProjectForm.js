@@ -3,7 +3,6 @@ import {
   ImageInput,
   TextInput,
   required,
-  SelectInput,
   ReferenceManyField,
   TabbedForm,
   FormTab
@@ -16,7 +15,7 @@ import frLocale from 'date-fns/locale/fr';
 import LocationInput from "../../commons/inputs/LocationInput";
 import CardsList from "../../commons/lists/CardsList";
 import OfferCard from "../Offer/OfferCard";
-import { concepts } from "./concepts";
+import ConceptInput from "../../commons/inputs/ConceptInput";
 
 const useStyles = makeStyles((theme) => ({
   root: isEditMode => ({
@@ -62,17 +61,17 @@ const ProjectForm = (props) => {
   return (
     <TabbedForm {...props} redirect="show" className={classes.root}>
       <FormTab label="Général">
-        <TextInput source="pair:label" fullWidth validate={[required()]} />
-        <TextInput source="pair:alternativeLabel" fullWidth />
-        <SelectInput source="syreen:type" choices={concepts.projectTypes} fullWidth validate={[required()]} isRequired />
-        <MarkdownInput source="pair:description" fullWidth validate={[required()]} isRequired />
-        <ImageInput source="pair:depictedBy" accept="image/*">
+        <TextInput source="syreen:label" fullWidth validate={[required()]} />
+        <TextInput source="syreen:alternativeLabel" fullWidth />
+        <ConceptInput reference="ProjectType" source="syreen:hasProjectType" validate={[required()]} isRequired fullWidth />
+        <MarkdownInput source="syreen:description" fullWidth validate={[required()]} isRequired />
+        <ImageInput source="syreen:depictedBy" accept="image/*">
           <ImageField source="src" />
         </ImageInput>
-        <LocationInput reference="Location" source="pair:hasLocation" fullWidth onChange={handleLocationChange} key={locationVersion} />
+        <LocationInput reference="Location" source="syreen:hasLocation" fullWidth onChange={handleLocationChange} key={locationVersion} />
         <MarkdownInput source="syreen:locationInformation" fullWidth />
-        <DateTimeInput source="pair:startDate" validate={[futureDate]} {...dateTimeInputProps} />
-        <DateTimeInput source="pair:endDate" validate={[futureDate]} {...dateTimeInputProps} />
+        <DateTimeInput source="syreen:startDate" validate={[futureDate]} {...dateTimeInputProps} />
+        <DateTimeInput source="syreen:endDate" validate={[futureDate]} {...dateTimeInputProps} />
       </FormTab>
       {isEditMode &&
         <FormTab label="Offres">

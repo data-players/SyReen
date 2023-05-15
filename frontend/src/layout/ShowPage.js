@@ -27,8 +27,8 @@ const ShowPage = ({ title, defaultTitle, details, actions, children, ...rest }) 
               </Box>
             </Grid>
           </Grid>
-          { isOnFirstTab && showContext?.record?.["pair:depictedBy"] &&
-            <IntegratedImageField source="pair:depictedBy" title="pair:label" />
+          { isOnFirstTab && showContext?.record?.["syreen:depictedBy"] &&
+            <IntegratedImageField source="syreen:depictedBy" title="syreen:label" />
           }
           <Box display={xs ? 'block' : 'flex'} pt={2} pb={2}>
             {React.cloneElement(details, { orientation: xs ? 'vertical' : 'horizontal' })}

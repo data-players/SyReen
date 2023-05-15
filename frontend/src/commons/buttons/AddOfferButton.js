@@ -27,7 +27,7 @@ const AddOfferButton = ({ linkType }) => {
             state: { 
               record: {
                 'pair:partOf': recordContext.id,
-                'pair:hasLocation': recordContext['pair:hasLocation']
+                'syreen:hasLocation': recordContext['syreen:hasLocation']
               }
             },
           }}

@@ -34,7 +34,7 @@ const OfferCard = ({ record }) => {
   return (
     <Box pt={1} pb={1}>
       <Box mb={1}>
-        <TextField variant="h2" color="primary" record={record} source="pair:label" className={classes.title} />
+        <TextField variant="h2" color="primary" record={record} source="syreen:label" className={classes.title} />
       </Box>
       <Box>
         {/*
@@ -71,7 +71,7 @@ const OfferCard = ({ record }) => {
           </ReferenceField>
         </Chip>
       </Box>
-      <TextField record={record} source="pair:description" className={classes.description} />
+      <TextField record={record} source="syreen:description" className={classes.description} />
     </Box>
   );
 };

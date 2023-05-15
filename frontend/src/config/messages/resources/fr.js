@@ -2,12 +2,12 @@
 const offerAndRequestConfig = {
   name: 'Annonce |||| Annonces',
   fields: {
-    'pair:label': 'Titre',
-    'pair:depictedBy': 'Image',
-    'pair:description': 'Présentation',
+    'syreen:label': 'Titre',
+    'syreen:depictedBy': 'Image',
+    'syreen:description': 'Présentation',
     'dc:creator': 'Posté par',
     'dc:created': 'Date',
-    'mp:hasGeoCondition.pair:hasLocation': 'Localisation',
+    'mp:hasGeoCondition.syreen:hasLocation': 'Localisation',
     'mp:hasReciprocityCondition.mp:amount': 'Prix demandé',
     'mp:hasReciprocityCondition.mp:maxAmount': 'Prix maximum',
     'mp:hasReciprocityCondition.mp:currency': 'Devise',
@@ -21,33 +21,34 @@ const offerAndRequestConfig = {
 const projectConfig = {
   name: 'Projet |||| Projets',
   fields: {
-    'pair:label': 'Titre',
-    'pair:alternativeLabel': 'Sous-titre',
-    'pair:depictedBy': 'Image',
-    'pair:description': 'Présentation',
+    'syreen:label': 'Titre',
+    'syreen:alternativeLabel': 'Sous-titre',
+    'syreen:depictedBy': 'Image',
+    'syreen:description': 'Présentation',
     'dc:creator': 'Posté par',
     'dc:created': 'Date',
-    'pair:hasLocation': 'Localisation',
+    'syreen:hasLocation': 'Localisation',
     'syreen:locationInformation': 'Complément d\'adresse',
-    'syreen:type': "Type de projet",
-    'pair:startDate': "Date de début prévisionnelle",    
-    'pair:endDate': "Date de fin prévisionnelle"
+    'syreen:hasProjectType': "Type de projet",
+    'syreen:startDate': "Date de début prévisionnelle",    
+    'syreen:endDate': "Date de fin prévisionnelle"
   },
 };
 
 const offerConfig = {
   name: 'Offre |||| Offres',
   fields: {
-    'pair:label': 'Titre',
-    'pair:depictedBy': 'Image',
-    'pair:description': 'Présentation',
+    'syreen:label': 'Titre',
+    'syreen:depictedBy': 'Image',
+    'syreen:description': 'Présentation',
     'dc:creator': 'Posté par',
     'dc:created': 'Date',
-    'pair:hasLocation': 'Localisation',
+    'syreen:hasLocation': 'Localisation',
     'syreen:locationInformation': 'Complément d\'adresse',
-    'syreen:phase': 'Phase',
+    'syreen:hasStage': 'Phase',
     'syreen:quantity': "Quantité",
-    'syreen:unit': "Unité",
+    'syreen:hasUnit': "Unité",
+    'syreen:hasCategory': "Categorie",
   },
 };
 

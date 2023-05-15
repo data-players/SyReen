@@ -47,11 +47,11 @@ const ProjectShow = (props) => {
         <TabbedShowLayout>
           <Tab label="Général">
             <MainList Label={BodyLabel}>
-              <TextField source="pair:alternativeLabel" />
-              <MarkdownField source="pair:description" addLabel={true} />
-              <LocationField source="pair:hasLocation" />
-              <DateField source="pair:startDate" />
-              <DateField source="pair:endDate" />
+              <TextField source="syreen:alternativeLabel" />
+              <MarkdownField source="syreen:description" addLabel={true} />
+              <LocationField source="syreen:hasLocation" />
+              <DateField source="syreen:startDate" />
+              <DateField source="syreen:endDate" />
               <ReferenceField reference="Actor" source="dc:creator" link={false}>
                 <ReferenceField reference="Profile" source="url" link={false}>
                   <ProfileField />
