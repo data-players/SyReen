@@ -54,16 +54,18 @@ const Layout = ({ logout, theme, children, title }) => {
       </Box>
       {/* Required for react-admin optimistic update */}
       <Notification />
-      <BottomNavigation
-        value={navigationValue}
-        showLabels
-        className={classes.bottomNavigation}
-      >
-        <BottomNavigationAction label="Accueil" icon={<HomeIcon />} component={Link} to="/offers" />
-        { identity?.id && <BottomNavigationAction label="Mes projets" icon={<WorkIcon />} component={Link} to="/projects" />}
-        { identity?.id && <BottomNavigationAction label="Mon réseau" icon={<GroupIcon />} component={Link} to="/Profile" />}
-        { identity?.id && <BottomNavigationAction label="Mes alertes" icon={<NotificationsIcon />} component={Link} to="/alerts" />}
-      </BottomNavigation>
+      { identity?.id && 
+        <BottomNavigation
+          value={navigationValue}
+          showLabels
+          className={classes.bottomNavigation}
+        >
+          <BottomNavigationAction label="Accueil" icon={<HomeIcon />} component={Link} to="/offers" />
+          <BottomNavigationAction label="Mes projets" icon={<WorkIcon />} component={Link} to="/projects" />
+          <BottomNavigationAction label="Mon réseau" icon={<GroupIcon />} component={Link} to="/Profile" />
+          <BottomNavigationAction label="Mes alertes" icon={<NotificationsIcon />} component={Link} to="/alerts" />
+        </BottomNavigation>
+      }
     </ThemeProvider>
   );
 }
