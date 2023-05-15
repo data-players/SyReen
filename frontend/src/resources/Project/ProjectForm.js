@@ -11,11 +11,11 @@ import { makeStyles } from '@material-ui/core';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageField } from '@semapps/field-components';
 import { DateTimeInput } from '@semapps/date-components';
-import frLocale from 'date-fns/locale/fr';
 import LocationInput from "../../commons/inputs/LocationInput";
 import CardsList from "../../commons/lists/CardsList";
 import OfferCard from "../Offer/OfferCard";
 import ConceptInput from "../../commons/inputs/ConceptInput";
+import { futureDate, dateTimeInputProps } from "../../commons/inputs/dateTimeInputUtils";
 
 const useStyles = makeStyles((theme) => ({
   root: isEditMode => ({
@@ -27,25 +27,6 @@ const useStyles = makeStyles((theme) => ({
     }
   }),
 }));
-
-const futureDate = (value) => {
-  if (value && value <= new Date()) {
-    return 'Doit être dans le futur';
-  }
-};
-
-const dateTimeInputProps = {
-  options: {
-    format: 'dd/MM/yyyy à HH:mm',
-    ampm: false,
-    clearable: true,
-  },
-  providerOptions: {
-    locale: frLocale,
-  },
-  fullWidth: true,
-  allowClear: true,
-};
 
 const ProjectForm = (props) => {
   const isEditMode = !!props.record.id;

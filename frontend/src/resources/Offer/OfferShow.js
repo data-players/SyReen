@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShowBase } from 'react-admin';
+import { ShowBase, ShowController, NumberField, TextField } from 'react-admin';
 import { useCheckAuthenticated } from '@semapps/auth-provider';
 import MarkdownField from '../../commons/fields/MarkdownField';
 import ContactField from '../../commons/fields/ContactField';
@@ -18,24 +18,36 @@ const OfferShow = (props) => {
   const { identity } = useCheckAuthenticated();
   if (!identity?.id) return null;
   return (
-    <ShowBase {...props}>
-      <ShowPage
-        title={<Title />}
-        actions={[
-          <ReturnToProjectButton key="returnToProject"/>,
-          <ShareButton key="share" />,
-          <EditButton key="edit" />,
-        ]}
-        details={<OfferDetails />}
-      >
-        <MainList Label={BodyLabel}>
-          <ConceptField reference="Category" source="syreen:hasCategory" addLabel />
-          <MarkdownField source="syreen:description" addLabel />
-          <LocationField source="syreen:hasLocation" />
-          <ContactField label="Contacter le responsable" source="dc:creator" context="id" />
-        </MainList>
-      </ShowPage>
-    </ShowBase>
+    <ShowController {...props}>
+      {controllerProps => 
+        <ShowBase {...props} {...controllerProps}>
+          <ShowPage
+            title={<Title />}
+            actions={[
+              <ReturnToProjectButton key="returnToProject"/>,
+              <ShareButton key="share" />,
+              <EditButton key="edit" />,
+            ]}
+            details={<OfferDetails />}
+          >
+            <MainList Label={BodyLabel}>
+              <TextField source="syreen:alternativeLabel" />
+              <MarkdownField source="syreen:description" addLabel />
+              <ConceptField reference="Category" source="syreen:hasCategory" addLabel />
+              <NumberField source="syreen:sellingPrice" options={{ style: 'currency', currency: 'EUR' }} />
+              {controllerProps?.record?.['syreen:publishMarketValue'] &&
+                <NumberField source="syreen:marketValue" options={{ style: 'currency', currency: 'EUR' }} />
+              }
+              {controllerProps?.record?.['syreen:publishCostPrice'] &&
+                <NumberField source="syreen:costPrice" options={{ style: 'currency', currency: 'EUR' }} />
+              }
+              <LocationField source="syreen:hasLocation" />
+              <ContactField label="Contacter le responsable" source="dc:creator" context="id" />
+            </MainList>
+          </ShowPage>
+        </ShowBase>
+      }
+    </ShowController>
   );
 };
 

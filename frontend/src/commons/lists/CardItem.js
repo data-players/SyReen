@@ -71,7 +71,7 @@ const CardItem = ({ record, CardComponent, link }) => {
   const classes = useStyles();
   const { agents } = useAgents(record.id);
   const basePath = useMemo(() => record.type.endsWith('Offer') ? '/offers' : '/projects', [record]);
-  const image = useMemo(() => record['pair:depictedBy'], [record]);
+  const image = useMemo(() => record['syreen:depictedBy'], [record]);
   const isPublic = useMemo(() => agents["foaf:Agent"]?.permissions.includes('acl:Read'), [agents]);
   return (
     <Link key={record.id} to={linkToRecord(basePath, record.id, link)} className={classes.root}>

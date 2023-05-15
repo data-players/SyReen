@@ -7,7 +7,7 @@ import ReturnToProjectButton from "../../commons/buttons/ReturnToProjectButton";
 const OfferCreate = (props) => {
   return (
     <CreateBase {...props}>
-      <CreatePage title="Créer une offre" actions={[<ReturnToProjectButton />]}>
+      <CreatePage title="Créer une offre" actions={[<ReturnToProjectButton key="returnToProject" />]}>
         <OfferForm component="div" />
       </CreatePage>
     </CreateBase>
