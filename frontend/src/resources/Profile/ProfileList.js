@@ -9,6 +9,7 @@ import ProfileCard from "../../commons/cards/profile/ProfileCard";
 import ShareContactCard from "../../commons/cards/profile/ShareContactCard";
 import { formatUsername } from "../../utils";
 import ContactRequestsBlock from "../../commons/blocks/profile/ContactRequestsBlock";
+import JoinSyreenGroupButton from "../../commons/buttons/JoinSyreenGroupButton";
 
 const ProfileList = (props) => {
   const { identity } = useCheckAuthenticated();
@@ -17,7 +18,7 @@ const ProfileList = (props) => {
   return (
     <List
       title='Mon réseau'
-      actions={[<CreateButton label='Envoyer une demande' color="primary" />]}
+      actions={[<CreateButton label='Envoyer une demande' color="primary" />, <JoinSyreenGroupButton />]}
       asides={[<ProfileCard />, <ShareContactCard />]}
       sort={{ field: 'vcard:given-name', order: 'ASC' }}
       perPage={1000}

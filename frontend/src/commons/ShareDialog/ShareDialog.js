@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo, useState } from 'react';
-import { useShowContext, useNotify, ListBase, useAuthProvider } from 'react-admin';
+import React, { useCallback, useMemo, useState, useEffect } from 'react';
+import { useShowContext, useNotify, ListBase } from 'react-admin';
 import {
   Button,
   Dialog,
@@ -47,6 +47,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const SYREEN_GROUP_URI = process.env.REACT_APP_AGGREGATOR_BASE_URL + '/actors/syreen';
+
 const ShareDialog = ({ close, resourceUri }) => {
   const classes = useStyles();
   const { identity } = useCheckAuthenticated();
@@ -59,16 +61,32 @@ const ShareDialog = ({ close, resourceUri }) => {
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
   const outbox = useOutbox();
   const notify = useNotify();
-  const [pendingPublicSettingEdit, setPendingPublicSettingEdit] = useState(false);
+  const [currentPublicState, setCurrentPublicState] = useState(false);
+  const [currentGroupState, setCurrentGroupState] = useState(false);
+  const [pendingPublicState, setPendingPublicState] = useState(false);
+  const [pendingGroupState, setPendingGroupState] = useState(false);
   const { agents, addPermission, removePermission } = useAgents(resourceUri);
-  
-  const isPublic = useMemo(() => agents["foaf:Agent"]?.permissions.includes('acl:Read'), [agents]);
-  
-  console.log('actors', agents["foaf:Agent"]?.permissions);
-  
-  const nbInvitations = useMemo(() => 
-    Object.keys(newInvitations).length + (pendingPublicSettingEdit ? 1 : 0)
-  , [newInvitations, pendingPublicSettingEdit]);
+
+  // URI of type https://mypod.store/_groups/username/syreen
+  const syreenAclGroupUri = useMemo(() => {
+    if (identity) {
+      const url = new URL(identity.id);
+      return url.origin + '/_groups' + url.pathname + '/syreen';
+    }
+  }, [identity]);
+
+  useEffect(() => {
+    if (Object.keys(agents).length > 0 && syreenAclGroupUri) {
+      setCurrentPublicState(agents["foaf:Agent"]?.permissions.includes('acl:Read') || false);
+      setPendingPublicState(agents["foaf:Agent"]?.permissions.includes('acl:Read') || false);
+      setCurrentGroupState(agents[syreenAclGroupUri]?.permissions.includes('acl:Read') || false);
+      setPendingGroupState(agents[syreenAclGroupUri]?.permissions.includes('acl:Read') || false);
+    }
+  }, [agents, syreenAclGroupUri, setCurrentPublicState, setPendingPublicState, setCurrentGroupState, setPendingGroupState]);
+
+  const nbInvitations = useMemo(() =>
+    Object.keys(newInvitations).length + (pendingPublicState !== currentPublicState ? 1 : 0) + (pendingGroupState !== currentGroupState ? 1 : 0)
+  , [newInvitations, pendingPublicState, currentPublicState, pendingGroupState, currentGroupState]);
 
   const addInvitation = useCallback(
     (actorUri, rights) => {
@@ -139,16 +157,20 @@ const ShareDialog = ({ close, resourceUri }) => {
       });
     }
     
-    switch (pendingPublicSettingEdit) {
-      case 'add':
-      console.log('pendingPublicSettingEdit', pendingPublicSettingEdit);
+    if (pendingPublicState === true && currentPublicState === false) {
       addPermission('foaf:Agent', 'acl:agentClass', 'acl:Read');
-      break;
-      case 'remove':
-      console.log('pendingPublicSettingEdit', pendingPublicSettingEdit);
+    } else if (pendingPublicState === false && currentPublicState === true) {
       removePermission('foaf:Agent', 'acl:agentClass', 'acl:Read');
-      break;
-      default:
+    }
+
+    if (pendingGroupState === true && currentGroupState === false) {
+      await outbox.post({
+        type: ACTIVITY_TYPES.ANNOUNCE,
+        actor: outbox.owner,
+        object: resourceUri,
+        target: SYREEN_GROUP_URI,
+        to: SYREEN_GROUP_URI,
+      });
     }
     
     const invitationMessage = (nbInvitations === 1)
@@ -158,15 +180,8 @@ const ShareDialog = ({ close, resourceUri }) => {
 
     close();
 
-  }, [outbox, notify, newInvitations, isOrganizer, close, record, resourceUri, setSendingInvitation, nbInvitations, pendingPublicSettingEdit, addPermission, removePermission]);
+  }, [outbox, notify, newInvitations, isOrganizer, close, record, resourceUri, setSendingInvitation, nbInvitations, pendingPublicState, currentPublicState, pendingGroupState, currentGroupState, addPermission, removePermission]);
   
-  const editPublicSetting = useCallback(
-    ({action}) => {
-      setPendingPublicSettingEdit(action);
-    },
-    []
-  );
-
   if (!identity) return null;
 
   return (
@@ -182,11 +197,14 @@ const ShareDialog = ({ close, resourceUri }) => {
           <ContactsShareList
             addInvitation={addInvitation}
             removeInvitation={removeInvitation}
-            editPublicSetting={editPublicSetting}
             announces={announces}
             announcers={announcers}
             isOrganizer={isOrganizer}
-            isPublic={isPublic}
+            pendingPublicState={pendingPublicState}
+            setPendingPublicState={setPendingPublicState}
+            currentGroupState={currentGroupState}
+            pendingGroupState={pendingGroupState}
+            setPendingGroupState={setPendingGroupState}
           />
         </ListBase>
       </DialogContent>

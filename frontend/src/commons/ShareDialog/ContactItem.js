@@ -79,13 +79,13 @@ const ContactItem = ({ record, addInvitation, removeInvitation, canView, canShar
       />
       <ListItemText
         className={classes.secondaryText}
-        primary="Droit de s'inscrire"
+        primary="Voir l'annonce"
         secondary={<Switch size="small" checked={viewChecked} disabled={canView} onChange={switchView} />}
       />
       {isOrganizer && (
         <ListItemText
           className={classes.secondaryText}
-          primary="Inviter ses contacts"
+          primary="Partager l'annonce"
           secondary={<Switch size="small" checked={shareChecked} disabled={canShare} onChange={switchShare} />}
         />
       )}
