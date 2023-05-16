@@ -66,28 +66,34 @@ const LoginMenu = forwardRef(({ onClick, label }, ref) => (
 const UserMenu = ({ logout, ...otherProps }) => {
   const classes = useStyles();
   const { identity } = useGetIdentity();
-
   const [relayActorIsFollowing, setRelayActorIsFollowing] = useState(false);
   const dataServers = useDataServers();
-  const collection = useCollection("followers");
+  const relayActorUrl = useMemo(() => dataServers?.aggregator?.baseUrl && (dataServers?.aggregator?.baseUrl + '/actors/relay'), [dataServers]);
+  // We prefer to get the relay actor following collection instead of the current user followers collection
+  const collection = useCollection(relayActorUrl && (relayActorUrl + "/following"));
   const outbox = useOutbox();
-  const relayActorUrl = useMemo(() => dataServers?.aggregator?.baseUrl + '/actors/relay', [dataServers]);;
 
   const follow = useCallback(() => {
-    if (!relayActorIsFollowing && collection.loaded && !collection.items.includes(relayActorUrl) && dataServers && outbox) {
+    if (!relayActorIsFollowing && collection.loaded && !collection.items.includes(identity.id) && dataServers && outbox) {
       outbox.post({
-        "type": "Offer",
-        "actor": outbox.owner,
-        "object": {
-          "type": ACTIVITY_TYPES.FOLLOW,
-          "object": outbox.owner
+        type: "Offer",
+        actor: outbox.owner,
+        object: {
+          type: ACTIVITY_TYPES.FOLLOW,
+          object: outbox.owner
         },
-        "to": relayActorUrl
+        to: relayActorUrl
       });
       setRelayActorIsFollowing(true);
     }
-  }, [relayActorIsFollowing, collection.loaded, collection.items, relayActorUrl, dataServers, outbox, ]);
-  useEffect(() => {follow()}, [follow]);
+  }, [relayActorIsFollowing, collection.loaded, collection.items, relayActorUrl, dataServers, outbox, identity]);
+
+  useEffect(() => {
+    // Wait for outbox to be loaded
+    if (outbox.url) {
+      follow();
+    }
+  }, [follow, outbox.url]);
   
   return (
     <Box className={classes.userMenuContainer}>
