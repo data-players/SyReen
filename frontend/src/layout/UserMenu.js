@@ -70,7 +70,7 @@ const UserMenu = ({ logout, ...otherProps }) => {
   const dataServers = useDataServers();
   const relayActorUrl = useMemo(() => dataServers?.aggregator?.baseUrl && (dataServers?.aggregator?.baseUrl + '/actors/relay'), [dataServers]);
   // We prefer to get the relay actor following collection instead of the current user followers collection
-  const collection = useCollection(relayActorUrl && (relayActorUrl + "/following"));
+  const collection = useCollection(relayActorUrl && identity.id && (relayActorUrl + "/following"));
   const outbox = useOutbox();
 
   const follow = useCallback(() => {

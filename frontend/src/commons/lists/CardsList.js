@@ -1,14 +1,16 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { useListContext } from 'react-admin';
 import { Box, CircularProgress } from '@material-ui/core';
 import CardItem from './CardItem.js';
 
 const CardsList = ({ CardComponent, link, setLoaded }) => {
   const { data, loading, loaded } = useListContext();
-  if (loaded && setLoaded) {
-    setLoaded();
-  }
   const ids = useMemo(() => Object.values(data).map(d => d.id), [data]);
+  useEffect(() => {
+    if (loaded && setLoaded) {
+      setLoaded();
+    }
+  }, [loaded, setLoaded])
   return loading ? (
     <Box display="flex" justifyContent="center" alignItems="center">
       <CircularProgress color="secondary" />
