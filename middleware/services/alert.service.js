@@ -120,6 +120,7 @@ const AlertService = {
               type: ACTIVITY_TYPES.ANNOUNCE,
               object: offer.id,
               to: actorsToNotify,
+              context: alert.id
             },
             {
               meta: {
