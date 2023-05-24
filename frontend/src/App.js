@@ -30,6 +30,10 @@ import LocationCreate from './resources/Location/LocationCreate';
 import LocationEdit from './resources/Location/LocationEdit';
 import LocationList from './resources/Location/LocationList';
 
+import AlertCreate from "./resources/Alert/AlertCreate";
+import AlertList from "./resources/Alert/AlertList";
+import AlertEdit from "./resources/Alert/AlertEdit";
+
 const history = createBrowserHistory();
 
 const customPodProviders = process.env.REACT_APP_POD_PROVIDER_DOMAIN_NAME
@@ -59,6 +63,7 @@ const App = () => (
     <Resource name="Actor" />
     <Resource name="Profile" create={ProfileCreate} show={ProfileShow} edit={ProfileEdit} list={ProfileList} />
     <Resource name="Location" create={LocationCreate} edit={LocationEdit} list={LocationList} />
+    <Resource name="Alert" create={AlertCreate} edit={AlertEdit} list={AlertList} />
     {/* Concepts : */}
     <Resource name="ProjectType" />
     <Resource name="Stage" />

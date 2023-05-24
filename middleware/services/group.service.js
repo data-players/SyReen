@@ -54,7 +54,8 @@ const GroupService = {
             preferredUsername: 'syreen',
             name: 'Syreen'
           },
-          contentType: MIME_TYPES.JSON
+          contentType: MIME_TYPES.JSON,
+          webId: 'system'
         });
       } catch(e) {
         // Delete account if resource creation failed, or it may cause problems when retrying
@@ -183,6 +184,8 @@ const GroupService = {
           object: activity.object.id,
           to: this.groupActor.followers
         });
+
+        ctx.call('alert.announce', { offer: activity.object });
       }
     }
   }

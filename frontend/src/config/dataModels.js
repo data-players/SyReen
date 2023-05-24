@@ -22,6 +22,15 @@ const dataModels = {
       blankNodes: ['vcard:hasAddress/vcard:hasGeo'],
     },
   },
+  Alert: {
+    types: ['syreen:Alert'],
+    list: {
+      servers: 'aggregator',
+    },
+    create: {
+      server: 'aggregator'
+    }
+  },
 
   // Concepts :
 

@@ -23,6 +23,8 @@ module.exports = {
       title: CONFIG.INSTANCE_NAME,
       description: CONFIG.INSTANCE_DESCRIPTION
     },
-    webacl: false
+    sparqlEndpoint: {
+      ignoreAcl: true
+    }
   }
 };
