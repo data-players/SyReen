@@ -16,7 +16,7 @@ import LocationInput from "../../commons/inputs/LocationInput";
 import CardsList from "../../commons/lists/CardsList";
 import OfferCard from "../Offer/OfferCard";
 import ConceptInput from "../../commons/inputs/ConceptInput";
-import { futureDate, dateTimeInputProps } from "../../commons/inputs/dateTimeInputUtils";
+import { dateTimeInputProps } from "../../commons/inputs/dateTimeInputUtils";
 
 const useStyles = makeStyles((theme) => ({
   root: isEditMode => ({
@@ -55,8 +55,8 @@ const ProjectForm = (props) => {
         </ImageInput>
         <LocationInput reference="Location" source="syreen:hasLocation" fullWidth onChange={handleLocationChange} key={locationVersion} />
         <MarkdownInput source="syreen:locationInformation" fullWidth />
-        <DateTimeInput source="syreen:startDate" validate={[futureDate]} {...dateTimeInputProps} />
-        <DateTimeInput source="syreen:endDate" validate={[futureDate]} {...dateTimeInputProps} />
+        <DateTimeInput source="syreen:startDate" {...dateTimeInputProps} />
+        <DateTimeInput source="syreen:endDate" {...dateTimeInputProps} />
       </FormTab>
       {isEditMode &&
         <FormTab label="Offres">
