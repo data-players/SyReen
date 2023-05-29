@@ -15,7 +15,7 @@ import { DateTimeInput } from '@semapps/date-components';
 import CameraInput from '../../commons/inputs/CameraInput';
 import LocationInput from "../../commons/inputs/LocationInput";
 import ConceptInput from "../../commons/inputs/ConceptInput";
-import { futureDate, dateTimeInputProps } from "../../commons/inputs/dateTimeInputUtils";
+import { dateTimeInputProps } from "../../commons/inputs/dateTimeInputUtils";
 
 const useStyles = makeStyles((theme) => ({
   tab: {
@@ -70,7 +70,7 @@ const OfferForm = (props) => {
           }
         </FormDataConsumer>
         <ConceptInput reference="Stage" source="syreen:hasStage" validate={[required()]} isRequired fullWidth />
-        <DateTimeInput source="syreen:startDate" validate={[futureDate]} {...dateTimeInputProps} />
+        <DateTimeInput source="syreen:startDate" {...dateTimeInputProps} />
         <NumberInput source="syreen:sellingPrice" fullWidth />
         <LocationInput reference="Location" source="syreen:hasLocation" fullWidth />
         <MarkdownInput source="syreen:locationInformation" fullWidth />
