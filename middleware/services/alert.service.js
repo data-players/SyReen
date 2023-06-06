@@ -109,26 +109,25 @@ const AlertService = {
           console.log('Match!!', offer, alert)
           actorsToNotify.push(alert['syreen:actor']);
         }
+      }
 
-        console.log('actorsToNotify', actorsToNotify);
+      console.log('actorsToNotify', actorsToNotify);
 
-        if (actorsToNotify.length > 0) {
-          await ctx.call(
-            'activitypub.outbox.post',
-            {
-              collectionUri: this.botActor.outbox,
-              type: ACTIVITY_TYPES.ANNOUNCE,
-              object: offer.id,
-              to: actorsToNotify,
-              context: alert.id
-            },
-            {
-              meta: {
-                webId: this.botActor.id
-              }
+      if (actorsToNotify.length > 0) {
+        await ctx.call(
+          'activitypub.outbox.post',
+          {
+            collectionUri: this.botActor.outbox,
+            type: ACTIVITY_TYPES.ANNOUNCE,
+            object: offer.id,
+            to: actorsToNotify
+          },
+          {
+            meta: {
+              webId: this.botActor.id
             }
-          );
-        }
+          }
+        );
       }
     }
   },
@@ -137,8 +136,7 @@ const AlertService = {
       async post(ctx) {
         const { resource } = ctx.params;
         if (resource['syreen:actor'] !== ctx.meta.webId) throw new E.ForbiddenError();
-      },
-      // TODO put/patch
+      }
     }
   },
   methods: {

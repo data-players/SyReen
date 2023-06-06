@@ -21,7 +21,7 @@ module.exports = {
       const contactUrl = `https://app.mypod.store/Profile/${encodeURIComponent(profile.id)}/show`;
 
       await ctx.call('mailer.send', {
-        to: 'srosset81@gmail.com',
+        to: ['srosset81@gmail.com', 'coordination.chantier@syreen.fr', 'pascal.laine@syreen.fr', 'simon.louvet.pro@gmail.com'],
         template: 'join-request',
         data: {
           actor,

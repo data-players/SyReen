@@ -1,13 +1,13 @@
 {
   "@context": "https://activitypods.org/context.json",
-  "id": "https://syreen.vercel.app/application.json",
+  "id": "https://app.syreen.fr/application.json",
   "type": "Application",
   "name": "SyRéeN",
   "content": "Plateforme de réemploi de matériaux de construction, en pair-à-pair et via des places du marché",
-  "image": "https://syreen.vercel.app/logo.jpg",
+  "image": "https://app.syreen.fr/logo.jpg",
   "apods:handledTypes": [
-    "http://virtual-assembly.org/ontologies/pair#Project",
-    "http://virtual-assembly.org/ontologies/pair-mp#Offer"
+    "http://syreen.fr/ns/core#Project",
+    "http://syreen.fr/ns/core#Offer"
   ],
   "dc:language": "fr"
 }
