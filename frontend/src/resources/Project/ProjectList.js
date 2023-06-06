@@ -15,7 +15,7 @@ const ProjectList = () => {
         perPage={1000}
         sort={{ field: 'dc:created', order: 'DESC' }}
       >
-        <CardsList CardComponent={ProjectCard} link="show" />
+        <CardsList CardComponent={ProjectCard} link="show" showCreatorItemsOnly={true} />
       </ListBase>
     </Container>
   );
