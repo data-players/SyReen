@@ -3,6 +3,8 @@ const { MIME_TYPES } = require('@semapps/mime-types');
 const { ACTOR_TYPES, ACTIVITY_TYPES, ActivitiesHandlerMixin } = require('@semapps/activitypub');
 const CONFIG = require('../config/config');
 
+const delay = t => new Promise(resolve => setTimeout(resolve, t));
+
 const GROUP_SLUG = 'syreen';
 const GROUP_URI = urlJoin(CONFIG.HOME_URL, 'actors', GROUP_SLUG);
 
@@ -54,7 +56,8 @@ const GroupService = {
             preferredUsername: 'syreen',
             name: 'Syreen'
           },
-          contentType: MIME_TYPES.JSON
+          contentType: MIME_TYPES.JSON,
+          webId: 'system'
         });
       } catch(e) {
         // Delete account if resource creation failed, or it may cause problems when retrying
@@ -100,6 +103,9 @@ const GroupService = {
         to: this.groupActor.followers
       });
 
+      // Reset meta set by activitypub.outbox.post
+      ctx.meta = {};
+
       return 'OK';
     },
     async rejectJoin(ctx) {
@@ -118,6 +124,11 @@ const GroupService = {
         object: activity.id,
         to: activity.actor
       });
+
+      // Reset meta set by activitypub.outbox.post
+      ctx.meta = {};
+
+      return 'OK';
     }
   },
   activities: {
@@ -127,6 +138,9 @@ const GroupService = {
         object: GROUP_URI
       },
       async onReceive(ctx, activity) {
+        // Wait 5s to ensure Syreen group has the right to fetch the actor's profile
+        await delay(5000);
+
         const actor = await ctx.call('activitypub.actor.get', {
           actorUri: activity.actor,
           webId: this.groupActor.id,
@@ -183,6 +197,8 @@ const GroupService = {
           object: activity.object.id,
           to: this.groupActor.followers
         });
+
+        ctx.call('alert.announce', { offer: activity.object });
       }
     }
   }

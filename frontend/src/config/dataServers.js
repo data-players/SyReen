@@ -27,9 +27,9 @@ const dataServers = {
         'syreen:Stage': ['/stages'],
         'syreen:Unit': ['/units'],
         'syreen:Category': ['/categories'],
+        'syreen:Alert': ['/alerts'],
       }
-    },
-    noProxy: true // Never fetch with HTTP signature as it is not supported, and all data are public
+    }
   }
 };
 

@@ -55,7 +55,8 @@
     "bootstrap": "lerna bootstrap",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "prettier": "prettier --single-quote --print-width 120 --write '**/*.js'",
-    "link-semapps-packages": "yarn link @semapps/activitypub-components @semapps/auth-provider @semapps/date-components @semapps/field-components @semapps/input-components @semapps/list-components @semapps/geo-components @semapps/markdown-components @semapps/semantic-data-provider"
+    "link-semapps-packages": "yarn link @semapps/activitypub-components @semapps/auth-provider @semapps/date-components @semapps/field-components @semapps/input-components @semapps/list-components @semapps/geo-components @semapps/markdown-components @semapps/semantic-data-provider",
+    "unlink-semapps-packages": "yarn unlink @semapps/activitypub-components @semapps/auth-provider @semapps/date-components @semapps/field-components @semapps/input-components @semapps/list-components @semapps/geo-components @semapps/markdown-components @semapps/semantic-data-provider"
   },
   "eslintConfig": {
     "extends": "react-app",

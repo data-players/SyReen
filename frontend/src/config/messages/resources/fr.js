@@ -90,6 +90,16 @@ const locationConfig = {
   },
 };
 
+const alertConfig = {
+  name: 'Alerte |||| Alertes',
+  fields: {
+    'syreen:label': "Nom de l'alerte",
+    'syreen:hasAddress': 'Adresse',
+    'syreen:radius': 'Distance (km)',
+    'syreen:hasCategory': 'Catégorie',
+  },
+};
+
 module.exports = {
   resources: {
     // OfferAndRequest: offerAndRequestConfig,
@@ -98,5 +108,6 @@ module.exports = {
     // requests: offerAndRequestConfig,
     Profile: profileConfig,
     Location: locationConfig,
+    Alert: alertConfig
   },
 };
