@@ -27,6 +27,11 @@ module.exports = [
     readOnly: true
   },
   {
+    path: '/batiprix',
+    acceptedTypes: ['syreen:BatiprixCategory'],
+    readOnly: true
+  },
+  {
     path: '/units',
     acceptedTypes: ['syreen:Unit'],
     readOnly: true
