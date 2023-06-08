@@ -31,6 +31,7 @@ const OfferShow = (props) => {
               <TextField source="syreen:alternativeLabel" />
               <MarkdownField source="syreen:description" addLabel />
               <ConceptField reference="Category" source="syreen:hasCategory" addLabel />
+              <ConceptField reference="BatiprixCategory" source="syreen:hasBatiprixCategory" addLabel />
               <NumberField source="syreen:sellingPrice" options={{ style: 'currency', currency: 'EUR' }} />
               {controllerProps?.record?.['syreen:publishMarketValue'] &&
                 <NumberField source="syreen:marketValue" options={{ style: 'currency', currency: 'EUR' }} />

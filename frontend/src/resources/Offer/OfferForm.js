@@ -57,6 +57,13 @@ const OfferForm = (props) => {
           autocomplete={true}
           sort={{field:"syreen:label", order:"ASC"}}
         />
+        <ConceptInput
+          reference="BatiprixCategory"
+          source="syreen:hasBatiprixCategory"
+          fullWidth
+          autocomplete={true}
+          sort={{field:"syreen:label", order:"ASC"}}
+        />
         <NumberInput source="syreen:quantity" fullWidth validate={[required()]} isRequired />
         <FormDataConsumer>
           {({ formData, ...rest }) => 

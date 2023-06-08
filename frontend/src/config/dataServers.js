@@ -27,6 +27,7 @@ const dataServers = {
         'syreen:Stage': ['/stages'],
         'syreen:Unit': ['/units'],
         'syreen:Category': ['/categories'],
+        'syreen:BatiprixCategory': ['/batiprix'],
         'syreen:Alert': ['/alerts'],
       }
     }
