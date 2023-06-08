@@ -8,7 +8,6 @@ import {
   FormTab
 } from 'react-admin';
 import { makeStyles } from '@material-ui/core';
-import { useCheckAuthenticated } from '@semapps/auth-provider';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageField } from '@semapps/field-components';
 import { DateTimeInput } from '@semapps/date-components';
@@ -17,6 +16,7 @@ import CardsList from "../../commons/lists/CardsList";
 import OfferCard from "../Offer/OfferCard";
 import ConceptInput from "../../commons/inputs/ConceptInput";
 import { dateTimeInputProps } from "../../commons/inputs/dateTimeInputUtils";
+import useCheckIsCreator from "../../hooks/useCheckIsCreator";
 
 const useStyles = makeStyles((theme) => ({
   root: isEditMode => ({
@@ -40,7 +40,7 @@ const ProjectForm = (props) => {
     setLocationVersion(locationVersion + 1);
   }, [locationVersion]);
 
-  const { identity } = useCheckAuthenticated();
+  const { identity } = useCheckIsCreator();
   if (!identity?.id) return null;
   
   return (
