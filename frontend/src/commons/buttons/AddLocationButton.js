@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useForm } from 'react-final-form';
 import {
   required,
-  Button,
   SaveButton,
   TextInput,
   useCreate,
   useNotify,
   FormWithRedirect
 } from 'react-admin';
+import { Button } from '@material-ui/core';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -23,7 +23,8 @@ import { extractContext, LocationInput } from '@semapps/geo-components';
 const useStyles = makeStyles(theme => ({
   button: {
     marginBottom: theme.spacing(2),
-    color: '#FFF',
+    fontSize: 13,
+    padding: '4px 10px'
   },
 }));
 
@@ -73,12 +74,12 @@ function AddLocationButton({ onChange }) {
     <>
       <Button
         className={classes.button}
-        variant="contained"
-        onClick={handleClick}
-        label="Ajouter une adresse"
+        variant="contained" 
+        startIcon={<ChatBubbleIcon />}
         color="primary"
-      >
-        <ChatBubbleIcon />
+        onClick={handleClick}
+      > 
+        Ajouter une adresse
       </Button>
         <Dialog
           fullWidth
