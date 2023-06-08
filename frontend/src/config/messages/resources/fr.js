@@ -51,6 +51,7 @@ const offerConfig = {
     'syreen:hasLocation': 'Localisation',
     'syreen:locationInformation': 'Complément d\'adresse',
     'syreen:hasCategory': "Categorie",
+    'syreen:hasBatiprixCategory': "Categorie Batiprix",
     'syreen:sellingPrice': "Prix de vente",
     'syreen:estimatedNewValue': "Valeur Neuve Estimée (€)",
     'syreen:agePercentage': "Vétusté (%)",

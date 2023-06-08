@@ -50,6 +50,10 @@ const dataModels = {
     types: ['syreen:Category'],
     list: {},
   },
+  BatiprixCategory: {
+    types: ['syreen:BatiprixCategory'],
+    list: {},
+  },
 };
 
 export default dataModels;

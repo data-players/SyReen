@@ -69,6 +69,7 @@ const App = () => (
     <Resource name="Stage" />
     <Resource name="Unit" />
     <Resource name="Category" />
+    <Resource name="BatiprixCategory" />
   </Admin>
 );
 
