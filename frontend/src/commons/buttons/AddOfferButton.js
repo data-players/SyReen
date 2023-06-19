@@ -1,26 +1,13 @@
 import React from 'react';
-import { Button, Link, useRecordContext } from "react-admin";
-import { makeStyles } from '@material-ui/core';
+import { Button, Link, useRecordContext, useGetIdentity } from "react-admin";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
-/*
-const useStyles = makeStyles((theme) => ({
-  button: {
-    '& .MuiButton-label': {
-      '& span': {
-        minWidth: 104
-      }
-    }
-  }
-}));
-*/
-
 
 const AddOfferButton = ({ linkType }) => {
   const recordContext = useRecordContext();
-  // const classes = useStyles();
+  const { identity } = useGetIdentity();
   return (
     <>
-      {recordContext?.id &&
+      {recordContext?.id && identity && identity.id === recordContext?.["dc:creator"] &&
         <Link 
           to={{
             pathname: "/offers/create",
@@ -32,7 +19,7 @@ const AddOfferButton = ({ linkType }) => {
             },
           }}
         >
-          <Button label="Ajouter une offre" /*className={classes.button}*/>
+          <Button label="Ajouter une offre">
             <ChatBubbleIcon />
           </Button>
         </Link>

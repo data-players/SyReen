@@ -9,13 +9,13 @@ import {
   required
 } from 'react-admin';
 import { Box, makeStyles } from '@material-ui/core';
-import { useCheckAuthenticated } from '@semapps/auth-provider';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { DateTimeInput } from '@semapps/date-components';
 import CameraInput from '../../commons/inputs/CameraInput';
 import LocationInput from "../../commons/inputs/LocationInput";
 import ConceptInput from "../../commons/inputs/ConceptInput";
 import { dateTimeInputProps } from "../../commons/inputs/dateTimeInputUtils";
+import useCheckIsCreator from "../../hooks/useCheckIsCreator";
 
 const useStyles = makeStyles((theme) => ({
   tab: {
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 const OfferForm = (props) => {
   const classes = useStyles();
-  const { identity } = useCheckAuthenticated();
+  const { identity } = useCheckIsCreator();
   if (!identity?.id) return null;
   return (
     <TabbedForm {...props} redirect="show">
@@ -53,6 +53,13 @@ const OfferForm = (props) => {
           reference="Category"
           source="syreen:hasCategory"
           validate={[required()]} isRequired
+          fullWidth
+          autocomplete={true}
+          sort={{field:"syreen:label", order:"ASC"}}
+        />
+        <ConceptInput
+          reference="BatiprixCategory"
+          source="syreen:hasBatiprixCategory"
           fullWidth
           autocomplete={true}
           sort={{field:"syreen:label", order:"ASC"}}
