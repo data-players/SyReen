@@ -23,7 +23,7 @@ module.exports = {
       return ({
         type: 'syreen:BatiprixCategory',
         'syreen:label': data.Title,
-        'skos:broader': data.IsLeaf ? urlJoin(CONFIG.HOME_URL, 'batiprix', `${data.ParentID}`) : undefined,
+        'skos:broader': data.ParentID !== 1 ? urlJoin(CONFIG.HOME_URL, 'batiprix', `${data.ParentID}`) : undefined,
       });
     },
   }
