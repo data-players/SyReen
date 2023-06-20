@@ -1,23 +1,3 @@
-/*
-const offerAndRequestConfig = {
-  name: 'Annonce |||| Annonces',
-  fields: {
-    'syreen:label': 'Titre',
-    'syreen:depictedBy': 'Image',
-    'syreen:description': 'Présentation',
-    'dc:creator': 'Posté par',
-    'dc:created': 'Date',
-    'mp:hasGeoCondition.syreen:hasLocation': 'Localisation',
-    'mp:hasReciprocityCondition.mp:amount': 'Prix demandé',
-    'mp:hasReciprocityCondition.mp:maxAmount': 'Prix maximum',
-    'mp:hasReciprocityCondition.mp:currency': 'Devise',
-    'mp:hasReciprocityCondition.mp:inExchangeOf': 'En échange de',
-    'mp:hasTimeCondition.mp:maxDuration': 'Durée maximale du prêt',
-    'mp:hasTimeCondition.mp:minDuration': 'Durée minimale du prêt',
-    'mp:hasTimeCondition.mp:expirationDate': "Date d'expiration de l'annonce",
-  },
-};
-*/
 const projectConfig = {
   name: 'Projet |||| Projets',
   fields: {
@@ -50,8 +30,8 @@ const offerConfig = {
     'syreen:startDate': "Date prévisionnelle de disponibilité",
     'syreen:hasLocation': 'Localisation',
     'syreen:locationInformation': 'Complément d\'adresse',
-    'syreen:hasCategory': "Categorie",
-    'syreen:hasBatiprixCategory': "Categorie Batiprix",
+    'syreen:hasCategory': "Catégorie",
+    'syreen:hasBatiprixCategory': "Catégorie Batiprix",
     'syreen:sellingPrice': "Prix de vente",
     'syreen:estimatedNewValue': "Valeur Neuve Estimée (€)",
     'syreen:agePercentage': "Vétusté (%)",
@@ -97,7 +77,7 @@ const alertConfig = {
     'syreen:label': "Nom de l'alerte",
     'syreen:hasAddress': 'Adresse',
     'syreen:radius': 'Distance (km)',
-    'syreen:hasCategory': 'Catégorie',
+    'syreen:hasBatiprixCategory': 'Catégorie',
   },
 };
 

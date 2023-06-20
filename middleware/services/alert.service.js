@@ -88,6 +88,17 @@ const AlertService = {
 
     // Wait until the actor is fully created
     this.botActor = await this.broker.call('activitypub.actor.awaitCreateComplete', { actorUri: BOT_URI });
+
+    // Cache all categories for faster matching
+    const categoriesContainer = await this.broker.call('ldp.container.get', {
+      containerUri: urlJoin(CONFIG.HOME_URL, 'batiprix'),
+      accept: MIME_TYPES.JSON,
+      webId: 'system'
+    });
+
+    this.categories = categoriesContainer['ldp:contains'].map(resource => ({ id: resource.id, parent: resource['skos:broader'] }));
+
+    this.logger.info(`Loaded in cache ${this.categories.length} Batiprix categories`);
   },
   actions: {
     async announce(ctx) {
@@ -155,18 +166,33 @@ const AlertService = {
     },
     matchCategory(offer, alert) {
       // If no category is set in the offer, it is not a geo-localized object
-      if (!offer['syreen:hasCategory']) return false;
+      if (!offer['syreen:hasBatiprixCategory']) return false;
+      // Backward compatibility. Ignore alerts with CSTB category
+      if (!alert['syreen:hasBatiprixCategory'] && alert['syreen:hasCategory']) return false;
       // If no category is set in the alert, the user wants to be notified of all objects
-      if (!alert['syreen:hasCategory']) return true;
-      // If at least one category match
-      return defaultToArray(alert['syreen:hasCategory']).some(category => defaultToArray(offer['syreen:hasCategory']).includes(category));
+      if (!alert['syreen:hasBatiprixCategory']) return true;
+      // Look recursively through the categories
+      return this.recursiveMatch(alert['syreen:hasBatiprixCategory'], offer['syreen:hasBatiprixCategory']);
+    },
+    recursiveMatch(alertCategoryUri, offerCategoryUri) {
+      if (alertCategoryUri === offerCategoryUri) {
+        return true;
+      } else {
+        // Look for the parent category of the offer
+        const offerCategory = this.categories.find(c => c.id === offerCategoryUri);
+        if (offerCategory && offerCategory.parent) {
+          // Parent category found, see if it matches with alert category
+          return this.recursiveMatch(alertCategoryUri, offerCategory.parent)
+        } else {
+          // Offer category has no parent. End search.
+          return false;
+        }
+      }
     }
   },
   events: {
     async 'activitypub.inbox.received'(ctx) {
       const { recipients, activity } = ctx.params;
-
-      console.log('activitypub.inbox.received', ctx.params)
 
       if (
         recipients.includes(RELAY_URI) &&

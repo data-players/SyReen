@@ -27,8 +27,8 @@ export const AlertForm = (props) => {
       />
       <NumberInput source="syreen:radius" fullWidth validate={[required()]} isRequired />
       <ConceptInput
-        reference="Category"
-        source="syreen:hasCategory"
+        reference="BatiprixCategory"
+        source="syreen:hasBatiprixCategory"
         sort={{ field:"syreen:label", order:"ASC" }}
         fullWidth
         autocomplete
