@@ -17,6 +17,7 @@ export const g1UrlToPublicKey = value => {
 };
 
 export const formatUsername = (uri) => {
+  console.log('formatUsername', uri)
   const url = new URL(uri);
   const username = url.pathname.split('/')[1];
   return '@' + username + '@' + url.host;

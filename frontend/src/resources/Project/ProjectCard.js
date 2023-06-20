@@ -1,11 +1,9 @@
 import React from 'react';
-import { DateField, SelectField, TextField } from 'react-admin';
+import { DateField, TextField } from 'react-admin';
 import { makeStyles, Box } from '@material-ui/core';
 import { ReferenceField } from '@semapps/field-components';
 import EventIcon from '@material-ui/icons/Event';
 import Chip from '../../commons/Chip';
-import SyncIcon from '@material-ui/icons/Sync';
-import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
 import FaceIcon from '@material-ui/icons/Face';
 
 const useStyles = makeStyles((theme) => ({
@@ -36,23 +34,6 @@ const ProjectCard = ({ record }) => {
         <TextField variant="h2" color="primary" record={record} source="syreen:label" className={classes.title} />
       </Box>
       <Box>
-      {/*
-        <Chip icon={<SyncIcon />}>
-          <SelectField
-            record={record}
-            source="type"
-            choices={Object.entries(types).map(([k, v]) => ({ id: k, name: v }))}
-          />
-        </Chip>
-        <Chip icon={<NaturePeopleOutlinedIcon />}>
-          <SelectField
-            record={record}
-            source="mp:offerOfResourceType"
-            choices={Object.entries(resourceTypes).map(([k, v]) => ({ id: k, name: v }))}
-            icon={<NaturePeopleOutlinedIcon />}
-          />
-        </Chip>
-        */}
         <Chip icon={<EventIcon />}>
           <DateField
             record={record}

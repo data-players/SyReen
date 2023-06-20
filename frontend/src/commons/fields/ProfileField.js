@@ -29,12 +29,14 @@ const ProfileField = ({ label, source, ...rest }) => {
         <Avatar src={record?.['vcard:photo']} alt={record?.['vcard:given-name']} className={classes.avatar} />
       </Grid>
       <Grid item xs={8} md={10}>
-        <Typography variant="h4">{record?.['vcard:given-name']}</Typography>
-        <Typography variant="body2" className={classes.username}>
-          {formatUsername(record?.describes)}
-        </Typography>
+        <Typography variant="h4">{!record['_error'] ? record?.['vcard:given-name'] : "Inconnu"}</Typography>
+        {!record['_error'] && 
+          <Typography variant="body2" className={classes.username}>
+            {formatUsername(record?.describes)}
+          </Typography>
+        }
         <Typography variant="body2" className={classes.note}>
-          {record?.['vcard:note']}
+          {!record['_error'] ? record?.['vcard:note'] : "Vous n'avez pas la permission de voir le profil de cette personne, mais vous pouvez lui écrire"}
         </Typography>
       </Grid>
     </Grid>

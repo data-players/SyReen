@@ -7,7 +7,6 @@ import ContactCard from "../../commons/cards/profile/ContactCard";
 import UsernameField from "../../commons/fields/profile/UsernameField";
 import ContactField from "../../commons/fields/ContactField";
 import MainList from "../../commons/lists/profile/MainList/MainList";
-import G1AccountField from "../../commons/fields/profile/G1AccountField";
 import BlockAnonymous from "../../commons/BlockAnonymous";
 
 const ProfileShow = (props) => {
@@ -18,7 +17,6 @@ const ProfileShow = (props) => {
           <TextField source="vcard:given-name" />
           <UsernameField source="describes" />
           <TextField source="vcard:note" />
-          <G1AccountField source="foaf:tipjar" />
           <DateField source="dc:created" locales={process.env.REACT_APP_LANG} options={{ month: 'long', day: 'numeric', year: 'numeric' }} />
         </Hero>
         <MainList>
