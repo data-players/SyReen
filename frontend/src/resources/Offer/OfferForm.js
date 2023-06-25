@@ -6,6 +6,7 @@ import {
   BooleanInput,
   NumberInput,
   TextInput,
+  ReferenceArrayInput,
   required
 } from 'react-admin';
 import { Box, makeStyles } from '@material-ui/core';
@@ -14,6 +15,7 @@ import { DateTimeInput } from '@semapps/date-components';
 import CameraInput from '../../commons/inputs/CameraInput';
 import LocationInput from "../../commons/inputs/LocationInput";
 import ConceptInput from "../../commons/inputs/ConceptInput";
+import TreeAutocompleteArrayInput from "../../commons/inputs/TreeAutocompleteArrayInput";
 import { dateTimeInputProps } from "../../commons/inputs/dateTimeInputUtils";
 import useCheckIsCreator from "../../hooks/useCheckIsCreator";
 
@@ -57,13 +59,15 @@ const OfferForm = (props) => {
           autocomplete={true}
           sort={{field:"syreen:label", order:"ASC"}}
         />
-        <ConceptInput
-          reference="BatiprixCategory"
-          source="syreen:hasBatiprixCategory"
-          fullWidth
-          autocomplete={true}
-          sort={{field:"syreen:label", order:"ASC"}}
-        />
+        <ReferenceArrayInput reference="BatiprixCategory" source="syreen:hasBatiprixCategory" fullWidth >
+          <TreeAutocompleteArrayInput
+            optionText="syreen:label"
+            parentProperty="skos:broader"
+            treeReference="BatiprixCategory"
+            shouldRenderSuggestions={value => true} 
+            defaultExpanded={true}
+          />
+        </ReferenceArrayInput>
         <NumberInput source="syreen:quantity" fullWidth validate={[required()]} isRequired />
         <FormDataConsumer>
           {({ formData, ...rest }) => 

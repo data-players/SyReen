@@ -1,7 +1,8 @@
 import React from 'react';
-import { ShowBase, ShowController, NumberField, TextField } from 'react-admin';
+import { ShowBase, ShowController, NumberField, TextField, ReferenceArrayField } from 'react-admin';
 import MarkdownField from '../../commons/fields/MarkdownField';
 import ContactField from '../../commons/fields/ContactField';
+import TreeList from '../../commons/fields/TreeList';
 import ShowPage from '../../layout/ShowPage';
 import BodyLabel from '../../commons/lists/BodyLabel';
 import ShareButton from '../../commons/buttons/ShareButton';
@@ -31,7 +32,9 @@ const OfferShow = (props) => {
               <TextField source="syreen:alternativeLabel" />
               <MarkdownField source="syreen:description" addLabel />
               <ConceptField reference="Category" source="syreen:hasCategory" addLabel />
-              <ConceptField reference="BatiprixCategory" source="syreen:hasBatiprixCategory" addLabel />
+              <ReferenceArrayField reference="BatiprixCategory" source="syreen:hasBatiprixCategory">
+                <TreeList source="syreen:hasBatiprixCategory" label="syreen:label" defaultExpanded={false} {...props} />
+              </ReferenceArrayField>
               <NumberField source="syreen:sellingPrice" options={{ style: 'currency', currency: 'EUR' }} />
               {controllerProps?.record?.['syreen:publishMarketValue'] &&
                 <NumberField source="syreen:marketValue" options={{ style: 'currency', currency: 'EUR' }} />
