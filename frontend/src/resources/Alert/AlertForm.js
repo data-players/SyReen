@@ -1,7 +1,7 @@
 import React from 'react';
-import {NumberInput, required, SimpleForm, TextInput, useGetIdentity} from 'react-admin';
+import {NumberInput, required, ReferenceInput, SimpleForm, TextInput, useGetIdentity} from 'react-admin';
 import { LocationInput } from "@semapps/geo-components";
-import ConceptInput from "../../commons/inputs/ConceptInput";
+import TreeAutocompleteInput from "../../commons/inputs/TreeAutocompleteInput";
 
 export const AlertForm = (props) => {
   const { identity } = useGetIdentity();
@@ -26,13 +26,16 @@ export const AlertForm = (props) => {
         fullWidth
       />
       <NumberInput source="syreen:radius" fullWidth validate={[required()]} isRequired />
-      <ConceptInput
-        reference="BatiprixCategory"
-        source="syreen:hasBatiprixCategory"
-        sort={{ field:"syreen:label", order:"ASC" }}
-        fullWidth
-        autocomplete
-      />
+      <ReferenceInput reference="BatiprixCategory" source="syreen:hasBatiprixCategory" fullWidth >
+        <TreeAutocompleteInput
+          optionText="syreen:label"
+          parentProperty="skos:broader"
+          treeReference="BatiprixCategory"
+          resettable={true} 
+          shouldRenderSuggestions={value => true} 
+          defaultExpanded={true}
+        />
+      </ReferenceInput>
     </SimpleForm>
   );
 }

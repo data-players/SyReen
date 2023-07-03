@@ -20,7 +20,7 @@ const SelectInputWithFilter = (props) => {
   if (choices.length === 0) {
     choices = props.choices;
   }
-  if (!choices.find(choice => choice.id === formState.values['syreen:hasUnit']) ) {
+  if (formState?.dirtyFields?.['syreen:hasCategory'] && !choices.find(choice => choice.id === formState.values['syreen:hasUnit']) ) {
     form.change('syreen:hasUnit', undefined);
   }
 
