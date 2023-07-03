@@ -61,7 +61,6 @@ const profileConfig = {
     'vcard:hasTelephone': 'Téléphone',
     'syreen:actorType': 'Vous êtes',
     'syreen:activityDomain': "Vos domaines d'activité",
-    'foaf:tipjar': 'Compte Ğ1',
     'dc:created': "Date d'inscription"
   },
 };

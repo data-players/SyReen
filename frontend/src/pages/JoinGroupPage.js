@@ -1,26 +1,15 @@
-import React from 'react';
-import { SaveButton, SelectInput, SimpleForm, TextInput, Toolbar, useGetIdentity, required, TopToolbar } from "react-admin";
+import React, { useState, useCallback } from 'react';
+import { SaveButton, SimpleForm, TextInput, Toolbar, useGetIdentity, required, useNotify, useRedirect } from "react-admin";
 import { Typography } from '@material-ui/core';
+import { useOutbox, ACTIVITY_TYPES } from '@semapps/activitypub-components';
 import Edit from '../layout/profile/Edit';
 import QuickCreateLocationInput from '../commons/inputs/QuickCreateLocationInput';
+import useSyreenGroupMember from '../hooks/useSyreenGroupMember';
 import PhoneInput from '../commons/inputs/PhoneInput';
+import ActorTypeSelectInput from '../commons/inputs/ActorTypeSelectInput';
 import SendIcon from '@material-ui/icons/Send';
 
-const actorTypes = [
-  { name: 'Un artisan' },
-  { name: 'Un bureau d’étude, un architecte un AMOE' },
-  { name: 'Une collectivité' },
-  { name: 'Un distributeur' },
-  { name: 'Un acteur du déchet' },
-];
-
-const validPhone = (value) => {
-  if (!value || !value['vcard:hasValue']) return undefined;
-  if (!value['vcard:hasValue'].startsWith('tel:+') || isNaN(value['vcard:hasValue'].replace('tel:+',''))) {
-      return 'Utiliser le format +3364 avec des chiffres et aucun espace';
-  }
-  return undefined;
-};
+const GROUP_URI = process.env.REACT_APP_AGGREGATOR_BASE_URL + '/actors/syreen';
 
 const ToolbarWithoutDelete = props => (
   <Toolbar {...props} >
@@ -28,39 +17,75 @@ const ToolbarWithoutDelete = props => (
   </Toolbar>
 );
 
-export const JoinGroupPage = (props) => {
+export const JoinGroupPage = () => {
+  const [submitted, setSubmitted] = useState(false);
   const { identity } = useGetIdentity();
-  if (!identity?.id) return null;
+  const redirect = useRedirect();
+  const outbox = useOutbox();
+  const notify = useNotify();
+  const { isMember, loaded } = useSyreenGroupMember();
 
-  const join = (values) => {
-    console.log('join', values)
-  };
+  const joinGroup = useCallback(
+    async () => {
+      try {
+        await outbox.post({
+          type: ACTIVITY_TYPES.JOIN,
+          actor: outbox.owner,
+          object: GROUP_URI,
+          to: GROUP_URI,
+        });
+        setSubmitted(true);
+      } catch (e) {
+        notify(e.message, { type: 'error' });
+      }
+    },
+    [outbox, notify, setSubmitted]
+  );
+
+  if (!identity?.id || !loaded) return null;
+
+  // if (loaded && isMember) {
+  //   notify("Vous êtes déjà membre du groupe Syreen", { type: 'error' });
+  //   redirect('/');
+  // }
 
   return (
     <Edit
       resource="Profile"
       basePath="/Profile"
       id={identity?.profileData?.id} 
-      title="Inscription professionnels" 
+      title={submitted ? "Demande envoyée !" : "Inscription professionnels"} 
       transform={(data) => ({ ...data, 'vcard:fn': data['vcard:given-name'] })}
       actions={false}
       customToolbar={<ToolbarWithoutDelete />}
-      onSuccess={join}
+      mutationMode="pessimistic"
+      onSuccess={joinGroup}
     >
-      <SimpleForm initialValues={{ 'vcard:hasTelephone': { 'vcard:hasValue': 'tel:+33' } }}>
-        <Typography fullWidth gutterBottom>
-          Si vous souhaitez vous inscrire sur la plateforme SyRéeN au titre de votre activité professionnelle,
-          nous vous proposons de remplir le formulaire qui suit afin de faire plus ample connaissance et d’officialiser 
-          votre adhésion au réseau de professionnels qui souhaitent développer le réemploi de matériaux de construction
-          en Normandie.
-        </Typography>
-        <TextInput source="vcard:given-name" validate={[required()]} fullWidth />
-        <TextInput source="vcard:family-name" validate={[required()]} fullWidth />
-        <QuickCreateLocationInput reference="Location" source="vcard:hasAddress" validate={[required()]} />
-        <PhoneInput source="vcard:hasTelephone" phoneType={['vcard:Voice', 'vcard:Work']} validate={[required(), validPhone]} fullWidth />
-        <SelectInput source="syreen:actorType" fullWidth validate={[required()]} translateChoice={false} optionValue="name" choices={actorTypes} />
-        <TextInput source="syreen:activityDomain" fullWidth validate={[required()]} helperText="Exemple: Maçonnerie, carrelage, faïence" />
-      </SimpleForm>
+      
+        {submitted ? (
+          <Typography fullWidth gutterBottom>
+            En attendant de pouvoir se rencontrer et échanger des matériaux ou tout autre chose concernant le réemploi, merci à vous
+            pour votre participation au développement de la filière locale de réemploi de matériaux de construction.
+            <br /><br />
+            Allez, c’est parti, diffusez vos offres, évaluez-les, rencontrez vos futurs clients, déposez vos recherches et vos alertes
+            pour ce que vous cherchez... 
+          </Typography>
+        ): (
+          <SimpleForm initialValues={{ 'vcard:hasTelephone': { 'vcard:hasValue': 'tel:+33' } }}>
+            <Typography fullWidth gutterBottom>
+              Si vous souhaitez vous inscrire sur la plateforme SyRéeN au titre de votre activité professionnelle,
+              nous vous proposons de remplir le formulaire qui suit afin de faire plus ample connaissance et d’officialiser 
+              votre adhésion au réseau de professionnels qui souhaitent développer le réemploi de matériaux de construction
+              en Normandie.
+            </Typography>
+            <TextInput source="vcard:given-name" validate={[required()]} fullWidth />
+            <TextInput source="vcard:family-name" validate={[required()]} fullWidth />
+            <QuickCreateLocationInput reference="Location" source="vcard:hasAddress" validate={[required()]} />
+            <PhoneInput source="vcard:hasTelephone" phoneType={['vcard:Voice', 'vcard:Work']} validate={[required()]} fullWidth />
+            <ActorTypeSelectInput source="syreen:actorType" fullWidth validate={[required()]} />
+            <TextInput source="syreen:activityDomain" fullWidth validate={[required()]} helperText="Exemple: Maçonnerie, carrelage, faïence" />
+          </SimpleForm>
+        )}
     </Edit>
   );
 }

@@ -14,7 +14,7 @@ module.exports = {
   },
   actions: {
     async requestJoin(ctx) {
-      const { activity, actor, profile } = ctx.params;
+      const { activity, actor, profile, location } = ctx.params;
 
       const acceptUrl = urlJoin(CONFIG.HOME_URL, '_system', 'accept', CONFIG.SECRET_KEY) + '?activityUri=' + encodeURIComponent(activity.id);
       const rejectUrl = urlJoin(CONFIG.HOME_URL, '_system', 'reject', CONFIG.SECRET_KEY) + '?activityUri=' + encodeURIComponent(activity.id);
@@ -26,6 +26,7 @@ module.exports = {
         data: {
           actor,
           profile,
+          location,
           acceptUrl,
           rejectUrl,
           contactUrl

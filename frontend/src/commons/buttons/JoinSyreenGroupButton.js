@@ -10,7 +10,7 @@ const GROUP_URI = process.env.REACT_APP_AGGREGATOR_BASE_URL + '/actors/syreen';
 const JoinSyreenGroupButton = (props) => {
   const outbox = useOutbox();
   const notify = useNotify();
-  const syreenGroupMember = useSyreenGroupMember();
+  const { isMember, loaded } = useSyreenGroupMember();
 
   const joinGroup = useCallback(
     async () => {
@@ -47,7 +47,7 @@ const JoinSyreenGroupButton = (props) => {
   );
 
   return (
-    syreenGroupMember ? (
+    isMember ? (
       <Button label="Quitter" onClick={() => leaveGroup()} {...props}>
         <ExitToAppIcon />
       </Button>
