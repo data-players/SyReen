@@ -57,7 +57,10 @@ const profileConfig = {
     'vcard:family-name': 'Nom de famille',
     'vcard:note': 'En deux mots',
     'vcard:photo': 'Photo',
-    'foaf:tipjar': 'Compte Ğ1',
+    'vcard:hasAddress': 'Adresse',
+    'vcard:hasTelephone': 'Téléphone',
+    'syreen:actorType': 'Vous êtes',
+    'syreen:activityDomain': "Vos domaines d'activité",
     'dc:created': "Date d'inscription"
   },
 };

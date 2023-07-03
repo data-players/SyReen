@@ -31,7 +31,7 @@ const EditPage = ({ undoable, mutationMode, title, actions, className, hasDelete
         <Box p={{ xs: 2, md: 3 }}>
           <Grid container>
             <Grid item xs={8}>
-              <Typography variant="h2">
+              <Typography variant="h2" style={{ marginBottom: 10 }}>
                 {React.isValidElement(title) ? React.cloneElement(title, { record }) : title || defaultTitle}
               </Typography>
             </Grid>
@@ -52,7 +52,7 @@ const EditPage = ({ undoable, mutationMode, title, actions, className, hasDelete
             version,
             redirect,
             component: 'div',
-            toolbar: hasDelete ? customToolbar : <NoDeleteToolbar />,
+            toolbar: customToolbar || <NoDeleteToolbar />,
           })}
         </Box>
       </Card>

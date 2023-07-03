@@ -15,10 +15,14 @@ const Edit = (props) => {
   return(
     <ResourceContextProvider value={props.resource}>
       <EditContextProvider value={controllerProps}>
-        <EditPage {...props} {...controllerProps} actions={<Actions {...props} />} hasDelete={false} ></EditPage>
+        <EditPage hasDelete={false} {...controllerProps} {...props} ></EditPage>
       </EditContextProvider>
     </ResourceContextProvider>
   )
 };
+
+Edit.defaultProps = {
+  actions: <Actions />
+}
 
 export default Edit;

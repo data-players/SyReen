@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 const ContactsShareList = ({ addInvitation, removeInvitation, announces, announcers, isOrganizer, pendingPublicState, setPendingPublicState, currentGroupState, pendingGroupState, setPendingGroupState }) => {
   const classes = useStyles();
   const { ids, data, loading, ...rest } = useListContext();
-  const syreenGroupMember = useSyreenGroupMember();
+  const { isMember } = useSyreenGroupMember();
   return (
     <List dense className={classes.list}>
       <PublicSwitch
@@ -27,7 +27,7 @@ const ContactsShareList = ({ addInvitation, removeInvitation, announces, announc
         pendingPublicState={pendingPublicState}
         setPendingPublicState={setPendingPublicState}
       />
-      {syreenGroupMember &&
+      {isMember &&
         <SyreenGroupSwitch
           key="group"
           currentGroupState={currentGroupState}

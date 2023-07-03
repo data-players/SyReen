@@ -138,8 +138,8 @@ const GroupService = {
         object: GROUP_URI
       },
       async onReceive(ctx, activity) {
-        // Wait 5s to ensure Syreen group has the right to fetch the actor's profile
-        await delay(5000);
+        // Wait 20s to ensure Syreen group has the right to fetch the actor's profile
+        await delay(20000);
 
         const actor = await ctx.call('activitypub.actor.get', {
           actorUri: activity.actor,
@@ -151,10 +151,16 @@ const GroupService = {
           webId: this.groupActor.id
         });
 
+        const location = await ctx.call('ldp.remote.get', {
+          resourceUri: profile['vcard:hasAddress'],
+          webId: this.groupActor.id
+        });
+
         await ctx.call('mailer.requestJoin', {
           activity,
           actor,
-          profile
+          profile,
+          location
         });
       }
     },
