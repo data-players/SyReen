@@ -141,6 +141,8 @@ const GroupService = {
         // Wait 20s to ensure Syreen group has the right to fetch the actor's profile
         await delay(20000);
 
+        console.log('joinGroup after delay', activity, this.groupActor.id)
+
         const actor = await ctx.call('activitypub.actor.get', {
           actorUri: activity.actor,
           webId: this.groupActor.id,
@@ -150,6 +152,8 @@ const GroupService = {
           resourceUri: actor.url,
           webId: this.groupActor.id
         });
+
+        console.log('profile', profile);
 
         const location = await ctx.call('ldp.remote.get', {
           resourceUri: profile['vcard:hasAddress'],
