@@ -12,7 +12,7 @@ import BlockAnonymous from "../../commons/BlockAnonymous";
 const ProfileShow = (props) => {
   return (
     <BlockAnonymous>
-      <Show title={<ProfileTitle />} asides={[<ContactCard />]} {...props}>
+      <Show title={<ProfileTitle />} {...props}>
         <Hero image="vcard:photo">
           <TextField source="vcard:given-name" />
           <UsernameField source="describes" />
