@@ -162,6 +162,8 @@ const GroupService = {
           webId: this.groupActor.id
         });
 
+        console.log('location', location);
+
         await ctx.call('mailer.requestJoin', {
           activity,
           actor,
