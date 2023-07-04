@@ -151,7 +151,7 @@ const GroupService = {
           webId: this.groupActor.id
         });
 
-        if (profile['vcard:hasAddress']) {
+        if (!profile['vcard:hasAddress']) {
           await ctx.call('mailer.errorJoin', {
             activity,
             actor
