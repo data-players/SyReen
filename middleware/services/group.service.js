@@ -66,7 +66,7 @@ const GroupService = {
       }
     }
 
-    // Wait until the relay actor is fully created
+    // Wait until the actor is fully created
     this.groupActor = await this.broker.call('activitypub.actor.awaitCreateComplete', { actorUri: GROUP_URI });
   },
   actions: {
@@ -141,35 +141,34 @@ const GroupService = {
         // Wait 10s to ensure Syreen group has the right to fetch the actor's profile
         await delay(10000);
 
-        console.log('joinGroup after delay', activity, this.groupActor.id)
-
         const actor = await ctx.call('activitypub.actor.get', {
           actorUri: activity.actor,
           webId: this.groupActor.id,
         });
-
-        console.log('actor', actor)
 
         const profile = await ctx.call('ldp.remote.get', {
           resourceUri: actor.url,
           webId: this.groupActor.id
         });
 
-        console.log('profile', profile);
-
-        const location = await ctx.call('ldp.remote.get', {
-          resourceUri: profile['vcard:hasAddress'],
-          webId: this.groupActor.id
-        });
-
-        console.log('location', location);
-
-        await ctx.call('mailer.requestJoin', {
-          activity,
-          actor,
-          profile,
-          location
-        });
+        if (profile['vcard:hasAddress']) {
+          await ctx.call('mailer.errorJoin', {
+            activity,
+            actor
+          });
+        } else {
+          const location = await ctx.call('ldp.remote.get', {
+            resourceUri: profile['vcard:hasAddress'],
+            webId: this.groupActor.id
+          });
+  
+          await ctx.call('mailer.requestJoin', {
+            activity,
+            actor,
+            profile,
+            location
+          });
+        }
       }
     },
     leaveGroup: {

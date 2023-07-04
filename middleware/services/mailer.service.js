@@ -32,6 +32,22 @@ module.exports = {
           contactUrl
         }
       });
+    },
+    async errorJoin(ctx) {
+      const { activity, actor } = ctx.params;
+
+      const acceptUrl = urlJoin(CONFIG.HOME_URL, '_system', 'accept', CONFIG.SECRET_KEY) + '?activityUri=' + encodeURIComponent(activity.id);
+      const rejectUrl = urlJoin(CONFIG.HOME_URL, '_system', 'reject', CONFIG.SECRET_KEY) + '?activityUri=' + encodeURIComponent(activity.id);
+
+      await ctx.call('mailer.send', {
+        to: ['srosset81@gmail.com'],
+        template: 'join-error',
+        data: {
+          actor,
+          acceptUrl,
+          rejectUrl
+        }
+      });
     }
   }
 };
