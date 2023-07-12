@@ -1682,14 +1682,14 @@
   resolved "https://registry.yarnpkg.com/@redux-saga/types/-/types-1.1.0.tgz#0e81ce56b4883b4b2a3001ebe1ab298b84237204"
   integrity sha512-afmTuJrylUU/0OtqzaRkbyYFFNgCF73Bvel/sw90pvGrWIZ+vyoIJqA6eMSoA6+nb443kTmulmBtC9NerXboNg==
 
-"@semapps/activitypub-components@0.4.8":
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/@semapps/activitypub-components/-/activitypub-components-0.4.8.tgz#f64fe63a431a3ca0e5067d7372c30f0e94997abd"
-  integrity sha512-4ZUOenYpCDrQQZxUOblfdCDxyMe8GGwTXP5ZHX2q1QxJaa7T7I381Wz+fMRpPGdX6QM2fc9cf0T5juQ3l8jR1w==
+"@semapps/activitypub-components@0.4.9":
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/@semapps/activitypub-components/-/activitypub-components-0.4.9.tgz#1034768a0f7bb3f0cb08861fdb52b80133044b10"
+  integrity sha512-a/EZ+qMY+5iBTXle24fk7/rGpKVJjwimOGVPszkDY0fFv/ofSufMon3r+K61tlDk6hXtHO5Xhdx1CvTTkaa1xg==
   dependencies:
-    "@semapps/auth-provider" "0.4.8"
-    "@semapps/field-components" "0.4.8"
-    "@semapps/semantic-data-provider" "0.4.8"
+    "@semapps/auth-provider" "0.4.9"
+    "@semapps/field-components" "0.4.9"
+    "@semapps/semantic-data-provider" "0.4.9"
     "@tiptap/core" "^2.0.0-beta.95"
     "@tiptap/extension-mention" "^2.0.0-beta.95"
     "@tiptap/extension-placeholder" "^2.0.0-beta.95"
@@ -1697,20 +1697,20 @@
     ra-richtext-tiptap "^0.0.1"
     tippy.js "^6.3.7"
 
-"@semapps/auth-provider@0.4.8":
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/@semapps/auth-provider/-/auth-provider-0.4.8.tgz#1e38b5ecc907d4a8741981d3127e181898e56e1c"
-  integrity sha512-kbs3glWJ/yh2SSVS1SDG3rwfywCTrskxjIWfSUE/gAOiBYqPYruXcphFWxTePwxMSumJ6n70JE40k7YjT3/PIw==
+"@semapps/auth-provider@0.4.9":
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/@semapps/auth-provider/-/auth-provider-0.4.9.tgz#77802980de4e6c199fcd2117a65790c414e2fc31"
+  integrity sha512-7M2QalHAEZdTRzVbpxpENsoOqiU39BQiy18OEPD6WaJ/+nYW6zet0/4W5fXJoHzaYuMdAiBAmXeCgdQgET3Qtg==
   dependencies:
     "@material-ui/lab" "^4.0.0-alpha.57"
-    "@semapps/semantic-data-provider" "0.4.8"
+    "@semapps/semantic-data-provider" "0.4.9"
     jwt-decode "^3.0.0"
     url-join "^4.0.1"
 
-"@semapps/date-components@0.4.8":
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/@semapps/date-components/-/date-components-0.4.8.tgz#6b4fdf82c0727e3b5c7d9fbd5a8548f54a324069"
-  integrity sha512-dyS7hbAb3JxxmPb7a7yxHwgrPjBjVzTQEDrFIv6eOflNbe91u3P6l6tNyQce1+Mhh6p1SyjtOBbmE/sGWFB4dg==
+"@semapps/date-components@0.4.9":
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/@semapps/date-components/-/date-components-0.4.9.tgz#ea174f97146dd8b3c9c0d66350275e417c2f0b8e"
+  integrity sha512-3GkGpaR2CbMKTd2XXEw2hdaWKAE4gInfFwBPOG2g98kUPVAERCtI031kOJK4zAedaHQEdAaPkmkSGhoIhhdyEA==
   dependencies:
     "@date-io/core" "^1.3.6"
     "@date-io/date-fns" "^1.3.13"
@@ -1721,51 +1721,51 @@
     "@material-ui/pickers" "^3.2.10"
     date-fns "~2.8.1"
 
-"@semapps/field-components@0.4.8":
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/@semapps/field-components/-/field-components-0.4.8.tgz#fc19cbb40e7a38b71fc221b6418f63da2b0b3c92"
-  integrity sha512-ql1uA3kRfw6ovwQ/w5fowlKHrjBErf4kjOiG2pdV3Vrs9YoHFy6xx6SO47Z0u1LI/EIY3Rx6xhWqsGYkKgtdYw==
+"@semapps/field-components@0.4.9":
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/@semapps/field-components/-/field-components-0.4.9.tgz#d5590e3c8fa12b88c0bbdb8136f548e181b6e4d1"
+  integrity sha512-qqEVWE8B+r5zbQBXjNU1acQ0c1M4lcbKLU7r70OmCeL6kAA85sQ/aOeTBU/QIvNWT3RjhlNYrmi/D0OY2xWHCQ==
   dependencies:
-    "@semapps/semantic-data-provider" "0.4.8"
+    "@semapps/semantic-data-provider" "0.4.9"
     lodash.debounce "^4.0.8"
     react-icons "^4.4.0"
 
-"@semapps/geo-components@0.4.8":
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/@semapps/geo-components/-/geo-components-0.4.8.tgz#b1d30a1fd60addfabe19150f2e1bf3fe1e2e330a"
-  integrity sha512-f3sWdokx5gWxeMxiC8HYURsjxmRoqGzhnTvKB7HAwZ2ylc3aeuI4jyOkKZf/VifgZtQfsOPGHCD2Te39H8DHrA==
+"@semapps/geo-components@0.4.9":
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/@semapps/geo-components/-/geo-components-0.4.9.tgz#40b9e101257da258d69bf6997df9fa7f3a14467e"
+  integrity sha512-5SwFfEBqO6mDVNC7ZCP20GsHKHRJsoIXVXyP840rg+IOzCHB1pqomFw8tBs7+XwJJLLMT3YFvz23tdfqs0RPgQ==
   dependencies:
     "@material-ui/lab" "^4.0.0-alpha.57"
     autosuggest-highlight "^3.1.1"
     lodash.throttle "^4.1.1"
     react-leaflet "4.0.2"
 
-"@semapps/input-components@0.4.8":
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/@semapps/input-components/-/input-components-0.4.8.tgz#b406edd281291a45a8319d53c10f6e9f24c91777"
-  integrity sha512-TEJ/+BynWFd4ZW1Cy62QkS8O2DfSnTWshoNpY1yzGrhV+XHQcKa8r8ijy8eJQHOjA1kHz+GC+cJjpy4jXsNQwQ==
+"@semapps/input-components@0.4.9":
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/@semapps/input-components/-/input-components-0.4.9.tgz#7f78a3d201985ed1a49d0d5b5eec55dbdb96d026"
+  integrity sha512-ml7Ucya/qLybPlRkHLAfWLq3+sJSAYT30zs6TyHKUO/I1OsB5f9brh7jt5ZTqT8LPrJWyQipn64KifYXgFQpTQ==
   dependencies:
-    "@semapps/semantic-data-provider" "0.4.8"
+    "@semapps/semantic-data-provider" "0.4.9"
 
-"@semapps/list-components@0.4.8":
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/@semapps/list-components/-/list-components-0.4.8.tgz#2a6cbcc30afe0b964fd05d6cf8a7e99b5e40380d"
-  integrity sha512-3KDEmASROl93AcJhZp/eNI5TpP0ONWIiTa3jR7NpjLZJtMdoeMgAK2Iao7ZS31zAoNYdsw5Lv+rlzut6yYJglQ==
+"@semapps/list-components@0.4.9":
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/@semapps/list-components/-/list-components-0.4.9.tgz#146647149582eff32c332847224da461e3cf6a1b"
+  integrity sha512-tmtzfmpcLod8BC6cTZy34z5Enc/xA33j6lob53KHGunQ4ruWcjkWauWWl0SW0x4GqCg3YNXr/2b7dnkFdmCANg==
   dependencies:
     react-masonry-css "^1.0.14"
 
-"@semapps/markdown-components@0.4.8":
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/@semapps/markdown-components/-/markdown-components-0.4.8.tgz#c37720de34c2e2f273b30964e9d3db6714f8db7b"
-  integrity sha512-HDySyJoAztFyAkb7fEnQuBtXtJ7LpuaI+/u8RUZ3eGgulBrt2DvdRtZpfPcsMY0CTKQyExYKH54zhrjbFTu+dQ==
+"@semapps/markdown-components@0.4.9":
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/@semapps/markdown-components/-/markdown-components-0.4.9.tgz#6b00f0bc08b875a8345cf75d2f8cad63164a38a1"
+  integrity sha512-MMfzxWxixLbK+Nuf9eKmQLEGYUKvSMTgcPpNhhtywNpyBUEY4UxnyXnmezUR7CMzuuLyXyQ5hBuX7SjbpXKoCw==
   dependencies:
     markdown-to-jsx "^7.1.3"
     react-mde "^11.5.0"
 
-"@semapps/semantic-data-provider@0.4.8":
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/@semapps/semantic-data-provider/-/semantic-data-provider-0.4.8.tgz#84ae16154ef8a6d78a0903d6ab2667b315545011"
-  integrity sha512-dqGwlIEHhgEeInqD432XHcwJfdgwfDdLmB+nsrIH6AxJr0EQIRLXdlSuhpYsfq48WGRVZ2W1yBCmTyfwTIOTqw==
+"@semapps/semantic-data-provider@0.4.9":
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/@semapps/semantic-data-provider/-/semantic-data-provider-0.4.9.tgz#f4cb641ab5df2382be818a46d78bb599c28e1f9d"
+  integrity sha512-QkBlePzkYrxm4hSjGs5CQByDUejAwGnJ6cEGztuV9fyTY8Ez6hIa66IeX36CDTk0kf7imZnWfTSWe9QlEPrCOQ==
   dependencies:
     "@rdfjs/data-model" "^1.3.4"
     crypto-js "^4.1.1"

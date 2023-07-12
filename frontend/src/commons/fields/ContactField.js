@@ -28,13 +28,30 @@ const FinalFormTextField = ({ input: { name, onChange, value, ...restInput }, me
   />
 );
 
+const PermissionAlert = ({ contactUri  }) => {
+  console.log('permissions alert')
+  const { items: contacts, loaded: contactsLoaded } = useCollection('apods:contacts');
+  const { identity } = useGetIdentity();
+
+  if (identity?.id !== contactUri && contactsLoaded && !contacts.includes(contactUri)) {
+    return (
+      <Box mb={1}>
+        <Alert severity="warning">
+          Envoyer un message à cette personne lui donnera le droit de voir votre profil, pour lui permettre de vous répondre.
+        </Alert>
+      </Box>
+    );
+  } else {
+    return null;
+  }
+}
+
 const ContactField = ({ source, context, ...rest }) => {
   const classes = useStyles();
   const record = useRecordContext(rest);
   const notify = useNotify();
   const outbox = useOutbox();
   const { identity, loading: identityLoading } = useGetIdentity();
-  const { items: contacts, loaded: contactsLoaded } = useCollection('apods:contacts');
 
   const onSubmit = async (values) => {
     try {
@@ -51,20 +68,16 @@ const ContactField = ({ source, context, ...rest }) => {
     }
   };
 
+  if (identityLoading) return null;
+
   return (
     <>
-      {(identity?.id) && (
+      {identity?.id ? (
         <Form
           onSubmit={onSubmit}
           render={({ handleSubmit, form, submitting }) => (
             <form onSubmit={(event) => handleSubmit(event).then(form.reset)}>
-              {identity?.id !== record['dc:creator'] && contactsLoaded && !contacts.includes(record[source]) && (
-                <Box mb={1}>
-                  <Alert severity="warning">
-                    Envoyer un message à { record?.['vcard:given-name'] } lui donnera le droit de voir votre profil, pour lui permettre de vous répondre.
-                  </Alert>
-                </Box>
-              )}
+              <PermissionAlert contactUri={record[source]} />
               <Field
                 name="content"
                 component={FinalFormTextField}
@@ -83,14 +96,13 @@ const ContactField = ({ source, context, ...rest }) => {
             </form>
           )}
         />
-      )}
-      {(!identityLoading && !identity?.id) && (
+      ) : (
         <Box mb={1}>
           <Alert severity="warning" className={classes.alert}>
             Pour contacter le responsable de l'annonce, il est nécessaire de créer un compte : 
             <Link to="/login?signup">
-              <Button variant="contained" color="secondary" className={classes.signupButton}>
-                S'INSCRIRE
+              <Button variant="contained" color="primary" className={classes.signupButton}>
+                S'inscrire
               </Button>
             </Link>
           </Alert>
