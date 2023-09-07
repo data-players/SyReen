@@ -159,8 +159,8 @@ const AlertService = {
       const distance = distanceBetweenPoints(
         parseFloat(alert['syreen:latitude']),
         parseFloat(alert['syreen:longitude']),
-        parseFloat(location['vard:hasAddress']?.['vcard:hasGeo']?.['vcard:latitude']),
-        parseFloat(location['vard:hasAddress']?.['vcard:hasGeo']?.['vcard:longitude'])
+        parseFloat(location['vcard:hasAddress']?.['vcard:hasGeo']?.['vcard:latitude']),
+        parseFloat(location['vcard:hasAddress']?.['vcard:hasGeo']?.['vcard:longitude'])
       );
       return distance <= parseInt(alert['syreen:radius']);
     },
