@@ -1,437 +1,2976 @@
 [
   {
-    "key": "1.1",
+    "id": 1,
+    "label": "VRD (Voirie, Réseaux Divers)",
+    "unit": "u"
+  },
+  {
+    "id": "1.1",
+    "parent": "1",
     "label": "Réseaux extérieurs (secs, humides, fourreaux, etc)",
-    "parent": 1,
-    "units": [
-      "ml"
-    ]
-  },
-  {
-    "key": "1.2",
-    "label": "Stockage (cuves, bassins, etc)",
-    "parent": 1,
-    "units": [
-      "u"
-    ]
-  },
-  {
-    "key": "1.3",
-    "label": "Voirie, revêtement, clôture",
-    "parent": 1,
-    "units": [
-      "m2",
-      "ml"
-    ]
-  },
-  {
-    "key": "2.1",
-    "label": "Fondations",
-    "parent": 2,
-    "units": [
-      "m3"
-    ]
-  },
-  {
-    "key": "2.2",
-    "label": "Murs et structures enterrées (escalier de cave, parking, etc)",
-    "parent": 2,
-    "units": [
-      "m2",
-      "u"
-    ]
-  },
-  {
-    "key": "3.1",
-    "label": "Planchers, dalles, balcons",
-    "parent": 3,
-    "units": [
-      "m2"
-    ]
-  },
-  {
-    "key": "3.2",
-    "label": "Poutres",
-    "parent": 3,
-    "units": [
-      "ml"
-    ]
-  },
-  {
-    "key": "3.3",
-    "label": "Façades",
-    "parent": 3,
-    "units": [
-      "m2"
-    ]
-  },
-  {
-    "key": "3.4",
-    "label": "Refends",
-    "parent": 3,
-    "units": [
-      "m2"
-    ]
-  },
-  {
-    "key": "3.5",
-    "label": "Poteaux",
-    "parent": 3,
-    "units": [
-      "m3",
-      "ml"
-    ]
-  },
-  {
-    "key": "3.6",
-    "label": "Escaliers et rampes",
-    "parent": 3,
-    "units": [
-      "u",
-      "ml"
-    ]
-  },
-  {
-    "key": "3.7",
-    "label": "Éléments d’isolation",
-    "parent": 3,
-    "units": [
-      "m2"
-    ]
-  },
-  {
-    "key": "3.8",
-    "label": "Maçonneries diverses (brique, parpaing, muret, etc)",
-    "parent": 3,
-    "units": [
-      "m3"
-    ]
-  },
-  {
-    "key": "4.1",
-    "label": "Toitures terrasses",
-    "parent": 4,
-    "units": [
-      "m2"
-    ]
-  },
-  {
-    "key": "4.2",
-    "label": "Toitures en pente (tuiles, ardoises, etc)",
-    "parent": 4,
-    "units": [
-      "m2"
-    ]
-  },
-  {
-    "key": "4.3",
-    "label": "Éléments techniques de toiture",
-    "parent": 4,
-    "units": [
-      "u",
+    "unit": [
       "ml",
-      "m2"
+      "u"
     ]
   },
   {
-    "key": "5.1",
-    "label": "Cloisons et portes intérieures",
-    "parent": 5,
-    "units": [
+    "parent": "1.1",
+    "label": "Gaines \/ Fourreaux",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.1",
+    "label": "Réseaux d'eau enterrés (AEP, EU, EP)\n",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.1",
+    "label": "Réseaux d'évacuation et d'assainissement",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.1",
+    "label": "Systèmes de drainage",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.1",
+    "label": "Autres éléments de réseaux extérieurs",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "id": "1.2",
+    "parent": "1",
+    "label": "Stockage (cuves, bassins, etc)",
+    "unit": "u"
+  },
+  {
+    "parent": "1.2",
+    "label": "Bassins ",
+    "unit": "u"
+  },
+  {
+    "parent": "1.2",
+    "label": "Silos",
+    "unit": "u"
+  },
+  {
+    "parent": "1.2",
+    "label": "Citernes",
+    "unit": "u"
+  },
+  {
+    "parent": "1.2",
+    "label": "Cuves",
+    "unit": "u"
+  },
+  {
+    "parent": "1.2",
+    "label": "Réservoirs",
+    "unit": "u"
+  },
+  {
+    "parent": "1.2",
+    "label": "Récupérateurs d'eau de pluie",
+    "unit": "u"
+  },
+  {
+    "parent": "1.2",
+    "label": "Autres éléments de stockage",
+    "unit": "u"
+  },
+  {
+    "id": "1.3",
+    "parent": "1",
+    "label": "Voirie - Revêtements",
+    "unit": "u"
+  },
+  {
+    "parent": "1.3",
+    "label": "Sous couches \/ Couches de fondation",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.3",
+    "label": "Bordures",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.3",
+    "label": "Dalles",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.3",
+    "label": "Gravillons",
+    "unit": [
+      "m3",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.3",
+    "label": "Murs de soutènement",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.3",
+    "label": "Pavés",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.3",
+    "label": "Platelage",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.3",
+    "label": "Revêtements de sol extérieurs",
+    "unit": [
+      "m3",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.3",
+    "label": "Signalisation \/ matériel de voirie",
+    "unit": "u"
+  },
+  {
+    "parent": "1.3",
+    "label": "Regards de visites \/ grilles d'avaloir ",
+    "unit": "u"
+  },
+  {
+    "parent": "1.3",
+    "label": "Autres éléments de voirie et revêtements",
+    "unit": "u"
+  },
+  {
+    "id": "1.4",
+    "parent": "1",
+    "label": "Clôtures",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.4",
+    "label": "Portails \/ Portillons",
+    "unit": "u"
+  },
+  {
+    "parent": "1.4",
+    "label": "Murets",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.4",
+    "label": "Gabions",
+    "unit": "u"
+  },
+  {
+    "parent": "1.4",
+    "label": "Grillages",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.4",
+    "label": "Brises vues \/ Claustras",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "1.4",
+    "label": "Autres éléments de clôture",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "id": 2,
+    "label": "Fondations - infrastructure",
+    "unit": "u"
+  },
+  {
+    "id": "2.1",
+    "parent": 2,
+    "label": "Fondations",
+    "unit": [
+      "m3",
+      "u"
+    ]
+  },
+  {
+    "parent": "2.1",
+    "label": "Hérissons",
+    "unit": [
+      "m3",
+      "u"
+    ]
+  },
+  {
+    "parent": "2.1",
+    "label": "Longrines",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "2.1",
+    "label": "Murs de soutènement",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "2.1",
+    "label": "Palplanches",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "2.1",
+    "label": "Pieux \/ Micropieux",
+    "unit": "u"
+  },
+  {
+    "parent": "2.1",
+    "label": "Plots",
+    "unit": "u"
+  },
+  {
+    "parent": "2.1",
+    "label": "Sondes géothermiques",
+    "unit": "u"
+  },
+  {
+    "parent": "2.1",
+    "label": "Autres éléments de fondation",
+    "unit": "u"
+  },
+  {
+    "id": "2.2",
+    "parent": "2",
+    "label": "Murs - structures enterrées (escalier de cave, parking, etc)",
+    "unit": "u"
+  },
+  {
+    "parent": "2.2",
+    "label": "Murs de soubassement",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "2.2",
+    "label": "Murs de sous sol",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "2.2",
+    "label": "Structure porteuse souterrains",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "2.2",
+    "label": "Poteaux souterrains",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "2.2",
+    "label": "Poutres souterraines",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "2.2",
+    "label": "Parois de cage d'escalier",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "2.2",
+    "label": "Rampes d'accès véhicule",
+    "unit": "u"
+  },
+  {
+    "parent": "2.2",
+    "label": "Dalles de parking",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "2.2",
+    "label": "Autres murs et structures enterrés",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": 3,
+    "label": "Superstructure - Maçonnerie",
+    "unit": "u"
+  },
+  {
+    "id": "3.1",
+    "parent": "3",
+    "label": "Planchers, dalles, balcons",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.1",
+    "label": "Bacs aciers pour plancher",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.1",
+    "label": "Structures spécifiques balcons",
+    "unit": "u"
+  },
+  {
+    "parent": "3.1",
+    "label": "Dalles \/ Panneaux",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.1",
+    "label": "Dalles de toiture terrasse",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.1",
+    "label": "Hourdis \/ Entrevous",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.1",
+    "label": "Poutrelles intégrées",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.1",
+    "label": "Prédalles",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.1",
+    "label": "Solives",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.1",
+    "label": "Autres éléments de plancher et dalles",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "3.2",
+    "parent": "3",
+    "label": "Poutres",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.2",
+    "label": "Profilés métalliques",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.2",
+    "label": "Pannes",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.2",
+    "label": "Autres Poutres",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "id": "3.3",
+    "parent": "3",
+    "label": "Façades",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.3",
+    "label": "Ossatures grille \/ Armatures",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.3",
+    "label": "Chainages",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.3",
+    "label": "Façades préfabriquées",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.3",
+    "label": "Autres éléments de façade",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "3.4",
+    "parent": "3",
+    "label": "Refends",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.4",
+    "label": "Murs de refend",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "3.5",
+    "parent": "3",
+    "label": "Poteaux",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.5",
+    "label": "Poteaux",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.5",
+    "label": "Autres poteaux",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "id": "3.6",
+    "parent": "3",
+    "label": "Escaliers et rampes maçonnées",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.6",
+    "label": "Escaliers",
+    "unit": "u"
+  },
+  {
+    "parent": "3.6",
+    "label": "Rampes",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.6",
+    "label": "Autres éléments d'escaliers et de rampes maçonnées",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "id": "3.7",
+    "parent": "3",
+    "label": "Éléments d’isolation",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.7",
+    "label": "Isolation thermique ",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.7",
+    "label": "Rupteurs de pont thermique",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.7",
+    "label": "Pare-vapeurs \/ Ecrans",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.7",
+    "label": "Autres éléments d'isolation",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "3.8",
+    "parent": "3",
+    "label": "Maçonneries diverses (brique, parpaing, muret, etc)",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.8",
+    "label": "Briques",
+    "unit": [
+      "m2",
+      "m3",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.8",
+    "label": "Dalles alvéolées",
+    "unit": [
+      "m2",
+      "m3",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.8",
+    "label": "Moellons",
+    "unit": [
+      "m2",
+      "m3",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.8",
+    "label": "Parpaings",
+    "unit": [
+      "ml",
       "u",
-      "m2"
+      "m3"
     ]
   },
   {
-    "key": "5.2",
-    "label": "Doublages mur, matériaux de protection isolants et membranes",
-    "parent": 5,
-    "units": [
-      "m2"
+    "parent": "3.8",
+    "label": "Petits éléments de maçonnerie pour appuis de baie",
+    "unit": [
+      "ml",
+      "u"
     ]
   },
   {
-    "key": "5.3",
+    "parent": "3.8",
+    "label": "Pierres",
+    "unit": [
+      "ml",
+      "u",
+      "m3"
+    ]
+  },
+  {
+    "parent": "3.8",
+    "label": "Placage",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "3.8",
+    "label": "Autres maçonneries diverses",
+    "unit": [
+      "u"
+    ]
+  },
+  {
+    "id": 4,
+    "label": "Couverture - Étanchéité - Charpente - Zinguerie",
+    "unit": "u"
+  },
+  {
+    "id": "4.1",
+    "parent": "4",
+    "label": "Toitures terrasses",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.1",
+    "label": "Dalles de toiture terrasse",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.1",
+    "label": "Plots sous dalles de toiture terrasse",
+    "unit": "u"
+  },
+  {
+    "parent": "4.1",
+    "label": "Eléments de toiture végétalisée",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.1",
+    "label": "Gravillons",
+    "unit": [
+      "ml",
+      "m3",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.1",
+    "label": "Isolation thermique et acoustique pour toiture terrasse",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.1",
+    "label": "Revêtement d'étanchéité",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.1",
+    "label": "Protections d'étanchéité (lourdes \/ légères)",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.1",
+    "label": "Autres éléments de toitures terrasses",
+    "unit": "u"
+  },
+  {
+    "id": "4.2",
+    "parent": "4",
+    "label": "Toitures en pente (tuiles, ardoises, etc)",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Ardoises",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Bacs acier",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Charpente en bois",
+    "unit": [
+      "m3",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Charpente métallique",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Chevrons",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Eléments de couverture en grands éléments",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Eléments de couverture en petits éléments",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Feuilles à base de bitume",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Membranes synthétiques",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Plaques ondulées fibro ciment",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Tôles",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Tuiles terre cuite",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Voligeages",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Chaume",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Toitures végétales",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.2",
+    "label": "Autres éléments de toiture en pente",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "4.3",
+    "parent": "4",
+    "label": "Éléments techniques de toiture",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.3",
+    "label": "Boisseaux",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.3",
+    "label": "Cheminées",
+    "unit": "u"
+  },
+  {
+    "parent": "4.3",
+    "label": "Chéneaux \/ gouttières",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.3",
+    "label": "Conduits de fumisterie",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.3",
+    "label": "Descentes d'eaux pluviales",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "4.3",
+    "label": "Lanterneaux",
+    "unit": "u"
+  },
+  {
+    "parent": "4.3",
+    "label": "Echelles d'accès en toiture",
+    "unit": "u"
+  },
+  {
+    "parent": "4.3",
+    "label": "Equipements de Protection Collective (EPC)",
+    "unit": "u"
+  },
+  {
+    "parent": "4.3",
+    "label": "Autres éléments techniques de toiture",
+    "unit": "u"
+  },
+  {
+    "id": 5,
+    "label": "Cloisonnement - Doublage - Plafonds suspendus \n- Menuiseries intérieures",
+    "unit": "u"
+  },
+  {
+    "id": "5.1",
+    "parent": "5",
+    "label": "Cloisons",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.1",
+    "label": "Blocs de béton cellulaire",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.1",
+    "label": "Carreaux de plâtre",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.1",
+    "label": "Cloisons amovibles \/ Cloisons mobiles",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.1",
+    "label": "Montants de fixation en bois",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.1",
+    "label": "Plaques \/ Panneaux",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.1",
+    "label": "Rails métalliques",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.1",
+    "label": "Autres éléments de cloisons",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "5.2",
+    "parent": "5",
+    "label": "Doublages murs, matériaux de protection isolants \net membranes",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.2",
+    "label": "Complexes isolants",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.2",
+    "label": "Contres cloisons isolantes en plaques",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.2",
+    "label": "Films étanchéité à l'air",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.2",
+    "label": "Isolation mince réfléchissante",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.2",
+    "label": "Isolation thermique et acoustique intérieure",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.2",
+    "label": "Matériaux de protection incendie",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.2",
+    "label": "Panneaux sandwich",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.2",
+    "label": "Pare vapeur",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.2",
+    "label": "Membranes synthétiques",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.2",
+    "label": "Autres doublages murs, matériaux de protection isolants et membranes",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "5.3",
+    "parent": "5",
     "label": "Plafonds suspendus",
-    "parent": 5,
-    "units": [
-      "m2"
+    "unit": [
+      "m2",
+      "u"
     ]
   },
   {
-    "key": "5.4",
+    "parent": "5.3",
+    "label": "Fixations pour plafonds suspendus",
+    "unit": "u"
+  },
+  {
+    "parent": "5.3",
+    "label": "Isolation acoustique pour plafonds suspendus ou tendus",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.3",
+    "label": "Isolation thermique pour plafonds suspendus ou tendus",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.3",
+    "label": "Plafonds tendus",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.3",
+    "label": "Plaques \/ Panneaux plafonds suspendus",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.3",
+    "label": "Rails plafond suspendus",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.3",
+    "label": "Autres éléments de plafonds suspendus",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "5.4",
+    "parent": "5",
     "label": "Planchers surélevés",
-    "parent": 5,
-    "units": [
-      "m2"
+    "unit": [
+      "m2",
+      "u"
     ]
   },
   {
-    "key": "5.5",
-    "label": "Menuiseries, métalleries et quincailleries",
-    "parent": 5,
-    "units": [
+    "parent": "5.4",
+    "label": "Dalles de plancher surélevés",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.4",
+    "label": "Verrins",
+    "unit": "u"
+  },
+  {
+    "parent": "5.4",
+    "label": "Plots de plancher surélevés",
+    "unit": "u"
+  },
+  {
+    "parent": "5.4",
+    "label": "Autres éléments de plancher surélevés",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "5.5",
+    "parent": "5",
+    "label": "Menuiseries intérieures",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.5",
+    "label": "Blocs portes coupe-feu intérieurs",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.5",
+    "label": "Fenêtres intérieures",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.5",
+    "label": "Portes \/ Vantaux",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.5",
+    "label": "Huisseries",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.5",
+    "label": "Portes palières",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.5",
+    "label": "Portes enroulables",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.5",
+    "label": "Autres menuiseries intérieures",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "5.6",
+    "parent": "5",
+    "label": "Métallerie et quincaillerie",
+    "unit": "u"
+  },
+  {
+    "parent": "5.6",
+    "label": "Ferronerie",
+    "unit": "u"
+  },
+  {
+    "parent": "5.6",
+    "label": "Garde-corps",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.6",
+    "label": "Rampes et Mains courantes",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "5.6",
+    "label": "Poignées de porte ",
+    "unit": "u"
+  },
+  {
+    "parent": "5.6",
+    "label": "Serrures \/ verroux",
+    "unit": "u"
+  },
+  {
+    "parent": "5.6",
+    "label": "Ferme-portes",
+    "unit": "u"
+  },
+  {
+    "parent": "5.6",
+    "label": "Nez de marche",
+    "unit": "u"
+  },
+  {
+    "parent": "5.6",
+    "label": "Autres éléments de metallerie et quincallerie",
+    "unit": "u"
+  },
+  {
+    "id": 6,
+    "label": "Façades et menuiseries extérieures",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "6.1",
+    "parent": "6",
+    "label": "Revêtement, isolation et doublage extérieur",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.1",
+    "label": "Bardages simple peau",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.1",
+    "label": "Bardages double peau",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.1",
+    "label": "Parement",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.1",
+    "label": "Façades légères non porteuse \/ Murs rideaux",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.1",
+    "label": "Isolation thermique extérieure (ITE) ",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.1",
+    "label": "Membranes pare pluie",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.1",
+    "label": "Système d'isolation thermique extérieure par enduit (ETICS) en panneaux",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.1",
+    "label": "Vétages",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.1",
+    "label": "Vêtures",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.1",
+    "label": "Autres revêtements extérieurs, isolation et doublage extérieur",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "6.2",
+    "parent": "6",
+    "label": "Portes, fenêtres, fermetures, protections solaires",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Baies vitrées fixes",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Brises soleil \/ protections solaires",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Brises vue",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Fenêtres de toit",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Fenêtres extérieures",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Issues de secours",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Persiennes",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Portes de garage extérieures",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Portes extérieures",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Portes-fenêtres",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Rideaux d'occultation \/ Stores",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Verrières",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Volets",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Portes automatique vitrées",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Portes tambours",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.2",
+    "label": "Autres portes, fenêtres, fermetures et protections solaires",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "6.3",
+    "parent": "6",
+    "label": "Habillages et ossatures",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.3",
+    "label": "Grilles et barreaux de sécurité",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.3",
+    "label": "Claustras",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.3",
+    "label": "Habillages de tableau",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.3",
+    "label": "Habillages de voussure",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.3",
+    "label": "Serres",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.3",
+    "label": "Verandas",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "6.3",
+    "label": "Autres habillages et ossatures",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": 7,
+    "label": "Revêtement des sols, murs et plafonds - Chape - \nPeintures - Produits de décoration",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "7.1",
+    "parent": "7",
+    "label": "Revêtement des sols (parquet, carrelage, moquette, etc)",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.1",
+    "label": "Bandes podotactiles (accessibilité PMR)",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.1",
+    "label": "Barres de seuil",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.1",
+    "label": "Carrelage",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.1",
+    "label": "Dalles",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.1",
+    "label": "Lames ",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.1",
+    "label": "Plinthes",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.1",
+    "label": "Rouleaux",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.1",
+    "label": "Sous couches acoustiques",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.1",
+    "label": "Autres revêtements des sols",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "7.2",
+    "parent": "7",
+    "label": "Revêtements des murs et plafonds",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.2",
+    "label": "Briquettes",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.2",
+    "label": "Faïence",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.2",
+    "label": "Lambris",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.2",
+    "label": "Panneaux muraux agrafés ou attachés",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.2",
+    "label": "Plaques de revêtement \/ platelage",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.2",
+    "label": "Autres revêtements des murs et plafonds",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "7.3",
+    "parent": "7",
+    "label": "Éléments de décoration et revêtements des menuiseries",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "7.3",
+    "label": "Boiseries",
+    "unit": [
+      "m2",
       "u",
       "ml"
     ]
   },
   {
-    "key": "6.1",
-    "label": "Revêtement, isolation et doublage extérieur",
-    "parent": 6,
-    "units": [
-      "m2"
+    "parent": "7.3",
+    "label": "Frises",
+    "unit": [
+      "m2",
+      "u",
+      "ml"
     ]
   },
   {
-    "key": "6.2",
-    "label": "Portes, fenêtres, fermetures, protections solaires",
-    "parent": 6,
-    "units": [
+    "parent": "7.3",
+    "label": "Autres éléments de décoration et revêtements des menuiseries",
+    "unit": [
+      "m2",
+      "u",
+      "ml"
+    ]
+  },
+  {
+    "id": 8,
+    "label": "CVC (Chauffage - Ventilation - Climatisation)",
+    "unit": "u"
+  },
+  {
+    "id": "8.1",
+    "parent": "8",
+    "label": "Équipements de chauffage (chaudières, radiateurs à eau, etc)",
+    "unit": "u"
+  },
+  {
+    "parent": "8.1",
+    "label": "Chaudières",
+    "unit": "u"
+  },
+  {
+    "parent": "8.1",
+    "label": "Cheminées",
+    "unit": "u"
+  },
+  {
+    "parent": "8.1",
+    "label": "Eléments de régulation",
+    "unit": "u"
+  },
+  {
+    "parent": "8.1",
+    "label": "Inserts",
+    "unit": "u"
+  },
+  {
+    "parent": "8.1",
+    "label": "Panneaux solaires photovoltaïques",
+    "unit": [
       "m2",
       "u"
     ]
   },
   {
-    "key": "6.3",
-    "label": "Habillages et ossatures",
-    "parent": 6,
-    "units": [
-      "m2"
-    ]
-  },
-  {
-    "key": "7.1",
-    "label": "Revêtement des sols (parquet, moquette, linoléum, etc)",
-    "parent": 7,
-    "units": [
-      "m2"
-    ]
-  },
-  {
-    "key": "7.2",
-    "label": "Revêtements des murs et plafonds",
-    "parent": 7,
-    "units": [
-      "m2"
-    ]
-  },
-  {
-    "key": "7.3",
-    "label": "Éléments de décoration et revêtements des menuiseries",
-    "parent": 7,
-    "units": [
+    "parent": "8.1",
+    "label": "Panneaux solaires thermiques",
+    "unit": [
       "m2",
       "u"
     ]
   },
   {
-    "key": "8.1",
-    "label": "Équipements de chauffage (chaudières, radiateurs à eau, radiateurs électriques, etc)",
-    "parent": 8,
-    "units": [
+    "parent": "8.1",
+    "label": "Plafonds rayonnants",
+    "unit": [
+      "m2",
       "u"
     ]
   },
   {
-    "key": "8.2",
-    "label": "Équipement de ventilation (CTA, unités intérieures, bouches de ventilation, etc)",
-    "parent": 8,
-    "units": [
+    "parent": "8.1",
+    "label": "Planchers chauffants",
+    "unit": [
+      "m2",
       "u"
     ]
   },
   {
-    "key": "8.3",
+    "parent": "8.1",
+    "label": "Planchers rayonnants",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "8.1",
+    "label": "Poêles",
+    "unit": "u"
+  },
+  {
+    "parent": "8.1",
+    "label": "Pompes à chaleur",
+    "unit": "u"
+  },
+  {
+    "parent": "8.1",
+    "label": "Radiateurs à eau",
+    "unit": "u"
+  },
+  {
+    "parent": "8.1",
+    "label": "Radiateurs électriques",
+    "unit": "u"
+  },
+  {
+    "parent": "8.1",
+    "label": "Rideaux d'air chaud",
+    "unit": "u"
+  },
+  {
+    "parent": "8.1",
+    "label": "Sèches mains",
+    "unit": "u"
+  },
+  {
+    "parent": "8.1",
+    "label": "Seches serviettes",
+    "unit": "u"
+  },
+  {
+    "parent": "8.1",
+    "label": "Tubes de chauffage par le sol",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "8.1",
+    "label": "Ventilo-convecteurs",
+    "unit": "u"
+  },
+  {
+    "parent": "8.1",
+    "label": "Autres équipements de chauffage",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "id": "8.2",
+    "parent": "8",
+    "label": "Équipement de ventilation (CTA, unités intérieures, etc)",
+    "unit": "u"
+  },
+  {
+    "parent": "8.2",
+    "label": "Bouches de ventilation",
+    "unit": "u"
+  },
+  {
+    "parent": "8.2",
+    "label": "Bouches d'extraction",
+    "unit": "u"
+  },
+  {
+    "parent": "8.2",
+    "label": "Centrales de traitement d'air (CTA)",
+    "unit": "u"
+  },
+  {
+    "parent": "8.2",
+    "label": "Centrales de traitement d'air (CTA) double flux",
+    "unit": "u"
+  },
+  {
+    "parent": "8.2",
+    "label": "Diffuseurs",
+    "unit": "u"
+  },
+  {
+    "parent": "8.2",
+    "label": "Entrées d'air",
+    "unit": "u"
+  },
+  {
+    "parent": "8.2",
+    "label": "Filtres à air",
+    "unit": "u"
+  },
+  {
+    "parent": "8.2",
+    "label": "Grilles extérieur",
+    "unit": "u"
+  },
+  {
+    "parent": "8.2",
+    "label": "Terminaux passifs",
+    "unit": "u"
+  },
+  {
+    "parent": "8.2",
+    "label": "Ventilateurs",
+    "unit": "u"
+  },
+  {
+    "parent": "8.2",
+    "label": "VMC",
+    "unit": "u"
+  },
+  {
+    "parent": "8.2",
+    "label": "Conduits de fumisterie",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "8.2",
+    "label": "Autres équipements de ventilation",
+    "unit": "u"
+  },
+  {
+    "id": "8.3",
+    "parent": "8",
     "label": "Équipements de climatisation (groupes froids, cassettes, etc)",
-    "parent": 8,
-    "units": [
-      "u"
-    ]
+    "unit": "u"
   },
   {
-    "key": "9.1",
+    "parent": "8.3",
+    "label": "Débit de réfrigérant variable (DRV)",
+    "unit": "u"
+  },
+  {
+    "parent": "8.3",
+    "label": "Groupes froids",
+    "unit": "u"
+  },
+  {
+    "parent": "8.3",
+    "label": "Cassettes",
+    "unit": "u"
+  },
+  {
+    "parent": "8.3",
+    "label": "Tours aéroréfrigérantes",
+    "unit": "u"
+  },
+  {
+    "parent": "8.3",
+    "label": "Autres équipements de climatisation",
+    "unit": "u"
+  },
+  {
+    "id": 9,
+    "label": "Installations sanitaires",
+    "unit": "u"
+  },
+  {
+    "id": "9.1",
+    "parent": "9",
     "label": "Production eau chaude sanitaire (ballons ECS, etc)",
-    "parent": 9,
-    "units": [
+    "unit": "u"
+  },
+  {
+    "parent": "9.1",
+    "label": "Chauffe eau ",
+    "unit": "u"
+  },
+  {
+    "parent": "9.1",
+    "label": "Cumulus",
+    "unit": "u"
+  },
+  {
+    "parent": "9.1",
+    "label": "Panneaux de production eau chaude sanitaire",
+    "unit": [
+      "m2",
       "u"
     ]
   },
   {
-    "key": "0.2",
+    "parent": "9.1",
+    "label": "Eléments de régulation",
+    "unit": "u"
+  },
+  {
+    "parent": "9.1",
+    "label": "Autres équipements production eau chaude sanitaire",
+    "unit": "u"
+  },
+  {
+    "id": "9.2",
+    "parent": "9",
     "label": "Réseaux intérieurs de distribution et d’évacuation",
-    "parent": 9,
-    "units": [
-      "ml"
-    ]
-  },
-  {
-    "key": "9.3",
-    "label": "Appareils sanitaires (lavabo, WC, vidoirs, urinoirs, vasques, éviers, mitigeurs, etc)",
-    "parent": 9,
-    "units": [
+    "unit": [
+      "ml",
       "u"
     ]
   },
   {
-    "key": "10.1",
+    "parent": "9.2",
+    "label": "Calorifugeage de canalisations",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "9.2",
+    "label": "Canalisations",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "9.2",
+    "label": "Conduits flexibles",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "9.2",
+    "label": "Conduits rigides",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "9.2",
+    "label": "Coudes et accessoires",
+    "unit": "u"
+  },
+  {
+    "parent": "9.2",
+    "label": "Filtres",
+    "unit": "u"
+  },
+  {
+    "parent": "9.2",
+    "label": "Siphons de sol",
+    "unit": "u"
+  },
+  {
+    "parent": "9.2",
+    "label": "Autres éléments de réseaux intérieurs de distribution et d'évacuation",
+    "unit": "u"
+  },
+  {
+    "id": "9.3",
+    "parent": "9",
+    "label": "Appareils sanitaires (lavabo, WC, vidoirs, urinoirs, etc)",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Baignoires",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Bidets",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Colonnes de douche",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Cuvettes de WC",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Douchettes",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Eviers",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Fontaines à eau",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Lavabos",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Laves-mains",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Mécanisme de chasse",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Mitigeurs \/ Mélangeur",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Portes et parois de cabine de douche",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "9.3",
+    "label": "Receveurs de douche",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Siphons",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Systèmes économiseurs d'eau",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Urinoirs",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Vidoirs \/ Déversoirs",
+    "unit": "u"
+  },
+  {
+    "parent": "9.3",
+    "label": "Autres appareils sanitaires",
+    "unit": "u"
+  },
+  {
+    "id": "9.4",
+    "parent": "9",
+    "label": "Sprinklage et réseaux",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "9.4",
+    "label": "Accessoires de sprinklage",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "9.4",
+    "label": "Caisson de désenfumage",
+    "unit": "u"
+  },
+  {
+    "parent": "9.4",
+    "label": "Cartouche coupe-feu ou pare flamme",
+    "unit": "u"
+  },
+  {
+    "parent": "9.4",
+    "label": "Clapets coupe feu",
+    "unit": "u"
+  },
+  {
+    "parent": "9.4",
+    "label": "Grilles ou volets de désenfumage",
+    "unit": [
+      "m2",
+      "u"
+    ]
+  },
+  {
+    "parent": "9.4",
+    "label": "Réseau de sprinklage",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "9.4",
+    "label": "Réseaux et terminaux RIA (Robinet d'Incendie Armé)",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "9.4",
+    "label": "Enrouleurs et lances à incendie",
+    "unit": "u"
+  },
+  {
+    "parent": "9.4",
+    "label": "Autres éléments de sprinklage et de réseaux de sécurité incendie",
+    "unit": "u"
+  },
+  {
+    "id": 10,
+    "label": "Réseaux (CFO\/CFA)",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "id": "10.1",
+    "parent": "10",
     "label": "Tableau général basse tension et armoires divisionnaires",
-    "parent": 10,
-    "units": [
-      "u"
-    ]
+    "unit": "u"
   },
   {
-    "key": "10.2",
+    "parent": "10.1",
+    "label": "Armoires divisionnaires \/ Tableaux divisionnaires",
+    "unit": "u"
+  },
+  {
+    "parent": "10.1",
+    "label": "Tableaux généraux basse tension (TGBT)",
+    "unit": "u"
+  },
+  {
+    "parent": "10.1",
+    "label": "Transformateurs électriques",
+    "unit": "u"
+  },
+  {
+    "parent": "10.1",
+    "label": "Protections modulaires",
+    "unit": "u"
+  },
+  {
+    "parent": "10.1",
+    "label": "Disjoncteurs",
+    "unit": "u"
+  },
+  {
+    "parent": "10.1",
+    "label": "Cellules basse tension et moyenne tension",
+    "unit": "u"
+  },
+  {
+    "parent": "10.1",
+    "label": "Installations de recharge de véhicule électrique",
+    "unit": "u"
+  },
+  {
+    "parent": "10.1",
+    "label": "Autres éléments de tableau général basse tension et armoires divisionnaires",
+    "unit": "u"
+  },
+  {
+    "id": "10.2",
+    "parent": "10",
     "label": "Distribution électrique (câblages, chemins de câbles, etc)",
-    "parent": 10,
-    "units": [
-      "ml"
+    "unit": [
+      "ml",
+      "u"
     ]
   },
   {
-    "key": "10.3",
+    "parent": "10.2",
+    "label": "Câbles \/ Fils électriques",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "10.2",
+    "label": "Chemins de câbles",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "10.2",
+    "label": "Gaines \/ Fourreaux",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "10.2",
+    "label": "Goulottes",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "10.2",
+    "label": "Plinthes techniques",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "parent": "10.2",
+    "label": "Prises de terre",
+    "unit": "u"
+  },
+  {
+    "parent": "10.2",
+    "label": "Paratonnerres",
+    "unit": "u"
+  },
+  {
+    "parent": "10.2",
+    "label": "Autres élements de distribution électrique",
+    "unit": [
+      "ml",
+      "u"
+    ]
+  },
+  {
+    "id": "10.3",
+    "parent": "10",
     "label": "Appareils d’éclairage",
-    "parent": 10,
-    "units": [
-      "u"
-    ]
+    "unit": "u"
   },
   {
-    "key": "10.4",
+    "parent": "10.3",
+    "label": "Balises",
+    "unit": "u"
+  },
+  {
+    "parent": "10.3",
+    "label": "Bornes lumineuses",
+    "unit": "u"
+  },
+  {
+    "parent": "10.3",
+    "label": "Colonnes lumineuses",
+    "unit": "u"
+  },
+  {
+    "parent": "10.3",
+    "label": "Eclairages en applique",
+    "unit": "u"
+  },
+  {
+    "parent": "10.3",
+    "label": "Eclairages en suspension",
+    "unit": "u"
+  },
+  {
+    "parent": "10.3",
+    "label": "Hublots",
+    "unit": "u"
+  },
+  {
+    "parent": "10.3",
+    "label": "Lampadaires",
+    "unit": "u"
+  },
+  {
+    "parent": "10.3",
+    "label": "Supports d'éclairage",
+    "unit": "u"
+  },
+  {
+    "parent": "10.3",
+    "label": "Systèmes de contrôle et de régulation de l'éclairage",
+    "unit": "u"
+  },
+  {
+    "parent": "10.3",
+    "label": "Dalles lumineuses",
+    "unit": "u"
+  },
+  {
+    "parent": "10.3",
+    "label": "Réglettes",
+    "unit": "u"
+  },
+  {
+    "parent": "10.3",
+    "label": "Eclairages encastrés",
+    "unit": "u"
+  },
+  {
+    "parent": "10.3",
+    "label": "Autres appareils d'éclairage",
+    "unit": "u"
+  },
+  {
+    "id": "10.4",
+    "parent": "10",
     "label": "Équipements terminaux (interrupteurs, prises, etc)",
-    "parent": 10,
-    "units": [
+    "unit": "u"
+  },
+  {
+    "parent": "10.4",
+    "label": "Prises courants forts",
+    "unit": "u"
+  },
+  {
+    "parent": "10.4",
+    "label": "Prises courants faibles (RJ45...)",
+    "unit": "u"
+  },
+  {
+    "parent": "10.4",
+    "label": "Autres équipements terminaux",
+    "unit": "u"
+  },
+  {
+    "id": "10.5",
+    "parent": "10",
+    "label": "Armoire VDI \/ Baie informatique",
+    "unit": "u"
+  },
+  {
+    "parent": "10.5",
+    "label": "Armoire VDI (Voix Données Images)",
+    "unit": "u"
+  },
+  {
+    "parent": "10.5",
+    "label": "Baie de brassage informatique",
+    "unit": "u"
+  },
+  {
+    "parent": "10.5",
+    "label": "Autres éléments d'armoires et de baies informatiques",
+    "unit": "u"
+  },
+  {
+    "id": "10.6",
+    "parent": "10",
+    "label": "Équipements spécifiques (caméras, borne Wi-Fi, etc)",
+    "unit": "u"
+  },
+  {
+    "parent": "10.6",
+    "label": "Câbles de télécommunication",
+    "unit": [
+      "ml",
       "u"
     ]
   },
   {
-    "key": "11.1",
-    "label": "Armoire VDI/baie informatique",
-    "parent": 11,
-    "units": [
+    "parent": "10.6",
+    "label": "Fils de télécommunications",
+    "unit": [
+      "ml",
       "u"
     ]
   },
   {
-    "key": "11.2",
-    "label": "Réseaux cfa (informatiques, téléphoniques, etc)",
-    "parent": 11,
-    "units": [
-      "ml"
-    ]
+    "parent": "10.6",
+    "label": "caméras",
+    "unit": "u"
   },
   {
-    "key": "11.3",
-    "label": "Équipements spécifiques (caméras, borne Wi-Fi, équipements GTB,contrôle d’accès, etc)",
-    "parent": 11,
-    "units": [
-      "u"
-    ]
+    "parent": "10.6",
+    "label": "boitier répétiteur wifi",
+    "unit": "u"
   },
   {
-    "key": "11.4",
-    "label": "Système de sécurité incendie",
-    "parent": 11,
-    "units": [
-      "u"
-    ]
+    "parent": "10.6",
+    "label": "Autres équipements spécifiques",
+    "unit": "u"
   },
   {
-    "key": "12.1",
+    "id": "10.7",
+    "parent": "10",
+    "label": "Système de sécurité ",
+    "unit": "u"
+  },
+  {
+    "parent": "10.7",
+    "label": "Blocs autonomes d'éclairage de sécurité (BAES)",
+    "unit": "u"
+  },
+  {
+    "parent": "10.7",
+    "label": "Blocs autonomes d'éclairage d'habitation (BAEH)",
+    "unit": "u"
+  },
+  {
+    "parent": "10.7",
+    "label": "Luminaires pour source centrale (LSC)",
+    "unit": "u"
+  },
+  {
+    "parent": "10.7",
+    "label": "Systèmes de contrôle d'accès",
+    "unit": "u"
+  },
+  {
+    "parent": "10.7",
+    "label": "Systèmes de détection d'intrusion",
+    "unit": "u"
+  },
+  {
+    "parent": "10.7",
+    "label": "Systèmes de sécurité incendie",
+    "unit": "u"
+  },
+  {
+    "parent": "10.7",
+    "label": "Systèmes de vidéosurveillance",
+    "unit": "u"
+  },
+  {
+    "parent": "10.7",
+    "label": "Systèmes d'éclairage de sécurité",
+    "unit": "u"
+  },
+  {
+    "parent": "10.7",
+    "label": "Autres système de sécurité",
+    "unit": "u"
+  },
+  {
+    "id": "10.8",
+    "parent": "10",
+    "label": "Equipements spéciaux divers",
+    "unit": "u"
+  },
+  {
+    "parent": "10.8",
+    "label": "Installations et appareillages pour réseaux de communication filaires ou sans fil",
+    "unit": "u"
+  },
+  {
+    "parent": "10.8",
+    "label": "Autres équipements spéciaux divers",
+    "unit": "u"
+  },
+  {
+    "id": 11,
+    "label": "Mobilier",
+    "unit": "u"
+  },
+  {
+    "id": "11.1",
+    "parent": "11",
+    "label": "Mobilier intérieur",
+    "unit": "u"
+  },
+  {
+    "parent": "11.1",
+    "label": "Banques d'acceuil \/ Consoles",
+    "unit": "u"
+  },
+  {
+    "parent": "11.1",
+    "label": "Boîtes aux lettres",
+    "unit": "u"
+  },
+  {
+    "parent": "11.1",
+    "label": "Bureaux",
+    "unit": "u"
+  },
+  {
+    "parent": "11.1",
+    "label": "Casiers",
+    "unit": "u"
+  },
+  {
+    "parent": "11.1",
+    "label": "Chaises",
+    "unit": "u"
+  },
+  {
+    "parent": "11.1",
+    "label": "Fauteuils",
+    "unit": "u"
+  },
+  {
+    "parent": "11.1",
+    "label": "Mobiliers de restauration",
+    "unit": "u"
+  },
+  {
+    "parent": "11.1",
+    "label": "Placards préfabriqués ou menuisés",
+    "unit": "u"
+  },
+  {
+    "parent": "11.1",
+    "label": "Tables",
+    "unit": "u"
+  },
+  {
+    "parent": "11.1",
+    "label": "Tabourets",
+    "unit": "u"
+  },
+  {
+    "parent": "11.1",
+    "label": "Autres mobiliers intérieurs",
+    "unit": "u"
+  },
+  {
+    "id": "11.2",
+    "parent": "11",
+    "label": "Mobilier extérieur",
+    "unit": "u"
+  },
+  {
+    "parent": "11.2",
+    "label": "Mobilier de jardin",
+    "unit": "u"
+  },
+  {
+    "parent": "11.2",
+    "label": "Pots\/ bacs à végétaux \/ jardinières",
+    "unit": "u"
+  },
+  {
+    "parent": "11.2",
+    "label": "Racks à vélo",
+    "unit": "u"
+  },
+  {
+    "parent": "11.2",
+    "label": "Autres mobiliers extérieurs",
+    "unit": "u"
+  },
+  {
+    "id": "11.3",
+    "parent": "11",
+    "label": "Equipement",
+    "unit": "u"
+  },
+  {
+    "parent": "11.3",
+    "label": "Abattans de WC",
+    "unit": "u"
+  },
+  {
+    "parent": "11.3",
+    "label": "Dévidoirs à papier",
+    "unit": "u"
+  },
+  {
+    "parent": "11.3",
+    "label": "Distributeurs de savon",
+    "unit": "u"
+  },
+  {
+    "parent": "11.3",
+    "label": "Ecrans",
+    "unit": "u"
+  },
+  {
+    "parent": "11.3",
+    "label": "Equipements électroménager",
+    "unit": "u"
+  },
+  {
+    "parent": "11.3",
+    "label": "Equipements de cuisine",
+    "unit": "u"
+  },
+  {
+    "parent": "11.3",
+    "label": "Equipements de téléphonie",
+    "unit": "u"
+  },
+  {
+    "parent": "11.3",
+    "label": "Equipements technique de RIE",
+    "unit": "u"
+  },
+  {
+    "parent": "11.3",
+    "label": "Autres équipements ",
+    "unit": "u"
+  },
+  {
+    "id": "11.4",
+    "parent": "11",
+    "label": "Autres",
+    "unit": "u"
+  },
+  {
+    "id": 12,
+    "label": "Appareils élévateurs et autres équipements \nde transport intérieur",
+    "unit": "u"
+  },
+  {
+    "id": "12.1",
+    "parent": "12",
     "label": "Ascenseur",
-    "parent": 12,
-    "units": [
-      "u"
-    ]
+    "unit": "u"
   },
   {
-    "key": "12.2",
+    "parent": "12.1",
+    "label": "Ascenseurs",
+    "unit": "u"
+  },
+  {
+    "parent": "12.1",
+    "label": "Auxiliaires d'ascenseur",
+    "unit": "u"
+  },
+  {
+    "parent": "12.1",
+    "label": "Autres éléments d'ascenseur",
+    "unit": "u"
+  },
+  {
+    "id": "12.2",
+    "parent": "12",
     "label": "Monte-charge",
-    "parent": 12,
-    "units": [
-      "u"
-    ]
+    "unit": "u"
   },
   {
-    "key": "13.1",
+    "parent": "12.2",
+    "label": "Montes charge",
+    "unit": "u"
+  },
+  {
+    "parent": "12.2",
+    "label": "Auxiliaires de monte charge",
+    "unit": "u"
+  },
+  {
+    "parent": "12.2",
+    "label": "Autres éléments de monte-charge",
+    "unit": "u"
+  },
+  {
+    "id": "12.3",
+    "parent": "12",
     "label": "Escaliers mécaniques",
-    "parent": 12,
-    "units": [
-      "u"
-    ]
+    "unit": "u"
   },
   {
-    "key": "13.1",
+    "parent": "12.3",
+    "label": "Escaliers mécaniques",
+    "unit": "u"
+  },
+  {
+    "parent": "12.3",
+    "label": "Auxiliaires d'escalier mécanique",
+    "unit": "u"
+  },
+  {
+    "parent": "12.3",
+    "label": "Autres éléments d'escaliers mécaniques",
+    "unit": "u"
+  },
+  {
+    "id": 13,
+    "label": "Équipement de production locale d’électricité",
+    "unit": "u"
+  },
+  {
+    "id": "13.1",
+    "parent": "13",
     "label": "Groupe électrogène",
-    "parent": 13,
-    "units": [
-      "u"
+    "unit": "u"
+  },
+  {
+    "parent": "13.1",
+    "label": "Groupes électrogènes",
+    "unit": "u"
+  },
+  {
+    "parent": "13.1",
+    "label": "Panneaux photovoltaiques \/ Onduleurs ",
+    "unit": "u"
+  },
+  {
+    "parent": "13.1",
+    "label": "Onduleurs sur batteries",
+    "unit": "u"
+  },
+  {
+    "parent": "13.1",
+    "label": "Autres types de groupe électrogène",
+    "unit": "u"
+  },
+  {
+    "id": 14,
+    "label": "Autres",
+    "unit": "u"
+  },
+  {
+    "id": "14.1",
+    "parent": "14",
+    "label": "Autres (voir note (4))",
+    "unit": "u"
+  },
+  {
+    "parent": "14.1",
+    "label": "Eléments d'espaces verts",
+    "unit": "u"
+  },
+  {
+    "parent": "14.1",
+    "label": "Extincteurs",
+    "unit": "u"
+  },
+  {
+    "parent": "14.1",
+    "label": "Matériaux bruts (pierre, sables, etc.)",
+    "unit": [
+      "u",
+      "m3"
     ]
   },
   {
-    "key": "14.1",
-    "label": "Fuides frigorigènes",
-    "parent": 14,
-    "units": [
-      "kg",
-      "l"
+    "parent": "14.1",
+    "label": "Remblais",
+    "unit": [
+      "u",
+      "m3"
     ]
   },
   {
-    "key": 1,
-    "label": "VRD (Voirie, Réseaux Divers)"
-  },
-  {
-    "key": 2,
-    "label": "Fondations et infrastructure"
-  },
-  {
-    "key": 3,
-    "label": "Superstructure - Maçonnerie"
-  },
-  {
-    "key": 4,
-    "label": "Couverture - Étanchéité - Charpente - Zinguerie"
-  },
-  {
-    "key": 5,
-    "label": "Cloisonnement - Doublage – Plafonds suspendus - Menuiseries intérieures"
-  },
-  {
-    "key": 6,
-    "label": "Façades et menuiseries extérieures"
-  },
-  {
-    "key": 7,
-    "label": "Revêtement des sols, murs et plafonds – Chape - Peintures - Produits de décoration"
-  },
-  {
-    "key": 8,
-    "label": "CVC (Chauffage - Ventilation - Climatisation)"
-  },
-  {
-    "key": 9,
-    "label": "Installations sanitaires"
-  },
-  {
-    "key": 10,
-    "label": "Réseaux d’énergie (courant fort)"
-  },
-  {
-    "key": 11,
-    "label": "Réseaux de communication (courant faible)"
-  },
-  {
-    "key": 12,
-    "label": "Appareils élévateurs et autres équipements de transport intérieur"
-  },
-  {
-    "key": 13,
-    "label": "Équipement de production locale d’électricité"
-  },
-  {
-    "key": 14,
-    "label": "Fluides frigorigènes"
+    "parent": "14.1",
+    "label": "Autres éléments ne correspondant pas aux catégories prédéfinies",
+    "unit": "u"
   }
 ]

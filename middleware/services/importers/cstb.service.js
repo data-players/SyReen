@@ -10,7 +10,7 @@ module.exports = {
     source: {
       getAllFull: path.resolve(__dirname, '../../imports/cstb.json'),
       fieldsMapping: {
-        slug: data => `${data.key}`
+        slug: data => `${data.id}`
       },
     },
     dest: {
@@ -25,6 +25,26 @@ module.exports = {
         'syreen:hasUnit': data.units ? data.units.map(unit => urlJoin(CONFIG.HOME_URL, 'units', unit)) : undefined,
         'skos:broader': data.parent ? urlJoin(CONFIG.HOME_URL, 'categories', `${data.parent}`) : undefined,
       });
+    },
+    async list(url) {
+      let items = await this.fetch(url);
+      let numChilds = {};
+      return items.map(item => {
+        // If no id is defined, compute it from the parent
+        if (!item.id) {
+          if (numChilds[item.parent]) {
+            numChilds[item.parent]++;
+          } else {
+            numChilds[item.parent] = 1;
+          }
+          return {
+            id: `${item.parent}.${numChilds[item.parent]}`,
+            ...item
+          }
+        } else {
+          return item;
+        }
+      })
     },
   }
 };
